@@ -3,8 +3,9 @@ import { empresa } from "@/lib/empresa";
 
 const enlaces = [
   { href: "/servicios", texto: "Servicios" },
+  { href: "/proceso", texto: "Cómo trabajamos" },
   { href: "/#trayectoria", texto: "Trayectoria" },
-  { href: "/#resenas", texto: "Reseñas" },
+  { href: "/#preguntas", texto: "Preguntas" },
   { href: "/contacto", texto: "Contacto" },
 ];
 

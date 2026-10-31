@@ -1,6 +1,6 @@
 # Micro Wave Lab CL — Contexto del proyecto
 
-Portal web profesional de **Micro Wave Lab CL**, servicio técnico especializado en reparación de placas electrónicas y equipos electrónicos (industriales como foco principal; también domésticos, automotrices, médicos y otros). Chile. **Más de 40 años de trayectoria.**
+Portal web profesional de **Micro Wave Lab CL**, servicio técnico especializado en reparación de placas electrónicas y equipos electrónicos (industriales como foco principal; también domésticos, automotrices, médicos y otros). Chile. **Más de 45 años de trayectoria. 6 meses de garantía en las reparaciones.**
 
 Idioma de la interfaz y del contenido: **español de Chile**. Moneda: CLP. Zona horaria: America/Santiago.
 
@@ -67,5 +67,15 @@ Cada cambio de estado: se registra en historial (quién, cuándo) y se envía av
 ## Convenciones
 
 - Componentes en `src/components`, lógica en `src/lib`.
-- Datos de la empresa (teléfono, correo, dirección, años) viven en `src/lib/empresa.ts`. **Completar los datos reales antes de publicar.**
+- Datos de la empresa (teléfono, correo, dirección, años, horario) viven en `src/lib/empresa.ts`. El correo corporativo sigue PENDIENTE.
 - No inventar reseñas, certificaciones ni cifras. Todo dato de la empresa debe venir del dueño.
+
+## Datos de contacto (entregados por el dueño)
+
+- Teléfono principal: +56 9 6418 3027 (llamadas, SMS, WhatsApp y llamadas por WhatsApp)
+- Dirección: General Freire 80, La Cisterna, Región Metropolitana, Santiago de Chile
+- Horario: lunes a viernes, 10:00 a 19:00
+- LinkedIn: https://cl.linkedin.com/company/electr%C3%B3nica-micro-wave-lab
+- Dominio: electronicamicrowavelab.cl (hosting en Vercel)
+- Descripción oficial: laboratorio electrónico; reparación de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores; servicio de diagnóstico; atención personalizada.
+- Pendiente: correo corporativo, logo y fotos (van en `public/`), reseñas de Google (etapa posterior).

@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { empresa } from "@/lib/empresa";
-import { datoPublico, enlaceWhatsApp } from "@/lib/utilidades";
+import { direccionCompleta, empresa, enlaceMapa } from "@/lib/empresa";
+import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Solicite una cotización o contáctenos.",
+  description:
+    "Contáctenos por teléfono, WhatsApp o visítenos en General Freire 80, La Cisterna.",
 };
 
 export default function Contacto() {
   const telefono = datoPublico(empresa.telefono);
   const correo = datoPublico(empresa.correo);
-  const direccion = datoPublico(empresa.direccion);
-  const horario = datoPublico(empresa.horario);
+  const llamar = enlaceTelefono(empresa.whatsapp);
   const whatsapp = enlaceWhatsApp(
     empresa.whatsapp,
     "Hola, quisiera cotizar la reparación de un equipo."
@@ -26,7 +26,21 @@ export default function Contacto() {
 
       <div className="mt-8 grid gap-8 md:grid-cols-2">
         <ul className="space-y-3 text-slate-700">
-          {telefono && <li><strong>Teléfono:</strong> {telefono}</li>}
+          {telefono && (
+            <li>
+              <strong>Teléfono:</strong>{" "}
+              {llamar ? (
+                <a className="text-marca-600 hover:underline" href={llamar}>
+                  {telefono}
+                </a>
+              ) : (
+                telefono
+              )}
+              <span className="block text-sm text-slate-500">
+                Llamadas, mensajes de texto y WhatsApp.
+              </span>
+            </li>
+          )}
           {correo && (
             <li>
               <strong>Correo:</strong>{" "}
@@ -35,20 +49,32 @@ export default function Contacto() {
               </a>
             </li>
           )}
-          {direccion && <li><strong>Dirección:</strong> {direccion}</li>}
-          {horario && <li><strong>Horario:</strong> {horario}</li>}
-          {whatsapp && (
-            <li>
-              <a className="boton mt-2" href={whatsapp}>
+          <li>
+            <strong>Dirección:</strong> {direccionCompleta}
+          </li>
+          <li>
+            <strong>Horario:</strong> {empresa.horario}
+          </li>
+          <li className="flex flex-wrap gap-3 pt-2">
+            {whatsapp && (
+              <a
+                className="boton"
+                href={whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Escribir por WhatsApp
               </a>
-            </li>
-          )}
-          {!telefono && !correo && !direccion && (
-            <li className="rounded-lg border border-dashed border-slate-300 p-4 text-slate-500">
-              Los datos de contacto se completan en <code>src/lib/empresa.ts</code>.
-            </li>
-          )}
+            )}
+            <a
+              className="boton-secundario"
+              href={enlaceMapa}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cómo llegar
+            </a>
+          </li>
         </ul>
 
         <div className="rounded-xl border border-slate-200 p-6">
@@ -57,6 +83,7 @@ export default function Contacto() {
           </h2>
           <p className="mt-2 text-sm text-slate-600">
             Se activará en la siguiente etapa, junto con el envío de correos.
+            Mientras tanto, escríbanos por WhatsApp o llámenos.
           </p>
         </div>
       </div>

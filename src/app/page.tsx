@@ -1,13 +1,20 @@
 import Link from "next/link";
-import { empresa, servicios } from "@/lib/empresa";
-import { enlaceWhatsApp } from "@/lib/utilidades";
-import { INFO_ESTADO, LINEA_DE_TIEMPO } from "@/lib/estados";
+import {
+  direccionCompleta,
+  empresa,
+  enlaceMapa,
+  preguntasFrecuentes,
+  servicios,
+} from "@/lib/empresa";
+import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 
 export default function Inicio() {
   const whatsapp = enlaceWhatsApp(
     empresa.whatsapp,
     "Hola, quisiera cotizar la reparación de un equipo."
   );
+  const llamar = enlaceTelefono(empresa.whatsapp);
+  const telefono = datoPublico(empresa.telefono);
   const destacados = servicios.filter((s) => s.destacado);
 
   return (
@@ -20,26 +27,30 @@ export default function Inicio() {
               Más de {empresa.aniosTrayectoria} años de experiencia
             </p>
             <h1 className="mt-3 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-              Reparación especializada de placas y equipos electrónicos
+              Laboratorio electrónico: reparación de tarjetas y equipos
             </h1>
             <p className="mt-5 max-w-xl text-lg text-slate-200">
-              Devolvemos a funcionar equipos industriales, médicos, domésticos
-              y automotrices, con diagnóstico a nivel de componente y
-              seguimiento en línea de cada reparación.
+              Diagnóstico y reparación de tarjetas electrónicas, módulos I/O,
+              fuentes de alimentación, inversores, monitores táctiles y más,
+              con atención personalizada.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center rounded-lg bg-cobre-500 px-6 py-3 text-base font-semibold text-white hover:bg-cobre-600"
-              >
-                Solicitar cotización
-              </Link>
               {whatsapp && (
                 <a
                   href={whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg bg-cobre-500 px-6 py-3 text-base font-semibold text-white hover:bg-cobre-600"
+                >
+                  Cotizar por WhatsApp
+                </a>
+              )}
+              {llamar && telefono && (
+                <a
+                  href={llamar}
                   className="inline-flex items-center justify-center rounded-lg border border-white/40 px-6 py-3 text-base font-semibold text-white hover:bg-white/10"
                 >
-                  Escribir por WhatsApp
+                  Llamar {telefono}
                 </a>
               )}
             </div>
@@ -52,16 +63,18 @@ export default function Inicio() {
               </dd>
             </div>
             <div className="rounded-xl bg-white/10 p-5">
-              <dt className="text-sm text-slate-300">Especialidad</dt>
-              <dd className="mt-1 text-xl font-bold">Placas electrónicas</dd>
+              <dt className="text-sm text-slate-300">Garantía</dt>
+              <dd className="mt-1 text-3xl font-bold">
+                {empresa.garantiaMeses} meses
+              </dd>
             </div>
             <div className="rounded-xl bg-white/10 p-5">
-              <dt className="text-sm text-slate-300">Foco</dt>
-              <dd className="mt-1 text-xl font-bold">Equipos industriales</dd>
+              <dt className="text-sm text-slate-300">Servicio</dt>
+              <dd className="mt-1 text-xl font-bold">Diagnóstico profesional</dd>
             </div>
             <div className="rounded-xl bg-white/10 p-5">
-              <dt className="text-sm text-slate-300">Seguimiento</dt>
-              <dd className="mt-1 text-xl font-bold">En línea, paso a paso</dd>
+              <dt className="text-sm text-slate-300">Atención</dt>
+              <dd className="mt-1 text-xl font-bold">Personalizada</dd>
             </div>
           </dl>
         </div>
@@ -73,7 +86,8 @@ export default function Inicio() {
           Qué reparamos
         </h2>
         <p className="mt-2 max-w-2xl text-slate-600">
-          Servicio profesional para todo lo relacionado con la electrónica.
+          Servicio de laboratorio electrónico para equipos industriales y de
+          todo tipo.
         </p>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {destacados.map((s) => (
@@ -101,56 +115,124 @@ export default function Inicio() {
         <div className="contenedor grid gap-8 md:grid-cols-2">
           <div>
             <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
-              Trayectoria y experiencia
+              Más de {empresa.aniosTrayectoria} años de experiencia
             </h2>
-            <p className="mt-4 text-slate-700">
-              {empresa.nombre} reúne más de {empresa.aniosTrayectoria} años de
-              experiencia en reparación electrónica. Esa experiencia nos permite
-              diagnosticar fallas complejas y reparar equipos que otros dan por
-              perdidos.
+            <p className="mt-4 text-slate-700">{empresa.descripcion}</p>
+            <p className="mt-4">
+              <a
+                href={empresa.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-marca-600 hover:underline"
+              >
+                Síganos en LinkedIn →
+              </a>
             </p>
           </div>
           <div className="rounded-xl bg-white p-6 shadow-sm">
-            <h3 className="font-bold text-marca-700">Cómo trabajamos</h3>
-            <ol className="mt-4 space-y-2">
-              {LINEA_DE_TIEMPO.filter((e) => e !== "DECISION_CLIENTE").map(
-                (e, i) => (
-                  <li key={e} className="flex gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-marca-600 text-xs font-bold text-white">
-                      {i + 1}
-                    </span>
-                    <span className="text-sm text-slate-700">
-                      {INFO_ESTADO[e].etiqueta}
-                    </span>
-                  </li>
-                )
-              )}
-            </ol>
+            <h3 className="font-bold text-marca-700">Por qué elegirnos</h3>
+            <ul className="mt-4 space-y-3 text-slate-700">
+              <li>
+                <strong>Experiencia comprobada:</strong> más de{" "}
+                {empresa.aniosTrayectoria} años reparando electrónica.
+              </li>
+              <li>
+                <strong>Garantía:</strong> {empresa.garantiaMeses} meses en
+                nuestras reparaciones.
+              </li>
+              <li>
+                <strong>Diagnóstico:</strong> identificamos la falla antes de
+                presupuestar.
+              </li>
+              <li>
+                <strong>Atención personalizada:</strong> nos adaptamos a sus
+                requerimientos.
+              </li>
+            </ul>
+            <p className="mt-5">
+              <Link
+                href="/proceso"
+                className="font-semibold text-marca-600 hover:underline"
+              >
+                Cómo es el proceso de reparación →
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Ubicación */}
+      <section id="ubicacion" className="contenedor py-16">
+        <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
+          Dónde estamos
+        </h2>
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <div className="space-y-2 text-slate-700">
+            <p>
+              <strong>Dirección:</strong> {direccionCompleta}
+            </p>
+            <p>
+              <strong>Horario:</strong> {empresa.horario}
+            </p>
+            {telefono && (
+              <p>
+                <strong>Teléfono y WhatsApp:</strong> {telefono}
+              </p>
+            )}
+          </div>
+          <div>
+            <a
+              href={enlaceMapa}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="boton"
+            >
+              Ver en Google Maps
+            </a>
           </div>
         </div>
       </section>
 
       {/* Reseñas */}
-      <section id="resenas" className="contenedor py-16">
+      <section id="resenas" className="bg-slate-50 py-16">
+        <div className="contenedor">
+          <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
+            Lo que dicen nuestros clientes
+          </h2>
+          {empresa.urlGoogle ? (
+            <p className="mt-4">
+              <a
+                href={empresa.urlGoogle}
+                className="boton-secundario"
+                rel="noopener noreferrer"
+              >
+                Ver reseñas en Google
+              </a>
+            </p>
+          ) : (
+            <p className="mt-4 rounded-lg border border-dashed border-slate-300 bg-white p-6 text-slate-500">
+              Aquí se mostrarán las reseñas reales de Google cuando se conecte la
+              ficha de la empresa.
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* Preguntas frecuentes */}
+      <section id="preguntas" className="contenedor py-16">
         <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
-          Lo que dicen nuestros clientes
+          Preguntas frecuentes
         </h2>
-        {empresa.urlGoogle ? (
-          <p className="mt-4">
-            <a
-              href={empresa.urlGoogle}
-              className="boton-secundario"
-              rel="noopener noreferrer"
-            >
-              Ver reseñas en Google
-            </a>
-          </p>
-        ) : (
-          <p className="mt-4 rounded-lg border border-dashed border-slate-300 p-6 text-slate-500">
-            Aquí se mostrarán las reseñas reales de Google cuando se conecte la
-            ficha de la empresa.
-          </p>
-        )}
+        <div className="mt-6 divide-y divide-slate-200 rounded-xl border border-slate-200">
+          {preguntasFrecuentes.map((p) => (
+            <details key={p.pregunta} className="group p-5">
+              <summary className="cursor-pointer list-none text-lg font-semibold text-marca-900">
+                {p.pregunta}
+              </summary>
+              <p className="mt-3 text-slate-700">{p.respuesta}</p>
+            </details>
+          ))}
+        </div>
       </section>
     </>
   );
