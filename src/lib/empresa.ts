@@ -35,6 +35,16 @@ export const direccionCompleta = `${empresa.direccionCalle}, ${empresa.comuna}, 
 /** Enlace a la ficha exacta del negocio en Google Maps. */
 export const enlaceMapa: string = empresa.urlGoogle;
 
+/** Enlace para navegar con Waze (abre la app si está instalada en el celular). */
+export const enlaceWaze = `https://waze.com/ul?q=${encodeURIComponent(
+  `${empresa.direccionCalle}, ${empresa.comuna}, Chile`
+)}&navigate=yes`;
+
+/** Mapa de Google embebido en la portada (no requiere clave de API). */
+export const urlMapaEmbebido = `https://maps.google.com/maps?q=${encodeURIComponent(
+  "Electronica Micro Wave Lab - Gral Freire 80, 7980110 La Cisterna, Región Metropolitana"
+)}&hl=es&z=16&output=embed`;
+
 export const servicios = [
   {
     id: "tarjetas",

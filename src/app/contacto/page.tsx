@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { direccionCompleta, empresa, enlaceMapa } from "@/lib/empresa";
+import {
+  direccionCompleta,
+  empresa,
+  enlaceMapa,
+  enlaceWaze,
+} from "@/lib/empresa";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 
 export const metadata: Metadata = {
@@ -72,7 +77,15 @@ export default function Contacto() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Cómo llegar
+              Cómo llegar (Google Maps)
+            </a>
+            <a
+              className="boton-secundario"
+              href={enlaceWaze}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cómo llegar (Waze)
             </a>
           </li>
         </ul>

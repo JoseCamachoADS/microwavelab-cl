@@ -3,9 +3,11 @@ import {
   direccionCompleta,
   empresa,
   enlaceMapa,
+  enlaceWaze,
   preguntasFrecuentes,
   servicios,
 } from "@/lib/empresa";
+import Mapa from "@/components/Mapa";
 import Resenas from "@/components/Resenas";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 
@@ -167,30 +169,41 @@ export default function Inicio() {
         <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
           Dónde estamos
         </h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div className="space-y-2 text-slate-700">
-            <p>
-              <strong>Dirección:</strong> {direccionCompleta}
-            </p>
-            <p>
-              <strong>Horario:</strong> {empresa.horario}
-            </p>
-            {telefono && (
-              <p>
-                <strong>Teléfono y WhatsApp:</strong> {telefono}
-              </p>
-            )}
-          </div>
+        <div className="mt-6 grid gap-8 md:grid-cols-2">
           <div>
-            <a
-              href={enlaceMapa}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="boton"
-            >
-              Ver en Google Maps
-            </a>
+            <div className="space-y-2 text-slate-700">
+              <p>
+                <strong>Dirección:</strong> {direccionCompleta}
+              </p>
+              <p>
+                <strong>Horario:</strong> {empresa.horario}
+              </p>
+              {telefono && (
+                <p>
+                  <strong>Teléfono y WhatsApp:</strong> {telefono}
+                </p>
+              )}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={enlaceMapa}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="boton"
+              >
+                Cómo llegar con Google Maps
+              </a>
+              <a
+                href={enlaceWaze}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="boton-secundario"
+              >
+                Cómo llegar con Waze
+              </a>
+            </div>
           </div>
+          <Mapa />
         </div>
       </section>
 
