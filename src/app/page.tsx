@@ -6,6 +6,7 @@ import {
   preguntasFrecuentes,
   servicios,
 } from "@/lib/empresa";
+import Resenas from "@/components/Resenas";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 
 export default function Inicio() {
@@ -199,22 +200,7 @@ export default function Inicio() {
           <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
             Lo que dicen nuestros clientes
           </h2>
-          {empresa.urlGoogle ? (
-            <p className="mt-4">
-              <a
-                href={empresa.urlGoogle}
-                className="boton-secundario"
-                rel="noopener noreferrer"
-              >
-                Ver reseñas en Google
-              </a>
-            </p>
-          ) : (
-            <p className="mt-4 rounded-lg border border-dashed border-slate-300 bg-white p-6 text-slate-500">
-              Aquí se mostrarán las reseñas reales de Google cuando se conecte la
-              ficha de la empresa.
-            </p>
-          )}
+          <Resenas />
         </div>
       </section>
 

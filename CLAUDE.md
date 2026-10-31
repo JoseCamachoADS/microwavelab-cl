@@ -20,6 +20,16 @@ Diseñar para uso rápido con una mano, en el celular:
 - Instalable como app (PWA).
 - Confirmar siempre las acciones que notifican al cliente.
 
+### Dispositivo objetivo: iPhone 15 Pro (Safari / iOS)
+
+- Se instala desde Safari con Compartir → "Agregar a pantalla de inicio" (en iOS no hay botón de instalación automático). Incluir `manifest` y los íconos de app (180×180 para iOS) y mostrar una guía corta de instalación dentro del panel.
+- Respetar las zonas seguras (Dynamic Island y barra inferior): usar `env(safe-area-inset-top/bottom)` y `viewport-fit=cover`. Pantalla de referencia: 393 × 852 puntos.
+- Todo campo de texto con fuente de **16 px o más**; si no, Safari hace zoom automático al escribir.
+- Fotos del equipo: `<input type="file" accept="image/*" capture="environment">` abre la cámara trasera. Reducir el tamaño de la foto antes de subirla.
+- Altura de pantalla con `100dvh` (no `100vh`) por la barra de Safari.
+- Las notificaciones push web en iOS solo funcionan con la app instalada en la pantalla de inicio; el aviso principal al cliente sigue siendo el correo.
+- Probar siempre en el celular real, no solo en el navegador del computador.
+
 ## Flujo de una orden (estados)
 
 Definido en `src/lib/estados.ts`. Es la fuente única de verdad.
@@ -78,4 +88,6 @@ Cada cambio de estado: se registra en historial (quién, cuándo) y se envía av
 - LinkedIn: https://cl.linkedin.com/company/electr%C3%B3nica-micro-wave-lab
 - Dominio: electronicamicrowavelab.cl (hosting en Vercel)
 - Descripción oficial: laboratorio electrónico; reparación de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores; servicio de diagnóstico; atención personalizada.
-- Pendiente: correo corporativo, logo y fotos (van en `public/`), reseñas de Google (etapa posterior).
+- Ficha de Google Maps: ver `empresa.urlGoogle` en `src/lib/empresa.ts` (se usa en "Cómo llegar" y en reseñas).
+- Reseñas de Google: integradas con Places API (New) en `src/lib/resenas.ts` y `src/components/Resenas.tsx`. Requiere `GOOGLE_PLACES_API_KEY` y `GOOGLE_PLACE_ID` (ver `.env.example`). Sin esas variables el sitio muestra solo un enlace a la ficha.
+- Pendiente: correo corporativo, logo y fotos (van en `public/`), clave de API y Place ID de Google.

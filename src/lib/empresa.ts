@@ -20,8 +20,10 @@ export const empresa = {
   horario: "Lunes a viernes, de 10:00 a 19:00",
 
   linkedin: "https://cl.linkedin.com/company/electr%C3%B3nica-micro-wave-lab",
-  // URL de la ficha de Google (Google Business Profile) para reseñas
-  urlGoogle: "",
+  // Ficha de Google Maps del negocio (sin parámetros de seguimiento).
+  // Se usa para "Cómo llegar" y para "Ver reseñas en Google".
+  urlGoogle:
+    "https://www.google.com/maps?q=Electronica+Micro+Wave+Lab+-+Gral+Freire+80,+7980110+La+Cisterna,+Regi%C3%B3n+Metropolitana&ftid=0x9662dbce29a80eb9:0x6dd6336a5197aa50",
 
   descripcion:
     "Prestamos servicio de laboratorio electrónico, con más de 45 años de experiencia en la reparación de todo tipo de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores. Servicio de diagnóstico, con atención personalizada y adaptándonos a sus requerimientos.",
@@ -30,10 +32,8 @@ export const empresa = {
 /** Dirección en una línea. */
 export const direccionCompleta = `${empresa.direccionCalle}, ${empresa.comuna}, ${empresa.region}, ${empresa.ciudad}`;
 
-/** Enlace a Google Maps (solo búsqueda por dirección, sin API). */
-export const enlaceMapa = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${empresa.direccionCalle}, ${empresa.comuna}, Chile`
-)}`;
+/** Enlace a la ficha exacta del negocio en Google Maps. */
+export const enlaceMapa: string = empresa.urlGoogle;
 
 export const servicios = [
   {

@@ -22,6 +22,15 @@ Abre http://localhost:3000.
 2. Agregar logo y fotos en `public/` y usarlos en la portada.
 3. Conectar las reseñas reales de Google (fase 1 final).
 
+## Reseñas de Google
+
+1. Obtener el **Place ID** con el "Place ID Finder" de Google Maps Platform (buscar el negocio y copiar el código que empieza con `ChIJ`).
+2. En console.cloud.google.com: crear un proyecto, activar la facturación, activar **Places API (New)** y crear una **clave de API** restringida solo a esa API.
+3. Copiar `.env.example` como `.env.local` y completar `GOOGLE_PLACES_API_KEY` y `GOOGLE_PLACE_ID`.
+4. En Vercel (Settings → Environment Variables) cargar las mismas dos variables y volver a desplegar.
+
+Sin estas variables, el sitio funciona igual y muestra solo el enlace "Ver reseñas en Google". Las reseñas se consultan una vez al día.
+
 ## Publicación (hosting administrado)
 
 1. Subir el proyecto a un repositorio de GitHub.
