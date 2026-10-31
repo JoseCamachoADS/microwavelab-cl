@@ -1,0 +1,132 @@
+// Borrador del esquema de base de datos (Fase 2).
+// Se mueve a /prisma/schema.prisma cuando se instale Prisma.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id                 String   @id @default(cuid())
+  correo             String   @unique
+  nombre             String?
+  telefono           String?
+  // Consentimiento para publicidad (doble confirmación por correo)
+  aceptaPublicidad   Boolean  @default(false)
+  publicidadConfirmadaEn DateTime?
+  bajaPublicidadEn   DateTime?
+  creadoEn           DateTime @default(now())
+  ordenes            Orden[]
+}
+
+model Orden {
+  id          String   @id @default(cuid())
+  numero      Int      @unique @default(autoincrement())
+  clienteId   String
+  cliente     Cliente  @relation(fields: [clienteId], references: [id])
+
+  tipoEquipo  String   // industrial, placa, medico, domestico, automotriz, otro
+  marca       String?
+  modelo      String?
+  serie       String?
+  falla       String
+
+  estado      Estado   @default(RECEPCION)
+  // Solo aplica cuando estado = SOLICITUD_REPUESTO
+  subestadoRepuesto SubestadoRepuesto?
+  repuestoDetalle   String?
+  repuestoFechaEstimada DateTime?
+
+  creadoEn    DateTime @default(now())
+  entregadoEn DateTime?
+  garantiaHasta DateTime?
+
+  fotos       Foto[]
+  historial   CambioEstado[]
+  presupuesto Presupuesto?
+  pagos       Pago[]
+}
+
+model Foto {
+  id        String   @id @default(cuid())
+  ordenId   String
+  orden     Orden    @relation(fields: [ordenId], references: [id])
+  url       String
+  momento   String   // "ingreso" | "despues"
+  creadoEn  DateTime @default(now())
+}
+
+model CambioEstado {
+  id        String   @id @default(cuid())
+  ordenId   String
+  orden     Orden    @relation(fields: [ordenId], references: [id])
+  desde     Estado?
+  hacia     Estado
+  nota      String?
+  creadoEn  DateTime @default(now())
+}
+
+model Presupuesto {
+  id         String   @id @default(cuid())
+  ordenId    String   @unique
+  orden      Orden    @relation(fields: [ordenId], references: [id])
+  montoCLP   Int
+  detalle    String
+  estado     EstadoPresupuesto @default(ENVIADO)
+  enviadoEn  DateTime @default(now())
+  respondidoEn DateTime?
+}
+
+model Pago {
+  id           String   @id @default(cuid())
+  ordenId      String
+  orden        Orden    @relation(fields: [ordenId], references: [id])
+  montoCLP     Int
+  // Webpay Plus
+  buyOrder     String   @unique
+  tokenWs      String?
+  estado       EstadoPago @default(PENDIENTE)
+  codigoAutorizacion String?
+  creadoEn     DateTime @default(now())
+  pagadoEn     DateTime?
+}
+
+enum Estado {
+  RECEPCION
+  REVISION
+  DIAGNOSTICO
+  PRESUPUESTO
+  DECISION_CLIENTE
+  SOLICITUD_REPUESTO
+  REPARACION
+  PRUEBAS
+  LISTO_RETIRO
+  ENTREGADO
+  RECHAZADO
+  SIN_REPARACION
+}
+
+enum SubestadoRepuesto {
+  COTIZANDO
+  PEDIDO_REALIZADO
+  EN_TRANSITO
+  EN_ADUANA
+  RECIBIDO
+}
+
+enum EstadoPresupuesto {
+  ENVIADO
+  ACEPTADO
+  RECHAZADO
+}
+
+enum EstadoPago {
+  PENDIENTE
+  AUTORIZADO
+  RECHAZADO
+  ANULADO
+}
