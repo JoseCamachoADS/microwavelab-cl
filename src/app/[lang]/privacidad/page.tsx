@@ -40,6 +40,8 @@ export default async function Privacidad({ params }: Props) {
           </ul>
           <h2 className={h2}>{p.contador.h}</h2>
           <p>{p.contador.p}</p>
+          <h2 className={h2}>{p.traduccion.h}</h2>
+          <p>{p.traduccion.p}</p>
           <h2 className={h2}>{p.noHacemos.h}</h2>
           <p>{p.noHacemos.p}</p>
           <h2 className={h2}>{p.cambiar.h}</h2>

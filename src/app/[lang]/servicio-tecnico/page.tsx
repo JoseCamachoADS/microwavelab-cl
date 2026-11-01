@@ -4,6 +4,7 @@ import FormularioCotizacion from "@/components/FormularioCotizacion";
 import { IconoCheck, IconoServicio } from "@/components/Iconos";
 import { fmt } from "@/i18n/config";
 import { obtenerDiccionario } from "@/i18n";
+import { es as dicEs } from "@/i18n/es";
 import { metaPagina } from "@/i18n/meta";
 import { idiomaDe, variables } from "@/i18n/servidor";
 import { empresa, servicios } from "@/lib/empresa";
@@ -73,7 +74,15 @@ export default async function ServicioTecnico({ params }: Props) {
             <p className="mt-4 text-lg text-grisazul">{t.formulario.intro}</p>
           </div>
           <div className="panel bg-white p-6 sm:p-8 md:col-span-8">
-            <FormularioCotizacion textos={t.formulario} equipos={equipos} mensajeEnlace={mensajeEnlace} />
+            <FormularioCotizacion
+              lang={lang}
+              textos={t.formulario}
+              textosEs={dicEs.tecnico.formulario}
+              equipos={equipos}
+              equiposEs={servicios.map((s) => dicEs.servicios.items[s.id].titulo)}
+              idiomaEs={lang === "en" ? "inglés" : lang === "ger" ? "alemán" : "español"}
+              mensajeEnlace={mensajeEnlace}
+            />
           </div>
         </div>
       </section>

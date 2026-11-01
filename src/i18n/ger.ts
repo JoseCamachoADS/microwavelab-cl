@@ -125,6 +125,14 @@ export const ger: Diccionario = {
       areas: ["Gerätereparatur", "Garantie oder Kundendienst", "Allgemeine Anfrage", "Anregungen oder Beschwerden"],
       urgencias: ["Normal", "Dringend: das Gerät legt den Betrieb lahm", "Keine Eile"],
       enviar: "Weiter zu WhatsApp",
+      traduciendo: "Nachricht wird vorbereitet...",
+      revisarTitulo: "Prüfen Sie Ihre Nachricht",
+      revisarTexto: "Das ist die Nachricht, die unser Team erhält: auf Spanisch und mit Ihrem Originaltext. Wenn alles stimmt, öffnen Sie sie in WhatsApp und senden Sie sie ab.",
+      abrir: "WhatsApp öffnen",
+      editar: "Erneut bearbeiten",
+      idiomaCliente: "Sprache des Kunden",
+      textoOriginal: "Originaltext ({idioma})",
+      sinTraducir: "nicht übersetzt, verfasst auf {idioma}",
     },
   },
   inicio: {
@@ -289,6 +297,10 @@ export const ger: Diccionario = {
     cambiar: {
       h: "So ändern Sie Ihre Entscheidung",
       p: "Wenn Sie \"Akzeptieren\" gewählt haben und das zurücknehmen möchten, löschen Sie die Daten dieser Website in den Browsereinstellungen, dann erscheint der Hinweis erneut. Cookies können Sie auch im Browser selbst blockieren.",
+    },
+    traduccion: {
+      h: "Formular und Übersetzung",
+      p: "Wenn Sie auf Englisch oder Deutsch schreiben, wird der Text zur Fehlerbeschreibung an den Dienst Google Cloud Translation gesendet und ins Spanische übersetzt, bevor sich WhatsApp öffnet, da unser Team auf Spanisch arbeitet. Der Text wird auf dieser Website nicht gespeichert.",
     },
     consultas: {
       h: "Fragen",

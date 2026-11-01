@@ -12,6 +12,25 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.5.0: Formularios siempre en español para el equipo (01-11-2026)
+
+### Qué cambió
+- El mensaje que llega a WhatsApp es **siempre en español**: la estructura, el motivo, el tipo de equipo y la urgencia salen en español aunque el cliente use el sitio en inglés o alemán.
+- El texto libre de la falla se **traduce al español** (Google Cloud Translation) y se agrega debajo el **texto original** del cliente, indicando en qué idioma lo escribió.
+- Si la traducción no está disponible, el mensaje se envía igual con el original, marcado como "sin traducir".
+- En inglés y alemán el cliente **revisa el mensaje** antes de abrir WhatsApp.
+- La ruta interna `/api/traducir` solo responde a este sitio, limita los textos a 1.000 caracteres y las solicitudes por visitante.
+- `/privacidad` informa que el texto de la falla pasa por el servicio de traducción de Google y que no se guarda.
+- La función de traducción (`src/lib/traducir.ts`) se reutilizará al enviar los formularios por correo.
+
+### Para activarlo
+1. Google Cloud Console (el mismo proyecto de las reseñas) → APIs y servicios → activar **Cloud Translation API**.
+2. Credenciales → crear una **clave de API** nueva, restringida a "Cloud Translation API".
+3. Cargarla como `GOOGLE_TRANSLATE_API_KEY` en `.env.local` y en Vercel, y redesplegar.
+Costo: Google ofrece una cuota gratuita mensual de caracteres; para el volumen de un taller debería ser ínfimo. Confirmar la tarifa vigente en Google Cloud.
+
+---
+
 ## v1.4.0: Servicio técnico industrial y empresas que confían (01-11-2026)
 
 ### Qué se agregó

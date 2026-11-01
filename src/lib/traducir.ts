@@ -1,0 +1,54 @@
+// Traducción al español de los textos que escriben los clientes en inglés o alemán.
+// Usa Google Cloud Translation (versión básica). Solo se ejecuta en el servidor: la clave nunca llega al navegador.
+//
+// Variable de entorno (en .env.local y en Vercel → Settings → Environment Variables):
+//   GOOGLE_TRANSLATE_API_KEY  clave de API restringida a "Cloud Translation API"
+// Si falta la clave o Google no responde, devuelve null y el mensaje se envía solo con el texto original.
+// Esta misma función se usará cuando los formularios también se envíen por correo.
+
+export type IdiomaOrigen = "en" | "de";
+
+const ENTIDADES: Record<string, string> = {
+  "&amp;": "&",
+  "&lt;": "<",
+  "&gt;": ">",
+  "&quot;": '"',
+  "&#39;": "'",
+};
+
+function decodificar(texto: string): string {
+  return texto.replace(/&(amp|lt|gt|quot|#39);/g, (m) => ENTIDADES[m] ?? m);
+}
+
+export async function traducirAEspanol(texto: string, origen: IdiomaOrigen): Promise<string | null> {
+  const clave = process.env.GOOGLE_TRANSLATE_API_KEY;
+  if (!clave) {
+    console.warn("[traducción] Desactivada: falta GOOGLE_TRANSLATE_API_KEY.");
+    return null;
+  }
+  if (!texto.trim()) return null;
+
+  try {
+    const respuesta = await fetch(
+      `https://translation.googleapis.com/language/translate/v2?key=${encodeURIComponent(clave)}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ q: [texto], source: origen, target: "es", format: "text" }),
+        cache: "no-store",
+      }
+    );
+    if (!respuesta.ok) {
+      console.error(`[traducción] Google respondió ${respuesta.status}: ${(await respuesta.text()).slice(0, 300)}`);
+      return null;
+    }
+    const datos = (await respuesta.json()) as {
+      data?: { translations?: { translatedText?: string }[] };
+    };
+    const traducido = datos.data?.translations?.[0]?.translatedText;
+    return traducido ? decodificar(traducido) : null;
+  } catch (error) {
+    console.error("[traducción] No se pudo consultar a Google:", error);
+    return null;
+  }
+}

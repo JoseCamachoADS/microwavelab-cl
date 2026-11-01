@@ -126,6 +126,14 @@ export const es = {
       areas: ["Reparación de equipo", "Garantía o postventa", "Consulta general", "Sugerencias o reclamos"],
       urgencias: ["Normal", "Urgente: el equipo detiene la operación", "Sin apuro"],
       enviar: "Continuar por WhatsApp",
+      traduciendo: "Preparando mensaje...",
+      revisarTitulo: "Revise su mensaje",
+      revisarTexto: "Este es el mensaje que recibirá nuestro equipo, en español y con su texto original. Si está bien, ábralo en WhatsApp y envíelo.",
+      abrir: "Abrir WhatsApp",
+      editar: "Volver a editar",
+      idiomaCliente: "Idioma del cliente",
+      textoOriginal: "Texto original ({idioma})",
+      sinTraducir: "sin traducir, escrito en {idioma}",
     },
   },
   inicio: {
@@ -290,6 +298,10 @@ export const es = {
     cambiar: {
       h: "Cómo cambiar su decisión",
       p: "Si eligió \"Aceptar\" y quiere retirarlo, borre los datos de este sitio en la configuración de su navegador y el aviso volverá a aparecer. También puede bloquear las cookies desde el propio navegador.",
+    },
+    traduccion: {
+      h: "Formulario y traducción",
+      p: "Si usted escribe en inglés o alemán, el texto de la falla se envía al servicio Google Cloud Translation para traducirlo al español antes de abrir WhatsApp, porque nuestro equipo atiende en español. El texto no se guarda en este sitio.",
     },
     consultas: {
       h: "Consultas",
