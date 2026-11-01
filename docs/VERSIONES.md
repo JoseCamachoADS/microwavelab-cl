@@ -18,7 +18,7 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 - Contador de visitas en el pie de página, con dígitos en tarjetas con esquina cortada y línea roja.
 - Cuenta una vez por sesión del visitante, sin cookies ni datos personales; los robots conocidos no cuentan y `/portal` y `/panel` quedan fuera.
 - Se guarda en Upstash Redis (plan gratuito, desde Vercel → Storage). Sin la conexión, el contador no se muestra.
-- No se muestra hasta llegar a 100 visitas (`UMBRAL_MOSTRAR` en `src/components/ContadorVisitas.tsx`; en 0 se ve desde el inicio).
+- Se muestra desde la primera visita (`UMBRAL_MOSTRAR = 0` en `src/components/ContadorVisitas.tsx`; se puede subir para ocultarlo al inicio).
 - Nueva ruta interna `/api/visitas` y sección en `/privacidad`.
 
 ### Para activarlo

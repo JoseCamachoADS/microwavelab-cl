@@ -3,9 +3,9 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// Mientras el total sea menor a este número, el contador no se muestra
+// Mientras el total sea menor a este número, el contador no se muestra (0 = siempre visible)
 // (un "7 visitas" restaría más de lo que suma). Se puede bajar a 0 para verlo desde el inicio.
-const UMBRAL_MOSTRAR = 100;
+const UMBRAL_MOSTRAR = 0;
 const CLAVE_SESION = "visita-contada";
 const MIN_DIGITOS = 5;
 const RUTAS_PRIVADAS = ["/portal", "/panel"];
