@@ -19,6 +19,7 @@ const enlacesSitio = [
   { href: "/#preguntas", texto: "Preguntas frecuentes" },
   { href: "/contacto", texto: "Contacto" },
   { href: "/portal", texto: "Seguimiento de mi equipo" },
+  { href: "/privacidad", texto: "Privacidad y cookies" },
 ];
 
 export default function PieDePagina() {

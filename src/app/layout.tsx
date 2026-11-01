@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
+import Analitica from "@/components/Analitica";
 import BotonWhatsApp from "@/components/BotonWhatsApp";
 import Encabezado from "@/components/Encabezado";
 import PieDePagina from "@/components/PieDePagina";
@@ -90,6 +91,7 @@ export default function RootLayout({
         <main>{children}</main>
         <PieDePagina />
         <BotonWhatsApp />
+        <Analitica />
       </body>
     </html>
   );

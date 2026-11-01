@@ -12,6 +12,22 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.1.0: Medición del sitio (01-11-2026)
+
+### Qué se agregó
+- **Google Analytics 4** y **Microsoft Clarity** (versiones gratuitas), cargados solo si el visitante acepta el aviso de cookies.
+- **Informes en Looker Studio** conectados a GA4 (guía paso a paso en `docs/ANALITICA.md`).
+- **Eventos de clic** hacia WhatsApp, teléfono, Waze, Google Maps, LinkedIn y correo.
+- **Aviso de cookies** y página `/privacidad` (enlazada en el pie y en el mapa del sitio).
+- Las páginas `/portal` y `/panel` quedan excluidas de la medición.
+- Variables nuevas: `NEXT_PUBLIC_GA_ID` y `NEXT_PUBLIC_CLARITY_ID`.
+
+### Pendiente
+- Crear las cuentas de GA4 y Clarity, cargar los dos IDs en Vercel y volver a desplegar.
+- Revisar con un abogado el texto de `/privacidad` y el aviso de cookies.
+
+---
+
 ## v1.0.0: Base inicial, sitio público (31-10-2026)
 
 Primera versión estable. Sitio público en línea en https://electronicamicrowavelab.cl con identidad corporativa completa.
