@@ -8,6 +8,7 @@ import {
   logosExternos,
 } from "@/lib/empresa";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
+import ContadorVisitas from "./ContadorVisitas";
 import EnlaceRed from "./EnlaceRed";
 import { IconoChat, IconoNavegar, IconoPin, IconoRed, IconoTelefono } from "./Iconos";
 import Rayo from "./Rayo";
@@ -136,8 +137,13 @@ export default function PieDePagina() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-5 text-center text-sm text-white/70">
-        © {new Date().getFullYear()} {empresa.nombreCompleto}. Todos los derechos reservados.
+      <div className="border-t border-white/10 py-5 text-sm text-white/70">
+        <div className="contenedor flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          <p className="text-center sm:text-left">
+            © {new Date().getFullYear()} {empresa.nombreCompleto}. Todos los derechos reservados.
+          </p>
+          <ContadorVisitas />
+        </div>
       </div>
     </footer>
   );

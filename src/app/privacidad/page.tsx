@@ -34,6 +34,11 @@ export default function Privacidad() {
               se escribe en campos de texto.
             </li>
           </ul>
+          <h2 className="font-titulo text-2xl font-bold text-noche">Contador de visitas</h2>
+          <p>
+            El número de visitas del pie de página solo suma cuántas veces se abre el sitio. No guarda
+            datos personales, no usa cookies y no depende de su decisión sobre la medición.
+          </p>
           <h2 className="font-titulo text-2xl font-bold text-noche">Lo que no hacemos</h2>
           <p>
             No usamos estas cookies para publicidad. No medimos las páginas de seguimiento de equipos

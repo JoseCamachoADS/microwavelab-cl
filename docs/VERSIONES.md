@@ -12,6 +12,21 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.2.0: Contador de visitas (01-11-2026)
+
+### Qué se agregó
+- Contador de visitas en el pie de página, con dígitos en tarjetas con esquina cortada y línea roja.
+- Cuenta una vez por sesión del visitante, sin cookies ni datos personales; los robots conocidos no cuentan y `/portal` y `/panel` quedan fuera.
+- Se guarda en Upstash Redis (plan gratuito, desde Vercel → Storage). Sin la conexión, el contador no se muestra.
+- No se muestra hasta llegar a 100 visitas (`UMBRAL_MOSTRAR` en `src/components/ContadorVisitas.tsx`; en 0 se ve desde el inicio).
+- Nueva ruta interna `/api/visitas` y sección en `/privacidad`.
+
+### Para activarlo
+1. Vercel → proyecto → **Storage** → crear base **Upstash Redis** (plan gratuito) y conectarla al proyecto. Vercel agrega solo las variables `KV_REST_API_URL` y `KV_REST_API_TOKEN`.
+2. Redesplegar el último despliegue.
+
+---
+
 ## v1.1.0: Medición del sitio (01-11-2026)
 
 ### Qué se agregó
