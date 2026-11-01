@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CabeceraPagina from "@/components/CabeceraPagina";
-import { empresa } from "@/lib/empresa";
-import { INFO_ESTADO, LINEA_DE_TIEMPO } from "@/lib/estados";
+import { fmt, ruta } from "@/i18n/config";
+import { obtenerDiccionario } from "@/i18n";
+import { metaPagina } from "@/i18n/meta";
+import { idiomaDe, variables } from "@/i18n/servidor";
+import { LINEA_DE_TIEMPO } from "@/lib/estados";
 
-export const metadata: Metadata = {
-  title: "Cómo trabajamos",
-  description:
-    "Etapas de una reparación en Micro Wave Lab CL: recepción, diagnóstico, presupuesto, reparación, pruebas y entrega con garantía.",
-};
+type Props = { params: Promise<{ lang: string }> };
 
-export default function Proceso() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const lang = await idiomaDe(params);
+  const m = obtenerDiccionario(lang).proceso.meta;
+  return metaPagina(lang, "/proceso", m.titulo, m.descripcion);
+}
+
+export default async function Proceso({ params }: Props) {
+  const lang = await idiomaDe(params);
+  const d = obtenerDiccionario(lang);
+  const v = variables(d);
+  const p = d.proceso;
   return (
     <>
-      <CabeceraPagina
-        titulo="Cómo trabajamos"
-        bajada="Cada equipo pasa por las mismas etapas, para que usted sepa siempre en qué punto está su reparación."
-      />
+      <CabeceraPagina titulo={p.titulo} bajada={p.bajada} />
       <section className="seccion tras-corte">
         <div className="contenedor">
           {/* Es una secuencia real, por eso lleva numeración */}
@@ -33,14 +39,10 @@ export default function Proceso() {
                   {i + 1}
                 </span>
                 <div>
-                  <h2 className="font-titulo text-xl font-bold text-noche">
-                    {INFO_ESTADO[e].etiqueta}
-                  </h2>
-                  <p className="mt-1 text-grisazul">{INFO_ESTADO[e].descripcion}</p>
+                  <h2 className="font-titulo text-xl font-bold text-noche">{p.pasos[e].etiqueta}</h2>
+                  <p className="mt-1 text-grisazul">{p.pasos[e].descripcion}</p>
                   {e === "SOLICITUD_REPUESTO" && (
-                    <p className="mt-1 text-sm text-grisazul">
-                      Esta etapa solo ocurre si la reparación requiere un repuesto.
-                    </p>
+                    <p className="mt-1 text-sm text-grisazul">{p.notaRepuesto}</p>
                   )}
                 </div>
               </li>
@@ -48,11 +50,13 @@ export default function Proceso() {
           </ol>
 
           <p className="mt-12 max-w-2xl text-lg">
-            Todas nuestras reparaciones tienen <strong>{empresa.garantiaMeses} meses de garantía</strong>.
+            {p.garantiaAntes}
+            <strong>{fmt(p.garantiaNegrita, v)}</strong>
+            {p.garantiaDespues}
           </p>
           <p className="mt-6">
-            <Link href="/contacto" className="boton">
-              Consultar por mi equipo
+            <Link href={ruta(lang, "/contacto")} className="boton">
+              {p.cta}
             </Link>
           </p>
         </div>

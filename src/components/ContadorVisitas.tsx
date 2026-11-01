@@ -2,6 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { fmt, separarIdioma } from "@/i18n/config";
+import type { Diccionario } from "@/i18n/es";
 
 // Mientras el total sea menor a este número, el contador no se muestra (0 = siempre visible)
 // (un "7 visitas" restaría más de lo que suma). Se puede bajar a 0 para verlo desde el inicio.
@@ -10,10 +12,16 @@ const CLAVE_SESION = "visita-contada";
 const MIN_DIGITOS = 5;
 const RUTAS_PRIVADAS = ["/portal", "/panel"];
 
-export default function ContadorVisitas() {
-  const ruta = usePathname();
+export default function ContadorVisitas({
+  textos,
+  htmlLang,
+}: {
+  textos: Diccionario["contador"];
+  htmlLang: string;
+}) {
+  const camino = separarIdioma(usePathname() ?? "/").camino;
   const [total, setTotal] = useState<number | null>(null);
-  const privada = RUTAS_PRIVADAS.some((r) => ruta === r || ruta.startsWith(`${r}/`));
+  const privada = RUTAS_PRIVADAS.some((r) => camino === r || camino.startsWith(`${r}/`));
 
   useEffect(() => {
     if (privada) return;
@@ -41,11 +49,11 @@ export default function ContadorVisitas() {
   if (privada || total === null || total < UMBRAL_MOSTRAR) return null;
 
   const texto = String(total).padStart(MIN_DIGITOS, "0");
-  const legible = total.toLocaleString("es-CL");
+  const legible = total.toLocaleString(htmlLang);
 
   return (
-    <div className="flex items-center gap-3" role="img" aria-label={`${legible} visitas al sitio`}>
-      <span className="text-sm text-white/70">Visitas al sitio</span>
+    <div className="flex items-center gap-3" role="img" aria-label={fmt(textos.aria, { total: legible })}>
+      <span className="text-sm text-white/70">{textos.etiqueta}</span>
       <span className="flex gap-1" aria-hidden="true">
         {texto.split("").map((d, i) => (
           <span

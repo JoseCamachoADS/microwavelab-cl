@@ -1,24 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import { fmt, ruta, type Idioma } from "@/i18n/config";
+import { obtenerDiccionario } from "@/i18n";
 import { empresa } from "@/lib/empresa";
 import BarraSuperior from "./BarraSuperior";
 import MenuMovil from "./MenuMovil";
+import SelectorDeIdioma from "./SelectorDeIdioma";
 
-const enlaces = [
-  { href: "/servicios", texto: "Servicios" },
-  { href: "/proceso", texto: "Cómo trabajamos" },
-  { href: "/#trayectoria", texto: "Trayectoria" },
-  { href: "/#preguntas", texto: "Preguntas" },
-  { href: "/contacto", texto: "Contacto" },
-];
+export default function Encabezado({ lang }: { lang: Idioma }) {
+  const d = obtenerDiccionario(lang);
+  const enlaces = [
+    { href: ruta(lang, "/servicios"), texto: d.nav.servicios },
+    { href: ruta(lang, "/proceso"), texto: d.nav.proceso },
+    { href: ruta(lang, "/#trayectoria"), texto: d.nav.trayectoria },
+    { href: ruta(lang, "/#preguntas"), texto: d.nav.preguntas },
+    { href: ruta(lang, "/contacto"), texto: d.nav.contacto },
+  ];
+  const portal = { href: ruta(lang, "/portal"), texto: d.nav.portal };
 
-export default function Encabezado() {
   return (
     <>
-      <BarraSuperior />
+      <BarraSuperior lang={lang} />
       <header className="sticky top-0 z-40 border-b border-azul-100 bg-white/95 backdrop-blur">
         <div className="contenedor relative flex items-center justify-between gap-4 py-2">
-          <Link href="/" aria-label={`${empresa.nombreCompleto}, inicio`}>
+          <Link
+            href={ruta(lang, "/")}
+            aria-label={fmt(d.nav.inicioDe, { nombre: empresa.nombreCompleto })}
+          >
             <Image
               src="/logo/logo-color-320.png"
               alt={empresa.nombreCompleto}
@@ -28,7 +36,7 @@ export default function Encabezado() {
               className="h-14 w-auto sm:h-16"
             />
           </Link>
-          <nav aria-label="Principal" className="hidden items-center gap-7 md:flex">
+          <nav aria-label={d.nav.principal} className="hidden items-center gap-6 md:flex">
             {enlaces.map((e) => (
               <Link
                 key={e.href}
@@ -39,10 +47,20 @@ export default function Encabezado() {
               </Link>
             ))}
           </nav>
-          <Link href="/portal" className="boton hidden md:inline-flex">
-            Seguimiento de mi equipo
-          </Link>
-          <MenuMovil enlaces={enlaces} />
+          <div className="hidden items-center gap-4 md:flex">
+            <SelectorDeIdioma lang={lang} />
+            <Link href={portal.href} className="boton">
+              {portal.texto}
+            </Link>
+          </div>
+          <MenuMovil
+            enlaces={enlaces}
+            portal={portal}
+            textos={{ abrir: d.nav.menuAbrir, cerrar: d.nav.menuCerrar }}
+            principal={d.nav.principal}
+          >
+            <SelectorDeIdioma lang={lang} izquierda />
+          </MenuMovil>
         </div>
       </header>
     </>

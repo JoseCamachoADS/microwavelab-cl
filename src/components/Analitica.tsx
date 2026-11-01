@@ -4,6 +4,8 @@ import Link from "next/link";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ruta, separarIdioma, type Idioma } from "@/i18n/config";
+import type { Diccionario } from "@/i18n/es";
 
 // Analítica del sitio público: Google Analytics 4 (alimenta Looker Studio) y Microsoft Clarity.
 // - Solo se cargan si el visitante acepta, y solo si existen los IDs en las variables de entorno.
@@ -33,8 +35,15 @@ declare global {
   }
 }
 
-export default function Analitica() {
-  const ruta = usePathname();
+export default function Analitica({
+  lang,
+  textos,
+}: {
+  lang: Idioma;
+  textos: Diccionario["cookies"];
+}) {
+  const direccion = usePathname() ?? "/";
+  const camino = separarIdioma(direccion).camino;
   const [decision, setDecision] = useState<Decision>(null);
   const [listo, setListo] = useState(false);
 
@@ -48,7 +57,7 @@ export default function Analitica() {
     setListo(true);
   }, []);
 
-  const privada = RUTAS_PRIVADAS.some((r) => ruta === r || ruta.startsWith(`${r}/`));
+  const privada = RUTAS_PRIVADAS.some((r) => camino === r || camino.startsWith(`${r}/`));
   const activa = decision === "si" && !privada && Boolean(GA_ID || CLARITY_ID);
 
   // Eventos de clic hacia WhatsApp, teléfono, mapas, etc.
@@ -95,23 +104,22 @@ export default function Analitica() {
       {mostrarAviso && (
         <div
           role="dialog"
-          aria-label="Aviso de cookies"
+          aria-label={textos.aria}
           className="fixed inset-x-0 bottom-0 z-[60] border-t-4 border-rojo bg-noche text-white shadow-2xl"
         >
           <div className="contenedor flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
             <p className="max-w-3xl text-base text-white/90">
-              Usamos cookies de medición (Google Analytics y Microsoft Clarity) para entender cómo se usa el
-              sitio y mejorarlo. No las usamos para publicidad. Puede aceptar o rechazar.{" "}
-              <Link href="/privacidad" className="font-semibold underline underline-offset-4">
-                Más información
+              {textos.texto}{" "}
+              <Link href={ruta(lang, "/privacidad")} className="font-semibold underline underline-offset-4">
+                {textos.mas}
               </Link>
             </p>
             <div className="flex flex-shrink-0 flex-col gap-3 sm:flex-row">
               <button type="button" onClick={() => decidir("si")} className="boton">
-                Aceptar
+                {textos.aceptar}
               </button>
               <button type="button" onClick={() => decidir("no")} className="boton-claro">
-                Solo necesarias
+                {textos.rechazar}
               </button>
             </div>
           </div>

@@ -160,3 +160,11 @@ Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administra
 - Regla CSS: la sección que vecina a un corte necesita `tras-corte`/`antes-corte`; no usar `py-*` en secciones con corte (pisa el padding).
 - Animación solo en la portada (`anim-*`); respeta `prefers-reduced-motion`.
 - Logos: `public/logo/` (color, reverso para fondo oscuro, blanco, íconos). Waze y LinkedIn: logos oficiales NO se dibujan; se descargan de sus páginas de marca a `public/logos/` y se registran en `logosExternos` (`lib/empresa.ts`). Mientras sean `null` se muestra un ícono genérico.
+
+## Idiomas (v1.3.0)
+
+- Español en `/` (sin prefijo), inglés en `/en`, alemán en `/ger`. Las páginas viven en `src/app/[lang]/`; `src/middleware.ts` reescribe `/servicios` a `/es/servicios` por dentro.
+- Textos en `src/i18n/es.ts` (fuente del tipo), `en.ts` y `ger.ts`. Sin funciones en el diccionario: se usan `{variables}` con `fmt()`, para poder pasarlos a componentes cliente.
+- Enlaces internos siempre con `ruta(lang, "/camino")` (`src/i18n/config.ts`). Metadatos de página con `metaPagina()` (`src/i18n/meta.ts`), que agrega hreflang.
+- Los datos de la empresa (`empresa.ts`) siguen siendo únicos; solo los textos se traducen.
+- El panel del técnico (`/panel`) será solo en español.

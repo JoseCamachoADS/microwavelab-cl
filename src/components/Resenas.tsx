@@ -1,23 +1,28 @@
+import { fmt, type Idioma } from "@/i18n/config";
+import { obtenerDiccionario, type Diccionario } from "@/i18n";
 import { empresa } from "@/lib/empresa";
 import { obtenerResenas } from "@/lib/resenas";
 
-function Estrellas({ puntaje }: { puntaje: number }) {
+function Estrellas({ puntaje, etiqueta }: { puntaje: number; etiqueta: string }) {
   const llenas = Math.round(puntaje);
   return (
-    <span role="img" aria-label={`${puntaje} de 5 estrellas`} className="text-[#E8A300]">
+    <span role="img" aria-label={etiqueta} className="text-[#E8A300]">
       {"★".repeat(llenas)}
       <span className="text-azul-100">{"★".repeat(Math.max(0, 5 - llenas))}</span>
     </span>
   );
 }
 
-function formatoPuntaje(n: number): string {
-  return n.toFixed(1).replace(".", ",");
+function formatoPuntaje(n: number, lang: Idioma): string {
+  const t = n.toFixed(1);
+  return lang === "en" ? t : t.replace(".", ",");
 }
 
 /** Reseñas reales de Google. Si no hay clave o Google no responde, muestra un enlace simple. */
-export default async function Resenas() {
-  const datos = await obtenerResenas();
+export default async function Resenas({ lang }: { lang: Idioma }) {
+  const d = obtenerDiccionario(lang);
+  const t: Diccionario["resenas"] = d.resenas;
+  const datos = await obtenerResenas(d.idioma.places as "es" | "en" | "de");
 
   if (!datos) {
     return (
@@ -28,7 +33,7 @@ export default async function Resenas() {
           rel="noopener noreferrer"
           className="boton-suave"
         >
-          Ver reseñas en Google
+          {t.ver}
         </a>
       </p>
     );
@@ -38,12 +43,12 @@ export default async function Resenas() {
     <div className="mt-6">
       <div className="flex flex-wrap items-center gap-3">
         <span className="font-titulo text-5xl font-bold text-noche">
-          {formatoPuntaje(datos.puntaje)}
+          {formatoPuntaje(datos.puntaje, lang)}
         </span>
         <div>
-          <Estrellas puntaje={datos.puntaje} />
+          <Estrellas puntaje={datos.puntaje} etiqueta={fmt(t.estrellas, { n: datos.puntaje })} />
           <p className="text-sm text-grisazul">
-            {datos.total} {datos.total === 1 ? "reseña" : "reseñas"} en Google
+            {datos.total} {datos.total === 1 ? t.uno : t.varias} {t.enGoogle}
           </p>
         </div>
       </div>
@@ -80,13 +85,13 @@ export default async function Resenas() {
                       {r.autor}
                     </a>
                   ) : (
-                    <p className="truncate font-semibold text-noche">{r.autor}</p>
+                    <p className="truncate font-semibold text-noche">{r.autor || t.usuario}</p>
                   )}
                   <p className="text-xs text-grisazul">{r.cuando}</p>
                 </div>
               </div>
               <p className="mt-3">
-                <Estrellas puntaje={r.puntaje} />
+                <Estrellas puntaje={r.puntaje} etiqueta={fmt(t.estrellas, { n: r.puntaje })} />
               </p>
               <p className="mt-2 line-clamp-6 text-tinta">{r.texto}</p>
             </li>
@@ -101,7 +106,7 @@ export default async function Resenas() {
           rel="noopener noreferrer"
           className="boton-suave"
         >
-          Ver todas las reseñas en Google
+          {t.verTodas}
         </a>
         <a
           href={datos.urlEscribirResena}
@@ -109,10 +114,13 @@ export default async function Resenas() {
           rel="noopener noreferrer"
           className="boton"
         >
-          Dejar una reseña
+          {t.dejar}
         </a>
       </div>
-      <p className="mt-4 text-xs text-grisazul">Reseñas de Google Maps</p>
+      <p className="mt-4 text-xs text-grisazul">
+        {t.fuente}
+        {t.notaIdioma ? ` · ${t.notaIdioma}` : ""}
+      </p>
     </div>
   );
 }

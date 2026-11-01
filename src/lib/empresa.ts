@@ -123,3 +123,18 @@ export const logosExternos: { waze: string | null; linkedin: string | null } = {
   waze: null,
   linkedin: null,
 };
+
+/**
+ * Empresas que han confiado en el laboratorio y autorizaron mostrarse en el sitio.
+ * Solo nombre comercial (sin RUT ni montos). Si `logo` es null se muestra el nombre en texto;
+ * para usar su logo, copie el archivo (PNG o SVG, fondo transparente) en public/clientes/
+ * y escriba su ruta, por ejemplo "/clientes/silcosil.png". Los logos no se modifican.
+ */
+export const clientes: readonly { nombre: string; logo: string | null }[] = [
+  { nombre: "Metalúrgica Silcosil", logo: null },
+  { nombre: "Ingeprover Ingeniería", logo: null },
+  { nombre: "RRH Mantenciones", logo: null },
+  { nombre: "Hormigones Móviles", logo: null },
+  { nombre: "Miski Kakawa", logo: null },
+  { nombre: "Equiambiente", logo: null },
+];

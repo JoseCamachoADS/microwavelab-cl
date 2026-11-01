@@ -42,7 +42,9 @@ type RespuestaPlaces = {
 /** Una vez al día es suficiente y mantiene el consumo de la API mínimo. */
 const SEGUNDOS_CACHE = 60 * 60 * 24;
 
-export async function obtenerResenas(): Promise<DatosResenas | null> {
+export async function obtenerResenas(
+  idioma: "es" | "en" | "de" = "es"
+): Promise<DatosResenas | null> {
   const clave = process.env.GOOGLE_PLACES_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID;
   if (!clave || !placeId) {
@@ -55,7 +57,7 @@ export async function obtenerResenas(): Promise<DatosResenas | null> {
 
   try {
     const respuesta = await fetch(
-      `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}?languageCode=es`,
+      `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}?languageCode=${idioma}`,
       {
         headers: {
           "X-Goog-Api-Key": clave,
@@ -81,7 +83,7 @@ export async function obtenerResenas(): Promise<DatosResenas | null> {
 
     const resenas: Resena[] = (datos.reviews ?? [])
       .map((r) => ({
-        autor: r.authorAttribution?.displayName ?? "Usuario de Google",
+        autor: r.authorAttribution?.displayName ?? "",
         autorUrl: r.authorAttribution?.uri,
         fotoUrl: r.authorAttribution?.photoUri,
         puntaje: r.rating ?? 0,

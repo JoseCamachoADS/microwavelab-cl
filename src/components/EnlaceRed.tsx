@@ -8,6 +8,8 @@ type Props = {
   /** Ícono genérico mientras no exista el logo oficial. */
   iconoRespaldo: ReactNode;
   etiqueta: string;
+  /** Texto "se abre en otra pestaña" en el idioma actual. */
+  externo: string;
   className?: string;
 };
 
@@ -18,6 +20,7 @@ export default function EnlaceRed({
   logo,
   iconoRespaldo,
   etiqueta,
+  externo,
   className = "boton-claro",
 }: Props) {
   return (
@@ -26,7 +29,7 @@ export default function EnlaceRed({
       target="_blank"
       rel="noopener noreferrer"
       className={className}
-      aria-label={`${etiqueta} (${nombre}, se abre en otra pestaña)`}
+      aria-label={`${etiqueta} (${nombre}, ${externo})`}
     >
       {logo ? (
         // Logo oficial entregado por el dueño; no se modifica ni se recolorea.

@@ -12,6 +12,43 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.4.0: Servicio técnico industrial y empresas que confían (01-11-2026)
+
+### Qué se agregó
+- **Página "Servicio técnico industrial"** (`/servicio-tecnico`, `/en/servicio-tecnico`, `/ger/servicio-tecnico`) con *Alcance* y *Lo que usted gana*, y la lista de equipos que se atienden. Idea tomada de la estructura de servicio técnico de otras empresas del rubro; los textos son propios y solo prometen lo que ya ofrecemos (diagnóstico antes del presupuesto, garantía, experiencia, seguimiento por etapas).
+- **Formulario de cotización** con nombre, empresa, teléfono, correo, motivo (reparación, garantía o postventa, consulta general, sugerencias o reclamos), tipo de equipo, marca y modelo, falla y urgencia. Por ahora arma el mensaje y abre WhatsApp; no guarda ni envía datos a ningún servidor. Cuando exista el correo corporativo y el servicio de envío, pasará a enviarse por correo.
+- **Empresas que confían en nosotros** en la portada (Metalúrgica Silcosil, Ingeprover Ingeniería, RRH Mantenciones, Hormigones Móviles, Miski Kakawa y Equiambiente), autorizadas por el dueño. Se muestran por nombre hasta tener sus logos (`clientes` en `src/lib/empresa.ts`, logos en `public/clientes/`).
+- Enlaces nuevos en el pie, en la página de servicios y en contacto; la página entra al mapa del sitio en los tres idiomas.
+
+### Pendiente
+- Logos de las empresas clientes.
+- Nombre completo de System Servicios Eléctricos (cortado en el listado) y confirmar si se muestran personas naturales.
+- Reemplazar el envío por WhatsApp por envío por correo (requiere correo corporativo y Resend o Brevo).
+
+---
+
+## v1.3.0: Sitio en tres idiomas (01-11-2026)
+
+### Qué se agregó
+- **Español** en la raíz (`/`), **inglés** en `/en` y **alemán** en `/ger`. Cada página existe en los tres idiomas con la misma estructura (`/servicios`, `/en/servicios`, `/ger/servicios`).
+- **Selector de idioma** (ES, EN, DE) en el encabezado, en el menú del celular y en el pie. Lleva a la misma página en el otro idioma.
+- **Google entiende los idiomas:** cada página declara sus versiones equivalentes (hreflang) y el mapa del sitio las lista. El alemán usa la ruta `/ger`, que se declara a Google como alemán (`de`).
+- Todos los textos están en `src/i18n/` (`es.ts`, `en.ts`, `ger.ts`). Si falta una clave en un idioma, el proyecto no compila: así no quedan textos sin traducir.
+- Mapa, reseñas de Google, aviso de cookies, contador, privacidad y avisos de WhatsApp también cambian de idioma. Las reseñas se muestran en el idioma original en que se escribieron.
+- Nuevo `src/middleware.ts` que atiende las rutas por idioma.
+
+### Cómo agregar o cambiar un texto
+Editar la misma clave en los tres archivos de `src/i18n/`. Para un idioma nuevo: crear su archivo, agregarlo a `IDIOMAS` en `config.ts` y a `index.ts`.
+
+### Nota de actualización
+Las páginas pasaron de `src/app/` a `src/app/[lang]/`. Hay que borrar los archivos antiguos con `git rm` (ver las instrucciones de entrega de esta versión).
+
+### Pendiente
+- Revisión de las traducciones por una persona nativa (especialmente el alemán).
+- La página de seguimiento y el futuro panel quedan por ahora solo en español en su funcionamiento interno.
+
+---
+
 ## v1.2.0: Contador de visitas (01-11-2026)
 
 ### Qué se agregó
