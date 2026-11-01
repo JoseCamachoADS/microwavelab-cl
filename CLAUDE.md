@@ -168,3 +168,10 @@ Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administra
 - Enlaces internos siempre con `ruta(lang, "/camino")` (`src/i18n/config.ts`). Metadatos de página con `metaPagina()` (`src/i18n/meta.ts`), que agrega hreflang.
 - Los datos de la empresa (`empresa.ts`) siguen siendo únicos; solo los textos se traducen.
 - El panel del técnico (`/panel`) será solo en español.
+
+## Seguridad del formulario y uso de APIs (v1.6.0)
+
+- Captcha: Cloudflare Turnstile. Widget en `src/components/Turnstile.tsx`; el servidor lo verifica en `src/lib/turnstile.ts`, llamado desde `src/app/api/traducir/route.ts` (que recibe `{token, idioma, texto}`). Sin claves (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`) queda desactivado. Todo envío futuro por correo debe pasar por esa misma verificación.
+- Todo servicio externo nuevo debe registrarse con `registrarUso()` (`src/lib/uso-api.ts`) y agregarse a `SERVICIOS`. Nunca registrar datos de personas (IP, textos, correos).
+- `/uso` y `/api/uso` muestran el consumo; se protegen con `USO_API_TOKEN`. Pasarán al panel del administrador.
+- Tope mensual de traducción: `LIMITE_TRADUCCION_CARACTERES_MES` (por defecto 400000).

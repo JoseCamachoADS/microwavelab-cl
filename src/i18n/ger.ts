@@ -108,7 +108,7 @@ export const ger: Diccionario = {
     formulario: {
       titulo: "Angebot anfordern",
       intro: "Sagen Sie uns, um welches Gerät es geht und was nicht funktioniert. Je mehr Angaben, desto genauer unsere Antwort.",
-      nota: "Wenn Sie fortfahren, öffnet sich WhatsApp mit Ihrer fertig geschriebenen Nachricht; Sie prüfen sie und senden sie ab. Ihre Eingaben werden auf dieser Website nicht gespeichert.",
+      nota: "Wenn Sie fortfahren, sehen Sie Ihre fertig geschriebene Nachricht zur Kontrolle; danach öffnen Sie sie in WhatsApp und senden sie ab. Ihre Eingaben werden auf dieser Website nicht gespeichert.",
       encabezado: "Anfrage über die Website (technischer Service)",
       nombre: "Name",
       empresa: "Unternehmen",
@@ -133,6 +133,11 @@ export const ger: Diccionario = {
       idiomaCliente: "Sprache des Kunden",
       textoOriginal: "Originaltext ({idioma})",
       sinTraducir: "nicht übersetzt, verfasst auf {idioma}",
+      captcha: {
+        etiqueta: "Sicherheitsprüfung",
+        requerido: "Bitte schließen Sie die Sicherheitsprüfung ab, bevor Sie fortfahren.",
+        fallo: "Wir konnten nicht bestätigen, dass Sie ein Mensch sind. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per WhatsApp.",
+      },
     },
   },
   inicio: {
@@ -301,6 +306,10 @@ export const ger: Diccionario = {
     traduccion: {
       h: "Formular und Übersetzung",
       p: "Wenn Sie auf Englisch oder Deutsch schreiben, wird der Text zur Fehlerbeschreibung an den Dienst Google Cloud Translation gesendet und ins Spanische übersetzt, bevor sich WhatsApp öffnet, da unser Team auf Spanisch arbeitet. Der Text wird auf dieser Website nicht gespeichert.",
+    },
+    seguridad: {
+      h: "Sicherheit des Formulars",
+      p: "Um automatische Nachrichten (Bots) zu verhindern, nutzt das Formular Cloudflare Turnstile, ein Captcha, das Sie fast nie etwas lösen lässt. Cloudflare erhält technische Daten Ihres Browsers nur, um zu prüfen, dass Sie ein Mensch sind; sie werden nicht für Werbung verwendet. Wir zählen, wie oft die externen Dienste der Website (Übersetzung, Bewertungen und dieses Captcha) aufgerufen werden, ohne personenbezogene Daten zu speichern.",
     },
     consultas: {
       h: "Fragen",

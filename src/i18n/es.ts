@@ -109,7 +109,7 @@ export const es = {
     formulario: {
       titulo: "Solicitar cotización",
       intro: "Cuéntenos qué equipo es y qué le pasa. Mientras más datos, más precisa será la respuesta.",
-      nota: "Al continuar se abre WhatsApp con su mensaje ya escrito; usted lo revisa y lo envía. Lo que escribe aquí no se guarda en este sitio.",
+      nota: "Al continuar verá su mensaje ya escrito para revisarlo; luego lo abre en WhatsApp y lo envía. Lo que escribe aquí no se guarda en este sitio.",
       encabezado: "Solicitud desde el sitio web (servicio técnico)",
       nombre: "Nombre",
       empresa: "Empresa",
@@ -134,6 +134,11 @@ export const es = {
       idiomaCliente: "Idioma del cliente",
       textoOriginal: "Texto original ({idioma})",
       sinTraducir: "sin traducir, escrito en {idioma}",
+      captcha: {
+        etiqueta: "Verificación de seguridad",
+        requerido: "Complete la verificación de seguridad antes de continuar.",
+        fallo: "No pudimos verificar que usted es una persona. Intente de nuevo o escríbanos directamente por WhatsApp.",
+      },
     },
   },
   inicio: {
@@ -302,6 +307,10 @@ export const es = {
     traduccion: {
       h: "Formulario y traducción",
       p: "Si usted escribe en inglés o alemán, el texto de la falla se envía al servicio Google Cloud Translation para traducirlo al español antes de abrir WhatsApp, porque nuestro equipo atiende en español. El texto no se guarda en este sitio.",
+    },
+    seguridad: {
+      h: "Seguridad del formulario",
+      p: "Para evitar mensajes automáticos (robots), el formulario usa Cloudflare Turnstile, un captcha que casi nunca pide resolver nada. Cloudflare recibe datos técnicos de su navegador solo para comprobar que usted es una persona; no se usa para publicidad. Registramos cuántas veces se consultan los servicios externos del sitio (traducción, reseñas y este captcha), sin guardar ningún dato personal.",
     },
     consultas: {
       h: "Consultas",

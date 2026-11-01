@@ -108,7 +108,7 @@ export const en: Diccionario = {
     formulario: {
       titulo: "Request a quote",
       intro: "Tell us what the equipment is and what is wrong. The more details, the more precise our reply.",
-      nota: "When you continue, WhatsApp opens with your message already written; you review it and send it. What you type here is not stored on this site.",
+      nota: "When you continue, you will see your message already written so you can review it; then you open it in WhatsApp and send it. What you type here is not stored on this site.",
       encabezado: "Request from the website (technical service)",
       nombre: "Name",
       empresa: "Company",
@@ -133,6 +133,11 @@ export const en: Diccionario = {
       idiomaCliente: "Customer language",
       textoOriginal: "Original text ({idioma})",
       sinTraducir: "not translated, written in {idioma}",
+      captcha: {
+        etiqueta: "Security check",
+        requerido: "Please complete the security check before continuing.",
+        fallo: "We could not verify that you are a person. Please try again or message us directly on WhatsApp.",
+      },
     },
   },
   inicio: {
@@ -301,6 +306,10 @@ export const en: Diccionario = {
     traduccion: {
       h: "Form and translation",
       p: "If you write in English or German, the text describing the fault is sent to the Google Cloud Translation service to be translated into Spanish before WhatsApp opens, because our team works in Spanish. The text is not stored on this site.",
+    },
+    seguridad: {
+      h: "Form security",
+      p: "To prevent automated messages (bots), the form uses Cloudflare Turnstile, a captcha that rarely asks you to solve anything. Cloudflare receives technical data from your browser only to check that you are a person; it is not used for advertising. We keep a count of how many times the site's external services are called (translation, reviews and this captcha), without storing any personal data.",
     },
     consultas: {
       h: "Questions",

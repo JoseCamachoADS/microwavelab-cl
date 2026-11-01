@@ -4,6 +4,7 @@ import { useState } from "react";
 import { fmt, type Idioma } from "@/i18n/config";
 import type { Diccionario } from "@/i18n/es";
 import { IconoChat } from "./Iconos";
+import Turnstile, { turnstileDisponible } from "./Turnstile";
 
 type Textos = Diccionario["tecnico"]["formulario"];
 
@@ -14,6 +15,7 @@ const BLANCO = " ";
  * Formulario de cotización. Arma un mensaje SIEMPRE en español para WhatsApp (quien lo recibe habla español):
  * los campos de elección salen en español y, si el cliente escribió en inglés o alemán, el texto de la falla
  * se traduce y se agrega el original debajo. No guarda nada: el mensaje va directo a WhatsApp.
+ * Antes de armar el mensaje, el servidor comprueba el captcha (Cloudflare Turnstile) en /api/traducir.
  */
 export default function FormularioCotizacion({
   lang,
@@ -37,6 +39,9 @@ export default function FormularioCotizacion({
 }) {
   const [fase, setFase] = useState<"editar" | "traduciendo" | "revisar">("editar");
   const [mensaje, setMensaje] = useState("");
+  const [token, setToken] = useState<string | null>(null);
+  const [reinicio, setReinicio] = useState(0);
+  const [aviso, setAviso] = useState("");
   const t = textos;
   const e = textosEs;
   const campo =
@@ -62,19 +67,36 @@ export default function FormularioCotizacion({
     const falla = v("falla");
     const esEspanol = lang === "es";
 
+    if (turnstileDisponible && !token) {
+      setAviso(t.captcha.requerido);
+      return;
+    }
+    setAviso("");
     setFase("traduciendo");
+
+    // El servidor comprueba el captcha y, en inglés o alemán, traduce la falla.
     let traducida: string | null = null;
-    if (!esEspanol) {
-      try {
-        const r = await fetch("/api/traducir", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ texto: falla, idioma: lang }),
-        });
-        if (r.ok) traducida = ((await r.json()) as { traduccion: string | null }).traduccion;
-      } catch {
-        /* sin traducción: se envía solo el original */
+    let verificado = false;
+    try {
+      const r = await fetch("/api/traducir", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, texto: falla, idioma: lang }),
+      });
+      if (r.ok) {
+        verificado = true;
+        traducida = ((await r.json()) as { traduccion: string | null }).traduccion;
       }
+    } catch {
+      /* sin conexión con el servidor */
+    }
+    // El token es de un solo uso: se pide uno nuevo para el próximo envío.
+    setToken(null);
+    setReinicio((n) => n + 1);
+    if (!verificado) {
+      setAviso(t.captcha.fallo);
+      setFase("editar");
+      return;
     }
 
     const area = elegida("area", e.areas);
@@ -104,15 +126,10 @@ export default function FormularioCotizacion({
     const texto = lineas.join("\n");
     medir();
 
-    if (esEspanol) {
-      // Español: se abre WhatsApp directamente.
-      window.open(`${mensajeEnlace}${encodeURIComponent(texto)}`, "_blank", "noopener");
-      setFase("editar");
-    } else {
-      // Otros idiomas: el cliente revisa el mensaje y lo abre con un toque (así el navegador no bloquea la ventana).
-      setMensaje(texto);
-      setFase("revisar");
-    }
+    // El cliente revisa el mensaje y lo abre con un toque (así el navegador no bloquea la ventana,
+    // que se abriría después de esperar al servidor).
+    setMensaje(texto);
+    setFase("revisar");
   }
 
   return (
@@ -196,6 +213,25 @@ export default function FormularioCotizacion({
             ))}
           </select>
         </div>
+        {turnstileDisponible && (
+          <div>
+            <p className="mb-2 text-sm text-grisazul">{t.captcha.etiqueta}</p>
+            <Turnstile
+              lang={lang}
+              onToken={(valor) => {
+                setToken(valor);
+                if (valor) setAviso("");
+              }}
+              onFallo={() => setAviso(t.captcha.fallo)}
+              reinicio={reinicio}
+            />
+          </div>
+        )}
+        {aviso && (
+          <p role="alert" className="border-l-4 border-rojo bg-hielo px-4 py-3 font-semibold text-noche">
+            {aviso}
+          </p>
+        )}
         <button type="submit" disabled={fase === "traduciendo"} className="boton w-full sm:w-auto">
           <IconoChat className="h-5 w-5" />
           {fase === "traduciendo" ? t.traduciendo : t.enviar}

@@ -6,6 +6,8 @@
 // Si falta la clave o Google no responde, devuelve null y el mensaje se envía solo con el texto original.
 // Esta misma función se usará cuando los formularios también se envíen por correo.
 
+import { limiteTraduccionMensual, registrarUso, unidadesDelMes } from "./uso-api";
+
 export type IdiomaOrigen = "en" | "de";
 
 const ENTIDADES: Record<string, string> = {
@@ -28,6 +30,16 @@ export async function traducirAEspanol(texto: string, origen: IdiomaOrigen): Pro
   }
   if (!texto.trim()) return null;
 
+  // Tope mensual: si ya se tradujo demasiado, se corta antes de que Google empiece a cobrar.
+  const limite = limiteTraduccionMensual();
+  const usados = await unidadesDelMes("google_translate");
+  if (usados !== null && usados + texto.length > limite) {
+    console.warn(`[traducción] Tope mensual alcanzado (${usados}/${limite} caracteres). No se traduce.`);
+    await registrarUso({ servicio: "google_translate", ok: false, estado: "tope_mensual", ms: 0, detalle: `${usados}/${limite}` });
+    return null;
+  }
+
+  const inicio = Date.now();
   try {
     const respuesta = await fetch(
       `https://translation.googleapis.com/language/translate/v2?key=${encodeURIComponent(clave)}`,
@@ -39,16 +51,27 @@ export async function traducirAEspanol(texto: string, origen: IdiomaOrigen): Pro
       }
     );
     if (!respuesta.ok) {
-      console.error(`[traducción] Google respondió ${respuesta.status}: ${(await respuesta.text()).slice(0, 300)}`);
+      const detalle = (await respuesta.text()).slice(0, 300);
+      console.error(`[traducción] Google respondió ${respuesta.status}: ${detalle}`);
+      await registrarUso({ servicio: "google_translate", ok: false, estado: respuesta.status, ms: Date.now() - inicio, detalle });
       return null;
     }
     const datos = (await respuesta.json()) as {
       data?: { translations?: { translatedText?: string }[] };
     };
     const traducido = datos.data?.translations?.[0]?.translatedText;
+    await registrarUso({
+      servicio: "google_translate",
+      ok: Boolean(traducido),
+      estado: respuesta.status,
+      ms: Date.now() - inicio,
+      unidades: texto.length,
+      detalle: traducido ? undefined : "respuesta sin traducción",
+    });
     return traducido ? decodificar(traducido) : null;
   } catch (error) {
     console.error("[traducción] No se pudo consultar a Google:", error);
+    await registrarUso({ servicio: "google_translate", ok: false, estado: "red", ms: Date.now() - inicio, detalle: "sin respuesta de Google" });
     return null;
   }
 }

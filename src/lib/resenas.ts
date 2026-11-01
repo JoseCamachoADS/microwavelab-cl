@@ -5,6 +5,8 @@
 //   GOOGLE_PLACES_API_KEY  clave de API restringida a "Places API (New)"
 //   GOOGLE_PLACE_ID        Place ID de la ficha (empieza con "ChIJ")
 
+import { registrarUso } from "./uso-api";
+
 export type Resena = {
   autor: string;
   autorUrl?: string;
@@ -55,6 +57,7 @@ export async function obtenerResenas(
     return null;
   }
 
+  const inicio = Date.now();
   try {
     const respuesta = await fetch(
       `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}?languageCode=${idioma}`,
@@ -72,10 +75,12 @@ export async function obtenerResenas(
       // Nunca incluye la clave; es seguro mostrarlo en los registros.
       const detalle = (await respuesta.text()).slice(0, 500);
       console.error(`[reseñas] Google respondió ${respuesta.status}: ${detalle}`);
+      await registrarUso({ servicio: "google_places", ok: false, estado: respuesta.status, ms: Date.now() - inicio, detalle: detalle.slice(0, 160) });
       return null;
     }
 
     const datos = (await respuesta.json()) as RespuestaPlaces;
+    await registrarUso({ servicio: "google_places", ok: true, estado: respuesta.status, ms: Date.now() - inicio });
     if (typeof datos.rating !== "number") {
       console.warn("[reseñas] Google respondió sin calificación para este Place ID.");
       return null;
@@ -103,6 +108,7 @@ export async function obtenerResenas(
   } catch (error) {
     // Si Google no responde, el sitio sigue funcionando con el enlace simple.
     console.error("[reseñas] No se pudo consultar a Google:", error);
+    await registrarUso({ servicio: "google_places", ok: false, estado: "red", ms: Date.now() - inicio, detalle: "sin respuesta de Google" });
     return null;
   }
 }

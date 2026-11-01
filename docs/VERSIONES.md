@@ -12,6 +12,31 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.6.0: Captcha del formulario y registro de uso de APIs (01-11-2026)
+
+### Qué cambió
+- **Captcha Cloudflare Turnstile** en el formulario de cotización (español, inglés y alemán). Es gratuito, casi nunca pide resolver nada y no obliga a mover el DNS a Cloudflare. El navegador obtiene un token y **el servidor lo verifica con Cloudflare** antes de hacer cualquier cosa (`src/lib/turnstile.ts`). Sin token válido, `/api/traducir` responde 403 y no se traduce nada, así un robot no puede gastar la traducción de Google.
+- Como el servidor verifica antes de abrir WhatsApp, **el formulario en español también pasa por la pantalla "Revise su mensaje"** (un toque más), igual que inglés y alemán. El navegador bloquea las ventanas que se abren después de esperar al servidor.
+- Si no hay claves de Turnstile, el captcha queda desactivado y el formulario funciona como antes.
+- **Registro y contador de APIs** (`src/lib/uso-api.ts`): cada llamada a Google Places (reseñas), Google Translate (formularios) y Cloudflare Turnstile queda anotada con hora, resultado, duración y cantidad (caracteres en traducción). Se guarda en tres lugares: los registros de Vercel (línea `[uso-api]`), contadores por día y por mes en Upstash Redis (el mismo del contador de visitas) y una lista de las últimas 500 llamadas. **No se guarda ningún dato de personas**: ni IP, ni textos, ni correos.
+- **Página `/uso`** (solo español, fuera de Google, sin medición) con el consumo de hoy, del mes y del mes pasado, los últimos 14 días y el registro con filtros. Se entra con la clave `USO_API_TOKEN`. La misma información sale en `/api/uso` (cabecera `Authorization: Bearer <clave>`). Cuando exista el panel del técnico, pasará a ser solo para el administrador.
+- **Tope mensual de traducción**: por defecto 400.000 caracteres (Google entrega 500.000 gratis al mes; confirmar en su consola). Al llegar al tope el formulario sigue funcionando, pero sin traducir ("sin traducir" en el mensaje). Se cambia con `LIMITE_TRADUCCION_CARACTERES_MES`.
+- `/privacidad` informa del captcha y del conteo de llamadas.
+
+### Para activarlo
+1. **Turnstile:** dash.cloudflare.com → crear cuenta gratuita → *Turnstile* → *Add widget*. Nombre libre, dominios `electronicamicrowavelab.cl` y `localhost`, modo *Managed*. Copiar la **Site Key** y la **Secret Key**.
+2. En `.env.local` y en Vercel (Settings → Environment Variables): `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (clave del sitio, pública), `TURNSTILE_SECRET_KEY` (secreta, nunca en el código) y `USO_API_TOKEN` (texto aleatorio de 16 caracteres o más). Redesplegar el último despliegue.
+3. Entrar a `/uso`, escribir la clave y revisar. Hacer una consulta en `/en/servicio-tecnico` y ver cómo aparece en el registro.
+
+### Limitaciones (importante saberlas)
+- **Google Places:** el sitio guarda las reseñas 24 horas; el contador anota cuando el sitio las pide, y si Vercel las tenía guardadas, Google no recibe la llamada. Para el consumo real y el cobro, usar Google Cloud → APIs y servicios → Métricas.
+- **La protección real contra cobros está en Google Cloud**, no en el sitio: ahí conviene fijar una cuota diaria para Cloud Translation y una alerta de presupuesto.
+- Los límites por visitante de `/api/traducir` siguen siendo "mejor esfuerzo" (en memoria). Con Turnstile ya no son la defensa principal.
+- El contador de visitas (`/api/visitas`) no usa captcha; solo descarta robots conocidos.
+- Cada llamada registrada gasta unos 8 comandos de Upstash. Con el volumen de un taller no se acerca al límite gratuito.
+
+---
+
 ## v1.5.0: Formularios siempre en español para el equipo (01-11-2026)
 
 ### Qué cambió
