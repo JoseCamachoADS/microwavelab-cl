@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import CabeceraPagina from "@/components/CabeceraPagina";
+import EnlaceRed from "@/components/EnlaceRed";
+import { IconoChat, IconoNavegar, IconoPin, IconoReloj, IconoTelefono } from "@/components/Iconos";
+import Mapa from "@/components/Mapa";
 import {
   direccionCompleta,
   empresa,
   enlaceMapa,
   enlaceWaze,
+  logosExternos,
 } from "@/lib/empresa";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 
@@ -23,83 +28,79 @@ export default function Contacto() {
   );
 
   return (
-    <section className="contenedor py-14">
-      <h1 className="text-3xl font-bold text-marca-900">Contacto</h1>
-      <p className="mt-2 max-w-2xl text-slate-600">
-        Cuéntenos qué equipo necesita reparar y le responderemos a la brevedad.
-      </p>
-
-      <div className="mt-8 grid gap-8 md:grid-cols-2">
-        <ul className="space-y-3 text-slate-700">
-          {telefono && (
-            <li>
-              <strong>Teléfono:</strong>{" "}
-              {llamar ? (
-                <a className="text-marca-600 hover:underline" href={llamar}>
-                  {telefono}
-                </a>
-              ) : (
-                telefono
+    <>
+      <CabeceraPagina
+        titulo="Contacto"
+        bajada="Cuéntenos qué equipo necesita reparar y le responderemos a la brevedad."
+      />
+      <section className="seccion tras-corte">
+        <div className="contenedor grid gap-12 md:grid-cols-2">
+          <div>
+            <ul className="space-y-5 text-lg">
+              {telefono && (
+                <li className="flex gap-3">
+                  <IconoTelefono className="mt-1 h-6 w-6 flex-shrink-0 text-rojo-accion" />
+                  <span>
+                    {llamar ? (
+                      <a className="enlace" href={llamar}>
+                        {telefono}
+                      </a>
+                    ) : (
+                      telefono
+                    )}
+                    <span className="block text-base text-grisazul">
+                      Llamadas, mensajes de texto y WhatsApp.
+                    </span>
+                  </span>
+                </li>
               )}
-              <span className="block text-sm text-slate-500">
-                Llamadas, mensajes de texto y WhatsApp.
-              </span>
-            </li>
-          )}
-          {correo && (
-            <li>
-              <strong>Correo:</strong>{" "}
-              <a className="text-marca-600 hover:underline" href={`mailto:${correo}`}>
-                {correo}
+              {correo && (
+                <li className="pl-9">
+                  <a className="enlace" href={`mailto:${correo}`}>
+                    {correo}
+                  </a>
+                </li>
+              )}
+              <li className="flex gap-3">
+                <IconoPin className="mt-1 h-6 w-6 flex-shrink-0 text-rojo-accion" />
+                {direccionCompleta}
+              </li>
+              <li className="flex gap-3">
+                <IconoReloj className="mt-1 h-6 w-6 flex-shrink-0 text-rojo-accion" />
+                {empresa.horario}
+              </li>
+            </ul>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              {whatsapp && (
+                <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="boton">
+                  <IconoChat className="h-5 w-5" />
+                  Escribir por WhatsApp
+                </a>
+              )}
+              <a href={enlaceMapa} target="_blank" rel="noopener noreferrer" className="boton-suave">
+                <IconoPin className="h-5 w-5" />
+                Google Maps
               </a>
-            </li>
-          )}
-          <li>
-            <strong>Dirección:</strong> {direccionCompleta}
-          </li>
-          <li>
-            <strong>Horario:</strong> {empresa.horario}
-          </li>
-          <li className="flex flex-wrap gap-3 pt-2">
-            {whatsapp && (
-              <a
-                className="boton"
-                href={whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Escribir por WhatsApp
-              </a>
-            )}
-            <a
-              className="boton-secundario"
-              href={enlaceMapa}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Cómo llegar (Google Maps)
-            </a>
-            <a
-              className="boton-secundario"
-              href={enlaceWaze}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Cómo llegar (Waze)
-            </a>
-          </li>
-        </ul>
-
-        <div className="rounded-xl border border-slate-200 p-6">
-          <h2 className="text-lg font-bold text-marca-700">
-            Formulario de cotización
-          </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Se activará en la siguiente etapa, junto con el envío de correos.
-            Mientras tanto, escríbanos por WhatsApp o llámenos.
-          </p>
+              <EnlaceRed
+                href={enlaceWaze}
+                nombre="Waze"
+                etiqueta="Waze"
+                logo={logosExternos.waze}
+                iconoRespaldo={<IconoNavegar className="h-5 w-5" />}
+                className="boton-suave"
+              />
+            </div>
+            <div className="panel mt-10 bg-hielo p-6">
+              <h2 className="font-titulo text-lg font-bold text-noche">Formulario de cotización</h2>
+              <p className="mt-2 text-grisazul">
+                Se activará en la siguiente etapa, junto con el envío de correos. Mientras tanto,
+                escríbanos por WhatsApp o llámenos.
+              </p>
+            </div>
+          </div>
+          <Mapa />
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

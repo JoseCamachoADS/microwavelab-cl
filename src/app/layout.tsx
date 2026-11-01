@@ -1,10 +1,24 @@
 import type { Metadata, Viewport } from "next";
+import { Chakra_Petch, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import BotonWhatsApp from "@/components/BotonWhatsApp";
 import Encabezado from "@/components/Encabezado";
 import PieDePagina from "@/components/PieDePagina";
 import { empresa } from "@/lib/empresa";
 import { datoPublico } from "@/lib/utilidades";
+
+const titulo = Chakra_Petch({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-titulo",
+  display: "swap",
+});
+const cuerpo = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-cuerpo",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(empresa.sitioUrl),
@@ -25,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#124a79",
+  themeColor: "#15173F",
   width: "device-width",
   initialScale: 1,
 };
@@ -66,7 +80,7 @@ export default function RootLayout({
   const json = JSON.stringify(datosEstructurados()).replace(/</g, "\\u003c");
 
   return (
-    <html lang="es-CL">
+    <html lang="es-CL" className={`${titulo.variable} ${cuerpo.variable}`}>
       <body>
         <script
           type="application/ld+json"

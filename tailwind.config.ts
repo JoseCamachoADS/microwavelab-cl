@@ -1,24 +1,37 @@
 import type { Config } from "tailwindcss";
 
+// Paleta tomada del logo de Electrónica Micro Wave Lab Chile:
+//   rojo #E73338 · azul #414290 · negro #222021
 const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        // Paleta técnica: azul profundo + acento cobre (placa electrónica)
-        marca: {
-          50: "#eef5fb",
-          100: "#d6e6f5",
-          500: "#1f6fb2",
-          600: "#175a93",
-          700: "#124a79",
-          900: "#0b2a44",
+        // Azul de marca y su versión muy oscura, usada como base de las secciones oscuras
+        azul: {
+          DEFAULT: "#414290",
+          700: "#2F3070",
+          100: "#E4E5F5",
         },
-        cobre: {
-          400: "#d98a4e",
-          500: "#c4702f",
-          600: "#a35a24",
+        noche: {
+          DEFAULT: "#15173F",
+          800: "#1C1F52",
         },
+        // Rojo de marca. "accion" es un tono apenas más oscuro para botones con texto
+        // blanco (contraste 5,6:1; el rojo original da 4,3:1).
+        rojo: {
+          DEFAULT: "#E73338",
+          accion: "#C8232A",
+          oscuro: "#A81C23",
+        },
+        hielo: "#F1F2F8",
+        tinta: "#222021",
+        grisazul: "#5B5D78",
+        peri: "#A4AAFF", // azul de marca aclarado para fondos oscuros
+      },
+      fontFamily: {
+        titulo: ["var(--font-titulo)", "system-ui", "sans-serif"],
+        sans: ["var(--font-cuerpo)", "system-ui", "sans-serif"],
       },
     },
   },

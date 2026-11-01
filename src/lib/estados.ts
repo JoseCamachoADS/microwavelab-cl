@@ -2,6 +2,8 @@
 // Usado por el panel del técnico, el portal del cliente y los correos.
 
 export const ESTADOS = [
+  // El cliente completó el formulario por su cuenta, pero el equipo aún no llega.
+  "PRE_INGRESO",
   "RECEPCION",
   "REVISION",
   "DIAGNOSTICO",
@@ -39,6 +41,12 @@ type InfoEstado = {
 };
 
 export const INFO_ESTADO: Record<Estado, InfoEstado> = {
+  PRE_INGRESO: {
+    etiqueta: "Pendiente de recepción",
+    descripcion:
+      "Recibimos sus datos. Falta que su equipo llegue a nuestro laboratorio.",
+    accion: "Confirmar recepción del equipo",
+  },
   RECEPCION: {
     etiqueta: "Recibido",
     descripcion: "Su equipo ingresó a nuestro laboratorio.",
@@ -116,6 +124,8 @@ export const INFO_SUBESTADO_REPUESTO: Record<SubestadoRepuesto, string> = {
  * directo a REPARACION o pasar por SOLICITUD_REPUESTO.
  */
 export const TRANSICIONES: Record<Estado, Estado[]> = {
+  // Al confirmar la recepción física se genera el QR y el comprobante.
+  PRE_INGRESO: ["RECEPCION"],
   RECEPCION: ["REVISION"],
   REVISION: ["DIAGNOSTICO"],
   DIAGNOSTICO: ["PRESUPUESTO", "SIN_REPARACION"],

@@ -34,7 +34,8 @@ Diseñar para uso rápido con una mano, en el celular:
 
 Definido en `src/lib/estados.ts`. Es la fuente única de verdad.
 
-1. **Recepción** — se crea la orden y la cuenta del cliente (solo con correo al inicio).
+0. **Pendiente de recepción** *(solo si el cliente se autorregistra)* — ver "Autorregistro del cliente" más abajo. No aparece en la línea de tiempo pública.
+1. **Recepción** — se crea la orden y la cuenta del cliente (solo con correo al inicio). Al confirmarla se genera el **código QR** de la etiqueta y el comprobante de ingreso.
 2. **Revisión**
 3. **Diagnóstico**
 4. **Presupuesto** — se envía al cliente.
@@ -48,6 +49,65 @@ Definido en `src/lib/estados.ts`. Es la fuente única de verdad.
 Estados de salida: **Rechazado** (el cliente no acepta el presupuesto; equipo se devuelve) y **Sin reparación**.
 
 Cada cambio de estado: se registra en historial (quién, cuándo) y se envía aviso por correo al cliente.
+
+## Formulario de ingreso (reemplaza al Google Form actual)
+
+Hoy se usa un Google Form con: nombre, teléfono (obligatorio), correo (opcional), tipo, marca, modelo, serie, "acción", condiciones, fecha, fotos, recepcionista, hora, sucursal y comentarios. Solo 20 respuestas desde 2023, porque muchos clientes dejan el equipo sin pasar por el formulario y después hablan por WhatsApp. Problemas detectados: campos mezclados (marca en "tipo", modelo en "marca"), correo completo solo en el 55 %, teléfonos sin formato único, fecha/hora/sucursal escritas a mano.
+
+Diseño del ingreso en el panel (iPhone):
+- Se llenan solos: fecha, hora, sucursal y quién recibe.
+- Cliente: teléfono primero (si ya existe, se autocompleta); correo siempre, con opción "no tiene" (entonces el seguimiento va por WhatsApp). **RUT: opcional.** Si se escribe, se valida con `rutValido` (`src/lib/utilidades.ts`) y se guarda normalizado (`12345678-5`). Si el dígito verificador no calza, se avisa y se deja corregir o dejar en blanco; nunca bloquea el ingreso. Si el RUT ya existe en otro cliente, se sugiere "¿Es el mismo cliente?" en vez de crear un duplicado. Sirve más adelante para boleta o factura electrónica. El RUT es un dato personal: solo lo ven quienes ven esa orden y solo el administrador lo exporta.
+- Equipo: tipo con botones, marca, modelo, serie (con foto de la etiqueta).
+- Falla que reporta el cliente (admite dictado por voz), accesorios que deja (casillas), estado físico (opciones rápidas + nota), fotos con la cámara.
+- **Ingreso rápido**: con solo teléfono y tipo de equipo se crea la orden en menos de 20 segundos; el resto se completa después o lo completa el cliente.
+
+### QR de la etiqueta
+
+- Al confirmar la recepción se genera un QR para imprimir (AirPrint desde el iPhone) y pegar en el equipo. La etiqueta muestra número de orden, fecha y el QR.
+- El QR contiene solo la dirección con `codigoQr` aleatorio (nunca el número correlativo ni datos del cliente).
+- Escaneado por el técnico con sesión iniciada: abre la orden en el panel. Escaneado por cualquier otra persona: solo ve la página de ingreso al portal, sin datos.
+- El mismo QR va en el comprobante enviado al cliente.
+
+### Autorregistro del cliente
+
+Para clientes que dejan el equipo y luego solo hablan por WhatsApp, o cuando el técnico no alcanza a completar el ingreso:
+1. En el panel, botón **"Enviar formulario al cliente"**: el técnico escribe el teléfono (o correo) y se genera un enlace.
+2. Por WhatsApp: se abre `wa.me` con el mensaje y el enlace ya escritos, y el técnico lo envía desde su propio WhatsApp (sin costo de API). Por correo: se envía desde el sistema.
+3. El cliente abre el enlace en su celular y completa nombre, teléfono, correo, datos del equipo, falla, fotos y accesorios, y acepta las condiciones. La publicidad es una casilla aparte, opcional.
+4. Se crea la orden en estado **PRE_INGRESO** (origen CLIENTE) y el técnico recibe un aviso.
+5. Cuando el equipo llega, el técnico revisa los datos, completa el **estado físico** (lo constata él, no el cliente) y presiona **"Confirmar recepción del equipo"**: pasa a RECEPCION y se genera el QR.
+
+Seguridad del enlace (modelo `EnlaceIngreso`): token aleatorio largo, un solo uso, caduca (propuesta: 7 días), límite de intentos, tamaño máximo de fotos, y no precarga datos personales de ninguna persona.
+
+## Usuarios, roles y permisos del panel
+
+Definidos en `src/lib/permisos.ts` (fuente única de verdad). Se comprueban **siempre en el servidor**, no solo ocultando botones.
+
+| Acción | Administrador | Técnico | Recepcionista |
+|---|---|---|---|
+| Ingresar equipos (formulario) | Sí | Sí | Sí |
+| Enviar formulario de autorregistro al cliente | Sí | Sí | Sí |
+| Confirmar recepción física (genera QR) | Sí | Sí | Sí |
+| Ver órdenes | Todas | Todas | Solo las que ella recibió |
+| Editar órdenes | Todas | Todas | Solo las suyas, mientras estén en Pendiente de recepción o Recepción |
+| Cambiar estado (revisión, diagnóstico, reparación, entrega) | Sí | Sí | No |
+| Presupuestos, repuestos | Sí | Sí | No |
+| Ver pagos | Sí | Sí | No |
+| Ver todos los clientes y el resumen del taller | Sí | Sí | No |
+| Campañas y publicidad | Sí | No | No |
+| Exportar datos | Sí | No | No |
+| Configuración del sistema | Sí | No | No |
+| Crear, desactivar usuarios | Sí | No | No |
+
+Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administrador puede hacer todo lo del técnico; la recepcionista también confirma la recepción del equipo y puede enviar el enlace de autorregistro; el técnico ve pagos pero no exporta datos.
+
+### Ingreso al panel
+
+- Cuentas creadas solo por el administrador (correo, nombre y rol). Los usuarios se **desactivan**, no se borran, para conservar el historial.
+- Ingreso con un **código de 6 dígitos enviado al correo**, que se escribe dentro de la app. No usar enlace por correo para el personal: en iPhone, un enlace del correo se abre en Safari y no en la app instalada, y la sesión no se comparte entre ambos.
+- Sesión larga (propuesta: 30 días) para no pedir el código cada día. Más adelante, ingreso con Face ID mediante llaves de acceso (passkeys).
+- Todo cambio queda registrado con el usuario que lo hizo (historial de estados y ediciones).
+- Primer administrador: lo crea el dueño con un procedimiento de instalación, no desde la pantalla pública.
 
 ## Stack
 
@@ -91,3 +151,12 @@ Cada cambio de estado: se registra en historial (quién, cuándo) y se envía av
 - Ficha de Google Maps: ver `empresa.urlGoogle` en `src/lib/empresa.ts` (se usa en "Cómo llegar" y en reseñas).
 - Reseñas de Google: integradas con Places API (New) en `src/lib/resenas.ts` y `src/components/Resenas.tsx`. Requiere `GOOGLE_PLACES_API_KEY` y `GOOGLE_PLACE_ID` (ver `.env.example`). Sin esas variables el sitio muestra solo un enlace a la ficha.
 - Pendiente: correo corporativo, logo y fotos (van en `public/`), clave de API y Place ID de Google.
+
+## Diseño visual (rediseño corporativo)
+
+- Colores tomados del logo: rojo `#E73338` (botones usan `rojo-accion` `#C8232A` por contraste), azul `#414290`, negro `#222021`; fondos oscuros `noche` `#15173F`; neutros `hielo`, `grisazul`. Definidos en `tailwind.config.ts`.
+- Tipografías: Chakra Petch (títulos, variable `--font-titulo`) + IBM Plex Sans (texto, `--font-cuerpo`), cargadas con `next/font` en `layout.tsx`.
+- Motivo firma: el doble rayo del logo (`components/Rayo.tsx`, `public/logo/rayo.svg`), bordes diagonales entre secciones (`.corte-abajo`, `.corte-arriba`, `.tras-corte`, `.antes-corte` en `globals.css`) y esquinas cortadas (`.panel`, botones).
+- Regla CSS: la sección que vecina a un corte necesita `tras-corte`/`antes-corte`; no usar `py-*` en secciones con corte (pisa el padding).
+- Animación solo en la portada (`anim-*`); respeta `prefers-reduced-motion`.
+- Logos: `public/logo/` (color, reverso para fondo oscuro, blanco, íconos). Waze y LinkedIn: logos oficiales NO se dibujan; se descargan de sus páginas de marca a `public/logos/` y se registran en `logosExternos` (`lib/empresa.ts`). Mientras sean `null` se muestra un ícono genérico.

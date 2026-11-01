@@ -4,9 +4,9 @@ import { obtenerResenas } from "@/lib/resenas";
 function Estrellas({ puntaje }: { puntaje: number }) {
   const llenas = Math.round(puntaje);
   return (
-    <span role="img" aria-label={`${puntaje} de 5 estrellas`} className="text-amber-500">
+    <span role="img" aria-label={`${puntaje} de 5 estrellas`} className="text-[#E8A300]">
       {"★".repeat(llenas)}
-      <span className="text-slate-300">{"★".repeat(Math.max(0, 5 - llenas))}</span>
+      <span className="text-azul-100">{"★".repeat(Math.max(0, 5 - llenas))}</span>
     </span>
   );
 }
@@ -26,7 +26,7 @@ export default async function Resenas() {
           href={empresa.urlGoogle}
           target="_blank"
           rel="noopener noreferrer"
-          className="boton-secundario"
+          className="boton-suave"
         >
           Ver reseñas en Google
         </a>
@@ -37,12 +37,12 @@ export default async function Resenas() {
   return (
     <div className="mt-6">
       <div className="flex flex-wrap items-center gap-3">
-        <span className="text-4xl font-bold text-marca-900">
+        <span className="font-titulo text-5xl font-bold text-noche">
           {formatoPuntaje(datos.puntaje)}
         </span>
         <div>
           <Estrellas puntaje={datos.puntaje} />
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-grisazul">
             {datos.total} {datos.total === 1 ? "reseña" : "reseñas"} en Google
           </p>
         </div>
@@ -53,7 +53,7 @@ export default async function Resenas() {
           {datos.resenas.map((r, i) => (
             <li
               key={`${r.autor}-${i}`}
-              className="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+              className="panel flex flex-col bg-white p-6"
             >
               <div className="flex items-center gap-3">
                 {r.fotoUrl && (
@@ -75,20 +75,20 @@ export default async function Resenas() {
                       href={r.autorUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block truncate font-semibold text-marca-900 hover:underline"
+                      className="block truncate font-semibold text-noche hover:text-rojo-accion hover:underline"
                     >
                       {r.autor}
                     </a>
                   ) : (
-                    <p className="truncate font-semibold text-marca-900">{r.autor}</p>
+                    <p className="truncate font-semibold text-noche">{r.autor}</p>
                   )}
-                  <p className="text-xs text-slate-500">{r.cuando}</p>
+                  <p className="text-xs text-grisazul">{r.cuando}</p>
                 </div>
               </div>
               <p className="mt-3">
                 <Estrellas puntaje={r.puntaje} />
               </p>
-              <p className="mt-2 line-clamp-6 text-slate-700">{r.texto}</p>
+              <p className="mt-2 line-clamp-6 text-tinta">{r.texto}</p>
             </li>
           ))}
         </ul>
@@ -99,7 +99,7 @@ export default async function Resenas() {
           href={empresa.urlGoogle}
           target="_blank"
           rel="noopener noreferrer"
-          className="boton-secundario"
+          className="boton-suave"
         >
           Ver todas las reseñas en Google
         </a>
@@ -112,7 +112,7 @@ export default async function Resenas() {
           Dejar una reseña
         </a>
       </div>
-      <p className="mt-4 text-xs text-slate-500">Reseñas de Google Maps</p>
+      <p className="mt-4 text-xs text-grisazul">Reseñas de Google Maps</p>
     </div>
   );
 }

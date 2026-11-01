@@ -113,3 +113,13 @@ export const preguntasFrecuentes = [
       "Por llamada telefónica, mensaje de texto o WhatsApp al número principal que aparece en esta página.",
   },
 ] as const;
+
+/**
+ * Logos oficiales de terceros (Waze, LinkedIn). No se dibujan a mano: se descargan de sus
+ * páginas de marca y se dejan en `public/logos/`. Mientras el valor sea null, los botones
+ * muestran un ícono genérico y el nombre. Ejemplo: waze: "/logos/waze.svg"
+ */
+export const logosExternos: { waze: string | null; linkedin: string | null } = {
+  waze: null,
+  linkedin: null,
+};

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CabeceraPagina from "@/components/CabeceraPagina";
+import { IconoServicio } from "@/components/Iconos";
 import { servicios } from "@/lib/empresa";
 
 export const metadata: Metadata = {
@@ -10,28 +12,29 @@ export const metadata: Metadata = {
 
 export default function Servicios() {
   return (
-    <section className="contenedor py-14">
-      <h1 className="text-3xl font-bold text-marca-900">Servicios</h1>
-      <p className="mt-2 max-w-2xl text-slate-600">
-        Atendemos equipos electrónicos de todo tipo, con foco en el área
-        industrial.
-      </p>
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {servicios.map((s) => (
-          <article
-            key={s.id}
-            className="rounded-xl border border-slate-200 p-6 shadow-sm"
-          >
-            <h2 className="text-lg font-bold text-marca-700">{s.titulo}</h2>
-            <p className="mt-2 text-slate-600">{s.descripcion}</p>
-          </article>
-        ))}
-      </div>
-      <p className="mt-10">
-        <Link href="/contacto" className="boton">
-          Solicitar cotización
-        </Link>
-      </p>
-    </section>
+    <>
+      <CabeceraPagina
+        titulo="Servicios"
+        bajada="Atendemos equipos electrónicos de todo tipo, con foco en el área industrial."
+      />
+      <section className="seccion tras-corte">
+        <div className="contenedor">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {servicios.map((s) => (
+              <article key={s.id} className="panel bg-hielo p-7">
+                <IconoServicio id={s.id} className="h-10 w-10 text-rojo-accion" />
+                <h2 className="mt-5 font-titulo text-xl font-bold text-noche">{s.titulo}</h2>
+                <p className="mt-2 text-grisazul">{s.descripcion}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-12">
+            <Link href="/contacto" className="boton">
+              Solicitar cotización
+            </Link>
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

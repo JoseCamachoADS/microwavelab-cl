@@ -15,12 +15,17 @@ model Cliente {
   correo             String   @unique
   nombre             String?
   telefono           String?
+  // RUT opcional, guardado normalizado: sin puntos y con guion (ej: 12345678-5).
+  // No es único: un error de tipeo no debe bloquear el ingreso de un equipo.
+  rut                String?
   // Consentimiento para publicidad (doble confirmación por correo)
   aceptaPublicidad   Boolean  @default(false)
   publicidadConfirmadaEn DateTime?
   bajaPublicidadEn   DateTime?
   creadoEn           DateTime @default(now())
   ordenes            Orden[]
+
+  @@index([rut])
 }
 
 model Orden {
@@ -33,7 +38,20 @@ model Orden {
   marca       String?
   modelo      String?
   serie       String?
-  falla       String
+  falla       String   // lo que el cliente reporta
+  accesorios  String?  // lo que deja junto al equipo (cargador, cables...)
+  estadoFisico String? // lo completa el técnico al recibir el equipo
+
+  // Quién creó la orden: el técnico en el panel o el cliente con un enlace.
+  origen      OrigenOrden @default(TECNICO)
+  // Código aleatorio e impredecible que va dentro del QR de la etiqueta.
+  codigoQr    String   @unique @default(cuid())
+  enlaceIngreso EnlaceIngreso?
+
+  // Quién confirmó la recepción del equipo. Es null mientras esté PRE_INGRESO.
+  // La recepcionista solo ve las órdenes donde ella figura aquí.
+  recibidoPorId String?
+  recibidoPor   Usuario? @relation(fields: [recibidoPorId], references: [id])
 
   estado      Estado   @default(RECEPCION)
   // Solo aplica cuando estado = SOLICITUD_REPUESTO
@@ -67,7 +85,31 @@ model CambioEstado {
   desde     Estado?
   hacia     Estado
   nota      String?
+  // Quién hizo el cambio; null si lo hizo el cliente o el sistema.
+  usuarioId String?
+  usuario   Usuario? @relation(fields: [usuarioId], references: [id])
   creadoEn  DateTime @default(now())
+}
+
+// Personal del taller que entra al panel. No incluye a los clientes del portal.
+model Usuario {
+  id        String   @id @default(cuid())
+  correo    String   @unique
+  nombre    String
+  rol       Rol
+  // Se desactiva en vez de borrar, para conservar el historial de quién hizo qué.
+  activo    Boolean  @default(true)
+  creadoEn  DateTime @default(now())
+
+  ordenesRecibidas Orden[]
+  cambiosEstado    CambioEstado[]
+  enlacesIngreso   EnlaceIngreso[]
+}
+
+enum Rol {
+  ADMIN
+  TECNICO
+  RECEPCION
 }
 
 model Presupuesto {
@@ -95,7 +137,35 @@ model Pago {
   pagadoEn     DateTime?
 }
 
+// Enlace que el técnico envía al cliente (WhatsApp o correo) para que complete
+// por su cuenta el formulario de ingreso. Es de un solo uso y caduca.
+model EnlaceIngreso {
+  id        String     @id @default(cuid())
+  // Código largo y aleatorio; es lo único que viaja en la URL.
+  token     String     @unique
+  canal     CanalEnvio
+  destino   String     // teléfono o correo al que se envió
+  creadoEn  DateTime   @default(now())
+  expiraEn  DateTime
+  usadoEn   DateTime?
+  ordenId   String?    @unique
+  orden     Orden?     @relation(fields: [ordenId], references: [id])
+  creadoPorId String
+  creadoPor   Usuario  @relation(fields: [creadoPorId], references: [id])
+}
+
+enum CanalEnvio {
+  WHATSAPP
+  CORREO
+}
+
+enum OrigenOrden {
+  TECNICO
+  CLIENTE
+}
+
 enum Estado {
+  PRE_INGRESO
   RECEPCION
   REVISION
   DIAGNOSTICO

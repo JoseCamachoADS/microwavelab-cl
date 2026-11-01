@@ -4,10 +4,14 @@ import {
   empresa,
   enlaceMapa,
   enlaceWaze,
+  logosExternos,
   preguntasFrecuentes,
   servicios,
 } from "@/lib/empresa";
+import EnlaceRed from "@/components/EnlaceRed";
+import { IconoChat, IconoCheck, IconoMas, IconoNavegar, IconoPin, IconoServicio, IconoTelefono } from "@/components/Iconos";
 import Mapa from "@/components/Mapa";
+import Rayo from "@/components/Rayo";
 import Resenas from "@/components/Resenas";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 
@@ -23,141 +27,103 @@ export default function Inicio() {
   return (
     <>
       {/* Portada */}
-      <section className="bg-gradient-to-br from-marca-900 to-marca-700 text-white">
-        <div className="contenedor grid gap-10 py-16 md:grid-cols-2 md:py-24">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-cobre-400">
-              Más de {empresa.aniosTrayectoria} años de experiencia
+      <section className="seccion corte-abajo relative overflow-hidden bg-noche text-white">
+        <Rayo className="anim-rayo pointer-events-none absolute -right-24 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 text-rojo opacity-90 sm:-right-10 md:h-[40rem] md:w-[40rem]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-noche via-noche/90 to-transparent" aria-hidden="true" />
+        <div className="contenedor relative">
+          <div className="max-w-2xl">
+            <p className="anim-texto font-titulo text-lg font-semibold text-peri">
+              Más de {empresa.aniosTrayectoria} años reparando electrónica
             </p>
-            <h1 className="mt-3 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-              Laboratorio electrónico: reparación de tarjetas y equipos
+            <h1 className="anim-texto anim-texto-2 mt-4 font-titulo text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
+              Si su equipo se detuvo, lo hacemos funcionar de nuevo
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-slate-200">
-              Diagnóstico y reparación de tarjetas electrónicas, módulos I/O,
-              fuentes de alimentación, inversores, monitores táctiles y más,
-              con atención personalizada.
+            <p className="anim-texto anim-texto-3 mt-6 max-w-xl text-lg text-white/85">
+              Laboratorio electrónico especializado en tarjetas, módulos I/O, fuentes de
+              alimentación, inversores y monitores táctiles. Diagnóstico profesional y{" "}
+              {empresa.garantiaMeses} meses de garantía.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="anim-texto anim-texto-3 mt-9 flex flex-col gap-3 sm:flex-row">
               {whatsapp && (
-                <a
-                  href={whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg bg-cobre-500 px-6 py-3 text-base font-semibold text-white hover:bg-cobre-600"
-                >
+                <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="boton">
+                  <IconoChat className="h-5 w-5" />
                   Cotizar por WhatsApp
                 </a>
               )}
               {llamar && telefono && (
-                <a
-                  href={llamar}
-                  className="inline-flex items-center justify-center rounded-lg border border-white/40 px-6 py-3 text-base font-semibold text-white hover:bg-white/10"
-                >
-                  Llamar {telefono}
+                <a href={llamar} className="boton-claro">
+                  <IconoTelefono className="h-5 w-5" />
+                  Llamar al {telefono}
                 </a>
               )}
             </div>
           </div>
-          <dl className="grid grid-cols-2 gap-4 self-center">
-            <div className="rounded-xl bg-white/10 p-5">
-              <dt className="text-sm text-slate-300">Trayectoria</dt>
-              <dd className="mt-1 text-3xl font-bold">
-                +{empresa.aniosTrayectoria} años
-              </dd>
-            </div>
-            <div className="rounded-xl bg-white/10 p-5">
-              <dt className="text-sm text-slate-300">Garantía</dt>
-              <dd className="mt-1 text-3xl font-bold">
-                {empresa.garantiaMeses} meses
-              </dd>
-            </div>
-            <div className="rounded-xl bg-white/10 p-5">
-              <dt className="text-sm text-slate-300">Servicio</dt>
-              <dd className="mt-1 text-xl font-bold">Diagnóstico profesional</dd>
-            </div>
-            <div className="rounded-xl bg-white/10 p-5">
-              <dt className="text-sm text-slate-300">Atención</dt>
-              <dd className="mt-1 text-xl font-bold">Personalizada</dd>
-            </div>
-          </dl>
         </div>
       </section>
 
       {/* Servicios destacados */}
-      <section className="contenedor py-16">
-        <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
-          Qué reparamos
-        </h2>
-        <p className="mt-2 max-w-2xl text-slate-600">
-          Servicio de laboratorio electrónico para equipos industriales y de
-          todo tipo.
-        </p>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {destacados.map((s) => (
-            <article
-              key={s.id}
-              className="rounded-xl border border-slate-200 p-6 shadow-sm"
-            >
-              <h3 className="text-lg font-bold text-marca-700">{s.titulo}</h3>
-              <p className="mt-2 text-slate-600">{s.descripcion}</p>
-            </article>
-          ))}
+      <section className="seccion tras-corte antes-corte">
+        <div className="contenedor">
+          <h2 className="titulo-seccion">Qué reparamos</h2>
+          <p className="texto-medida mt-3 text-lg text-grisazul">
+            Electrónica industrial y de todo tipo, reparada a nivel de componente.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {destacados.map((s) => (
+              <article key={s.id} className="panel bg-hielo p-7">
+                <IconoServicio id={s.id} className="h-10 w-10 text-rojo-accion" />
+                <h3 className="mt-5 font-titulo text-xl font-bold text-noche">{s.titulo}</h3>
+                <p className="mt-2 text-grisazul">{s.descripcion}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-8">
+            <Link href="/servicios" className="enlace">
+              Ver todos los servicios
+            </Link>
+          </p>
         </div>
-        <p className="mt-6">
-          <Link
-            href="/servicios"
-            className="font-semibold text-marca-600 hover:underline"
-          >
-            Ver todos los servicios →
-          </Link>
-        </p>
       </section>
 
       {/* Trayectoria */}
-      <section id="trayectoria" className="bg-slate-50 py-16">
-        <div className="contenedor grid gap-8 md:grid-cols-2">
+      <section id="trayectoria" className="seccion corte-arriba corte-abajo relative overflow-hidden bg-azul text-white">
+        <Rayo className="pointer-events-none absolute -left-16 bottom-0 h-72 w-72 text-white/10" />
+        <div className="contenedor relative grid gap-10 md:grid-cols-2 md:items-center">
           <div>
-            <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
-              Más de {empresa.aniosTrayectoria} años de experiencia
+            <h2 className="font-titulo text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+              {empresa.aniosTrayectoria} años de experiencia en un solo taller
             </h2>
-            <p className="mt-4 text-slate-700">{empresa.descripcion}</p>
-            <p className="mt-4">
-              <a
+            <p className="mt-5 max-w-xl text-lg text-white/90">{empresa.descripcion}</p>
+            <div className="mt-8">
+              <EnlaceRed
                 href={empresa.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-marca-600 hover:underline"
-              >
-                Síganos en LinkedIn →
-              </a>
-            </p>
+                nombre="LinkedIn"
+                etiqueta="Síganos en LinkedIn"
+                logo={logosExternos.linkedin}
+                iconoRespaldo={<IconoCheck className="h-6 w-6" />}
+              />
+            </div>
           </div>
-          <div className="rounded-xl bg-white p-6 shadow-sm">
-            <h3 className="font-bold text-marca-700">Por qué elegirnos</h3>
-            <ul className="mt-4 space-y-3 text-slate-700">
-              <li>
-                <strong>Experiencia comprobada:</strong> más de{" "}
-                {empresa.aniosTrayectoria} años reparando electrónica.
-              </li>
-              <li>
-                <strong>Garantía:</strong> {empresa.garantiaMeses} meses en
-                nuestras reparaciones.
-              </li>
-              <li>
-                <strong>Diagnóstico:</strong> identificamos la falla antes de
-                presupuestar.
-              </li>
-              <li>
-                <strong>Atención personalizada:</strong> nos adaptamos a sus
-                requerimientos.
-              </li>
+          <div className="panel bg-white p-8 text-tinta">
+            <h3 className="font-titulo text-xl font-bold text-noche">Por qué elegirnos</h3>
+            <ul className="mt-5 space-y-4">
+              {[
+                ["Experiencia comprobada", `más de ${empresa.aniosTrayectoria} años reparando electrónica.`],
+                ["Garantía", `${empresa.garantiaMeses} meses en nuestras reparaciones.`],
+                ["Diagnóstico primero", "identificamos la falla antes de presupuestar."],
+                ["Atención personalizada", "nos adaptamos a sus requerimientos."],
+              ].map(([t, d]) => (
+                <li key={t} className="flex gap-3">
+                  <IconoCheck className="mt-1 h-5 w-5 flex-shrink-0 text-rojo-accion" />
+                  <span>
+                    <strong className="text-noche">{t}:</strong> {d}
+                  </span>
+                </li>
+              ))}
             </ul>
-            <p className="mt-5">
-              <Link
-                href="/proceso"
-                className="font-semibold text-marca-600 hover:underline"
-              >
-                Cómo es el proceso de reparación →
+            <p className="mt-6">
+              <Link href="/proceso" className="enlace">
+                Cómo es el proceso de reparación
               </Link>
             </p>
           </div>
@@ -165,72 +131,67 @@ export default function Inicio() {
       </section>
 
       {/* Ubicación */}
-      <section id="ubicacion" className="contenedor py-16">
-        <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
-          Dónde estamos
-        </h2>
-        <div className="mt-6 grid gap-8 md:grid-cols-2">
-          <div>
-            <div className="space-y-2 text-slate-700">
-              <p>
-                <strong>Dirección:</strong> {direccionCompleta}
-              </p>
-              <p>
-                <strong>Horario:</strong> {empresa.horario}
-              </p>
-              {telefono && (
-                <p>
-                  <strong>Teléfono y WhatsApp:</strong> {telefono}
-                </p>
-              )}
+      <section id="ubicacion" className="seccion tras-corte antes-corte">
+        <div className="contenedor">
+          <h2 className="titulo-seccion">Dónde estamos</h2>
+          <div className="mt-8 grid gap-10 md:grid-cols-2">
+            <div>
+              <ul className="space-y-4 text-lg">
+                <li className="flex gap-3">
+                  <IconoPin className="mt-1 h-6 w-6 flex-shrink-0 text-rojo-accion" />
+                  {direccionCompleta}
+                </li>
+                <li className="pl-9">{empresa.horario}</li>
+                {telefono && (
+                  <li className="flex gap-3">
+                    <IconoTelefono className="mt-1 h-6 w-6 flex-shrink-0 text-rojo-accion" />
+                    {telefono} (llamadas y WhatsApp)
+                  </li>
+                )}
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href={enlaceMapa} target="_blank" rel="noopener noreferrer" className="boton">
+                  <IconoPin className="h-5 w-5" />
+                  Cómo llegar con Google Maps
+                </a>
+                <EnlaceRed
+                  href={enlaceWaze}
+                  nombre="Waze"
+                  etiqueta="Cómo llegar con Waze"
+                  logo={logosExternos.waze}
+                  iconoRespaldo={<IconoNavegar className="h-5 w-5" />}
+                  className="boton-azul"
+                />
+              </div>
             </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={enlaceMapa}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="boton"
-              >
-                Cómo llegar con Google Maps
-              </a>
-              <a
-                href={enlaceWaze}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="boton-secundario"
-              >
-                Cómo llegar con Waze
-              </a>
-            </div>
+            <Mapa />
           </div>
-          <Mapa />
         </div>
       </section>
 
       {/* Reseñas */}
-      <section id="resenas" className="bg-slate-50 py-16">
+      <section id="resenas" className="seccion corte-arriba corte-abajo bg-hielo">
         <div className="contenedor">
-          <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
-            Lo que dicen nuestros clientes
-          </h2>
+          <h2 className="titulo-seccion">Lo que dicen nuestros clientes</h2>
           <Resenas />
         </div>
       </section>
 
       {/* Preguntas frecuentes */}
-      <section id="preguntas" className="contenedor py-16">
-        <h2 className="text-2xl font-bold text-marca-900 sm:text-3xl">
-          Preguntas frecuentes
-        </h2>
-        <div className="mt-6 divide-y divide-slate-200 rounded-xl border border-slate-200">
-          {preguntasFrecuentes.map((p) => (
-            <details key={p.pregunta} className="group p-5">
-              <summary className="cursor-pointer list-none text-lg font-semibold text-marca-900">
-                {p.pregunta}
-              </summary>
-              <p className="mt-3 text-slate-700">{p.respuesta}</p>
-            </details>
-          ))}
+      <section id="preguntas" className="seccion tras-corte">
+        <div className="contenedor max-w-3xl">
+          <h2 className="titulo-seccion">Preguntas frecuentes</h2>
+          <div className="mt-8 divide-y divide-azul-100 border-y border-azul-100">
+            {preguntasFrecuentes.map((p) => (
+              <details key={p.pregunta} className="faq">
+                <summary>
+                  {p.pregunta}
+                  <IconoMas className="mas h-6 w-6" />
+                </summary>
+                <p className="pb-6 text-grisazul">{p.respuesta}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
     </>

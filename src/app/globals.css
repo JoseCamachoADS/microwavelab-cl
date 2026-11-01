@@ -2,23 +2,255 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Altura del recorte diagonal entre secciones: el "rayo" del logo */
+  --corte: clamp(2.5rem, 7vw, 6rem);
+  --aire: clamp(3rem, 6vw, 5rem);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-white text-slate-800 antialiased;
+    @apply bg-white font-sans text-tinta antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-titulo), system-ui, sans-serif;
+  }
+  :focus-visible {
+    outline: 3px solid #e73338;
+    outline-offset: 3px;
   }
 }
 
 @layer components {
   .contenedor {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* ---------- Secciones y recortes diagonales ---------- */
+  .seccion {
+    position: relative;
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+  .seccion-compacta {
+    padding-top: clamp(3rem, 6vw, 4.5rem);
+  }
+  /* La parte inferior de esta sección se corta en diagonal */
+  .corte-abajo {
+    z-index: 2;
+    margin-bottom: calc(var(--corte) * -1);
+    padding-bottom: calc(var(--corte) + var(--aire));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--corte)), 0 100%);
+  }
+  /* La parte superior de esta sección se corta en diagonal */
+  .corte-arriba {
+    z-index: 2;
+    margin-top: calc(var(--corte) * -1);
+    padding-top: calc(var(--corte) + var(--aire));
+    clip-path: polygon(0 var(--corte), 100% 0, 100% 100%, 0 100%);
+  }
+  .corte-arriba.corte-abajo {
+    clip-path: polygon(
+      0 var(--corte),
+      100% 0,
+      100% calc(100% - var(--corte)),
+      0 100%
+    );
+  }
+  /* Secciones vecinas a un recorte: dejan espacio para que no se tape el contenido */
+  .tras-corte {
+    padding-top: calc(var(--corte) + var(--aire));
+  }
+  .antes-corte {
+    padding-bottom: calc(var(--corte) + var(--aire));
+  }
+
+  /* ---------- Formas con esquinas cortadas (como las letras del logo) ---------- */
+  .panel {
+    --c: 28px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--c)) 0,
+      100% var(--c),
+      100% 100%,
+      var(--c) 100%,
+      0 calc(100% - var(--c))
+    );
+  }
+
+  /* ---------- Textos ---------- */
+  .titulo-seccion {
+    font-family: var(--font-titulo), system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4vw, 2.75rem);
+    line-height: 1.1;
+    color: #15173f;
+  }
+  .texto-medida {
+    max-width: 38rem;
+  }
+
+  /* ---------- Botones ---------- */
+  .boton,
+  .boton-azul,
+  .boton-claro,
+  .boton-suave {
+    --c: 12px;
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.6rem;
+    font-family: var(--font-titulo), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    transition: background-color 0.15s ease;
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--c)) 0,
+      100% var(--c),
+      100% 100%,
+      var(--c) 100%,
+      0 calc(100% - var(--c))
+    );
+  }
+  /* El recorte tapa el aro de enfoque exterior, así que se dibuja por dentro */
+  .boton:focus-visible,
+  .boton-azul:focus-visible,
+  .boton-claro:focus-visible,
+  .boton-suave:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: -6px;
+  }
+  .boton-suave:focus-visible {
+    outline-color: #414290;
   }
   .boton {
-    @apply inline-flex items-center justify-center rounded-lg bg-marca-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-marca-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-marca-500 focus-visible:ring-offset-2;
+    background: #c8232a;
+    color: #ffffff;
   }
-  .boton-secundario {
-    @apply inline-flex items-center justify-center rounded-lg border border-marca-600 px-6 py-3 text-base font-semibold text-marca-700 transition hover:bg-marca-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-marca-500 focus-visible:ring-offset-2;
+  .boton:hover {
+    background: #a81c23;
+  }
+  .boton-azul {
+    background: #414290;
+    color: #ffffff;
+  }
+  .boton-azul:hover {
+    background: #2f3070;
+  }
+  /* Sobre fondos oscuros */
+  .boton-claro {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+  }
+  .boton-claro:hover {
+    background: rgba(255, 255, 255, 0.26);
+  }
+  /* Sobre fondos claros */
+  .boton-suave {
+    background: #e4e5f5;
+    color: #414290;
+  }
+  .boton-suave:hover {
+    background: #d3d5ee;
+  }
+
+  /* Enlace de texto con subrayado */
+  .enlace {
+    font-weight: 600;
+    color: #414290;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .enlace:hover {
+    color: #c8232a;
+  }
+
+  /* ---------- Preguntas frecuentes ---------- */
+  .faq summary {
+    display: flex;
+    cursor: pointer;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.25rem;
+    font-family: var(--font-titulo), system-ui, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #15173f;
+  }
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq .mas {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    color: #c8232a;
+  }
+  .faq[open] .mas {
+    transform: rotate(45deg);
+  }
+}
+
+/* ---------- Única animación de entrada: la portada ---------- */
+@keyframes rayo-entra {
+  from {
+    opacity: 0;
+    transform: translateX(7%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes texto-entra {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.anim-rayo {
+  animation: rayo-entra 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.anim-texto {
+  animation: texto-entra 0.7s ease-out both;
+}
+.anim-texto-2 {
+  animation-delay: 0.12s;
+}
+.anim-texto-3 {
+  animation-delay: 0.24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .anim-rayo,
+  .anim-texto {
+    animation: none;
+  }
+  .boton,
+  .boton-azul,
+  .boton-claro,
+  .boton-suave,
+  .faq .mas {
+    transition: none;
   }
 }
