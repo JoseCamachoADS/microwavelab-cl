@@ -12,6 +12,12 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.13.2: Verificación de Google Search Console (02-11-2026)
+
+- Se agrega `public/google075c232b68fa3654.html`, el archivo de verificación de la propiedad en Search Console. **No debe borrarse**: Google lo revisa de forma periódica. Queda en `https://electronicamicrowavelab.cl/google075c232b68fa3654.html` (el middleware de idiomas no lo toca porque tiene extensión).
+
+---
+
 ## v1.13.1: Nombre de la empresa (02-11-2026)
 
 - El nombre pasa a ser **"Electrónica Micro Wave Lab"** (sin "CL") en el título de la portada, el sufijo de los títulos de todas las páginas, el pie de página, los datos para Google, el asistente y los textos que lo mencionaban. El nombre vive en `nombre` y `nombreCompleto` de `src/lib/empresa.ts`.
