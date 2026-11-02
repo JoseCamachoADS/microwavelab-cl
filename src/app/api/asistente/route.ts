@@ -16,7 +16,7 @@ import {
   sesionValida,
   type ConfigAsistente,
 } from "@/lib/asistente";
-import { consultarGemini, type MensajeChat } from "@/lib/gemini";
+import { consultarGemini, diagnosticarGemini, type MensajeChat } from "@/lib/gemini";
 import { redisLote } from "@/lib/redis";
 import { traducirTexto } from "@/lib/traducir";
 import { verificarTurnstile } from "@/lib/turnstile";
@@ -106,6 +106,9 @@ function acceso(req: Request) {
 export async function GET(req: Request) {
   const negado = acceso(req);
   if (negado) return negado;
+  if (new URL(req.url).searchParams.get("probar") === "1") {
+    return NextResponse.json(await diagnosticarGemini(), { headers: ADMIN });
+  }
   const [config, hoy] = await Promise.all([leerAsistente(true), mensajesHoy()]);
   return NextResponse.json({ ...config, hayGemini, mensajesHoy: hoy }, { headers: ADMIN });
 }

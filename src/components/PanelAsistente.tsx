@@ -17,6 +17,16 @@ const CLAVE_SESION = "uso-api-clave";
 const MAX_SALUDO = 200;
 const MAX_INSTRUCCIONES = 1500;
 
+type Prueba = {
+  claveConfigurada: boolean;
+  modelo: string;
+  ok: boolean;
+  estado?: number | string;
+  respuesta?: string;
+  error?: string;
+  modelosDisponibles?: string[];
+};
+
 export default function PanelAsistente() {
   const [clave, setClave] = useState("");
   const [c, setC] = useState<Config | null>(null);
@@ -24,6 +34,8 @@ export default function PanelAsistente() {
   const [mensaje, setMensaje] = useState("");
   const [cargando, setCargando] = useState(false);
   const [guardando, setGuardando] = useState(false);
+  const [probando, setProbando] = useState(false);
+  const [prueba, setPrueba] = useState<Prueba | null>(null);
 
   const entrar = useCallback(async (valor: string) => {
     setCargando(true);
@@ -87,6 +99,20 @@ export default function PanelAsistente() {
       setError(e instanceof Error ? e.message : "No se pudo guardar.");
     } finally {
       setGuardando(false);
+    }
+  }
+
+  async function probar() {
+    setProbando(true);
+    setPrueba(null);
+    try {
+      const r = await fetch("/api/asistente?probar=1", { headers: { Authorization: `Bearer ${clave}` }, cache: "no-store" });
+      if (!r.ok) throw new Error();
+      setPrueba((await r.json()) as Prueba);
+    } catch {
+      setPrueba({ claveConfigurada: true, modelo: "?", ok: false, error: "No se pudo ejecutar la prueba. Intente de nuevo." });
+    } finally {
+      setProbando(false);
     }
   }
 
@@ -234,6 +260,29 @@ export default function PanelAsistente() {
           frecuentes del sitio. No escriba claves ni datos privados: estos textos se envían a Google.{" "}
           {c.instrucciones.length} de {MAX_INSTRUCCIONES} caracteres.
         </p>
+      </div>
+
+      <div className="border border-grisazul/30 p-4">
+        <h2 className="font-titulo text-lg font-bold text-noche">Probar la conexión con Gemini</h2>
+        <p className="mt-1 text-grisazul">Hace una consulta real y muestra la respuesta, o el error exacto que entrega Google.</p>
+        <button type="button" onClick={() => void probar()} disabled={probando} className="boton-suave mt-3">
+          {probando ? "Probando..." : "Probar Gemini"}
+        </button>
+        {prueba && (
+          <div role="status" className="mt-4 space-y-2 border-l-4 border-azul bg-hielo px-4 py-3 text-noche">
+            <p className="font-semibold">
+              {prueba.ok ? "Funciona. Gemini respondió: “" + prueba.respuesta + "”" : "No funciona."}
+            </p>
+            <p>Modelo: <code>{prueba.modelo}</code>{prueba.estado ? <> · Estado: <code>{String(prueba.estado)}</code></> : null}</p>
+            {prueba.error && <p className="break-words text-sm">{prueba.error}</p>}
+            {prueba.modelosDisponibles && prueba.modelosDisponibles.length > 0 && (
+              <p className="break-words text-sm">
+                Modelos disponibles con su clave (copie uno en la variable <code>GEMINI_MODEL</code> de Vercel y vuelva a
+                desplegar): <code>{prueba.modelosDisponibles.join(", ")}</code>
+              </p>
+            )}
+          </div>
+        )}
       </div>
 
       {error && (

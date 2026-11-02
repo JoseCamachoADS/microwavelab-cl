@@ -12,6 +12,14 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.11.1: Prueba de conexión con Gemini (01-11-2026)
+
+### Qué cambió
+- `/asistente` tiene el botón **Probar Gemini**: hace una consulta real y muestra la respuesta o el error exacto de Google. Si el modelo no existe (404), lista los modelos disponibles para la clave para copiarlos en `GEMINI_MODEL`.
+- El máximo de salida sube a 1024 tokens para que un modelo que "piensa" antes de responder no devuelva una respuesta vacía.
+
+---
+
 ## v1.11.0: Asistente virtual con Gemini (01-11-2026)
 
 ### Qué cambió
