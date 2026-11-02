@@ -79,7 +79,7 @@ export const es = {
     notaIdioma: "",
   },
   mapa: { titulo: "Mapa de ubicación de {nombre}" },
-  clientes: { titulo: "Empresas que confían en nosotros", pausar: "Pausar la cinta", reanudar: "Reanudar la cinta" },
+  clientes: { titulo: "Empresas que confían en nosotros", pausar: "Pausar la animación", reanudar: "Reanudar la animación" },
   multimedia: {
     meta: {
       titulo: "Multimedia",

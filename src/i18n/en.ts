@@ -78,7 +78,7 @@ export const en: Diccionario = {
     notaIdioma: "Reviews are shown in the language in which they were written.",
   },
   mapa: { titulo: "Location map of {nombre}" },
-  clientes: { titulo: "Companies that trust us", pausar: "Pause the film strip", reanudar: "Resume the film strip" },
+  clientes: { titulo: "Companies that trust us", pausar: "Pause the animation", reanudar: "Resume the animation" },
   multimedia: {
     meta: {
       titulo: "Media",

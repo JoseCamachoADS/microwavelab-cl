@@ -78,7 +78,7 @@ export const ger: Diccionario = {
     notaIdioma: "Die Bewertungen werden in der Sprache angezeigt, in der sie verfasst wurden.",
   },
   mapa: { titulo: "Standortkarte von {nombre}" },
-  clientes: { titulo: "Unternehmen, die uns vertrauen", pausar: "Filmstreifen anhalten", reanudar: "Filmstreifen fortsetzen" },
+  clientes: { titulo: "Unternehmen, die uns vertrauen", pausar: "Animation anhalten", reanudar: "Animation fortsetzen" },
   multimedia: {
     meta: {
       titulo: "Medien",

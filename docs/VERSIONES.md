@@ -12,6 +12,24 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.8.0: Antenas parabólicas y 19 empresas (01-11-2026)
+
+### Qué cambió
+- La cinta de película se reemplazó por **dos antenas parabólicas** (una roja y otra azul, los colores de la marca) que **transmiten hacia las empresas** que confían en el laboratorio: las ondas salen de cada antena y se cruzan en el centro. Las antenas están dibujadas para este sitio; no son el logo de ninguna marca. Cada empresa tiene su cuadro con las esquinas cortadas; cuando haya logo, aparece dentro del cuadro.
+- Las empresas se ven todas a la vez (ya no hay que esperar a que pasen), lo que además las hace legibles para lectores de pantalla.
+- La animación se puede pausar con un botón, y si el equipo tiene activado "reducir movimiento", las ondas quedan fijas.
+- La lista pasó de 6 a **19 empresas**, según los listados del SII entregados por el dueño: Metalúrgica Silcosil, Ingeprover Ingeniería, RRH Mantenciones, Hormigones Móviles, Miski Kakawa, Equiambiente, Forbo Siegling Chile, Multitécnica, Performance Chile, Serviphar, Robustools, Complementos Sanitarios Chile, Comercializadora Maquipan, Factory Regalos y Brandpack, Soluciones para Compresores, Ingeniería en Blindaje, Inversiones A y M, Sociedad Agrícola Peña Delgado y System Servicios Eléctricos.
+
+### Para confirmar con el dueño
+- **Nombres cortados en el listado** (aparecen incompletos en las capturas, se muestra solo la parte legible): Soluciones para Compresores, System Servicios Eléctricos, Comercializadora Maquipan, Ingeniería en Blindaje.
+- **Tildes y eñes** puestas por criterio (los listados vienen en mayúsculas y sin tildes): Metalúrgica, Ingeniería, Multitécnica, Eléctricos, Agrícola y **Peña** Delgado.
+- **No incluidas por ahora:** dos personas naturales (Jorge Antonio Maturana Messina y Red Frío Marco Heraldo Aroca A.) y "Comercializadora de Productos" (nombre cortado, incompleto). Para mostrarlas hay que confirmar que autorizan aparecer; se agregan en `clientes` de `src/lib/empresa.ts`.
+
+### Para borrar
+- `src/components/CintaClientes.tsx` ya no se usa (`git rm src/components/CintaClientes.tsx`).
+
+---
+
 ## v1.7.1: Primeras fotos y publicaciones de LinkedIn (01-11-2026)
 
 ### Qué cambió
