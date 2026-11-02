@@ -20,8 +20,8 @@ export const ger: Diccionario = {
     eslogan: "Elektroniklabor: Reparatur von Platinen und Geräten",
     descripcionEmpresa:
       "Wir betreiben ein Elektroniklabor mit mehr als 45 Jahren Erfahrung in der Reparatur aller Arten von Elektronikplatinen, Computern, Touchscreen-Monitoren, I/O-Modulen, Netzteilen, Ladegeräten und Wechselrichtern. Diagnoseservice mit persönlicher Betreuung, angepasst an Ihre Anforderungen.",
-    horario: "Montag bis Freitag, 10:00 bis 19:00 Uhr",
-    horarioCorto: "Mo bis Fr, 10:00 bis 19:00 Uhr",
+    horario: "Montag bis Donnerstag, 10:00 bis 19:00 Uhr; Freitag, 10:00 bis 13:00 Uhr",
+    horarioCorto: "Mo bis Do 10:00 bis 19:00 Uhr · Fr 10:00 bis 13:00 Uhr",
     mensajeConsulta: "Guten Tag, ich möchte mich zur Reparatur eines Geräts erkundigen.",
     mensajeCotizar: "Guten Tag, ich hätte gern ein Angebot für die Reparatur eines Geräts.",
     telefonoNota: "(Anrufe und WhatsApp)",
@@ -36,6 +36,7 @@ export const ger: Diccionario = {
     preguntasLarga: "Häufig gestellte Fragen",
     contacto: "Kontakt",
     portal: "Status meines Geräts",
+    portalCorto: "Mein Gerät",
     privacidad: "Datenschutz und Cookies",
     menuAbrir: "Menü öffnen",
     menuCerrar: "Menü schließen",
@@ -78,7 +79,8 @@ export const ger: Diccionario = {
     notaIdioma: "Die Bewertungen werden in der Sprache angezeigt, in der sie verfasst wurden.",
   },
   mapa: { titulo: "Standortkarte von {nombre}" },
-  clientes: { titulo: "Unternehmen, die uns vertrauen", pausar: "Animation anhalten", reanudar: "Animation fortsetzen" },
+  aviso: { etiqueta: "Wichtiger Hinweis", pausar: "Hinweis anhalten", reanudar: "Hinweis fortsetzen" },
+  clientes: { titulo: "Unternehmen, die uns vertrauen", pausar: "Karussell anhalten", reanudar: "Karussell fortsetzen" },
   multimedia: {
     meta: {
       titulo: "Medien",

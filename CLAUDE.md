@@ -144,7 +144,7 @@ Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administra
 
 - Teléfono principal: +56 9 6418 3027 (llamadas, SMS, WhatsApp y llamadas por WhatsApp)
 - Dirección: General Freire 80, La Cisterna, Región Metropolitana, Santiago de Chile
-- Horario: lunes a viernes, 10:00 a 19:00
+- Horario: lunes a jueves, 10:00 a 19:00; viernes, 10:00 a 13:00
 - LinkedIn: https://cl.linkedin.com/company/electr%C3%B3nica-micro-wave-lab
 - Dominio: electronicamicrowavelab.cl (hosting en Vercel)
 - Descripción oficial: laboratorio electrónico; reparación de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores; servicio de diagnóstico; atención personalizada.
@@ -180,4 +180,10 @@ Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administra
 
 - `/multimedia`: fotos en `public/galeria/` y publicaciones de LinkedIn, todo registrado en `src/lib/galeria.ts` (fotos con texto en es/en/ger; publicaciones por `urn:li:share:...`). El menú, el pie y el sitemap muestran el enlace solo si hay contenido (`hayMultimedia`).
 - LinkedIn nunca se carga sin que la persona pulse el botón (`PublicacionesLinkedIn.tsx`); no agregar scripts de LinkedIn al cargar la página. No se puede leer LinkedIn de forma automática.
-- Empresas que confían: `AntenasClientes.tsx` + clases `.antena*`, `.antenas*` y `.onda` en `globals.css`. Dos antenas parabólicas (roja `#E73338` y azul `#414290` con interior `peri`) dibujadas en SVG propio, con ondas que salen hacia el centro, y un cuadro por empresa (logo si existe, si no su nombre). Debe poder pausarse y respetar "reducir movimiento" (ondas fijas). La lista está en `clientes` de `src/lib/empresa.ts`.
+- Empresas que confían: `CarruselClientes.tsx` + clases `.carrusel*` en `globals.css`. Tarjetas hielo con esquinas cortadas que avanzan solas (cada tarjeta 12 rem + 2 rem de separación; la pista se desplaza justo una copia). Debe poder pausarse y respetar "reducir movimiento". La lista está en `clientes` de `src/lib/empresa.ts`.
+
+## Aviso de pizarra electrónica y encabezado (v1.9.0)
+
+- `AvisoPizarra.tsx` (franja arriba de todo el sitio, letras de puntos que se desplazan, con pausa) se muestra desde `layout.tsx` si el aviso está encendido. El texto vive en Upstash Redis (clave `aviso`) y se edita en `/aviso` (clave `USO_API_TOKEN`, ver `src/lib/admin.ts`); sin Redis o sin nada guardado vale `avisoInicial` de `src/lib/aviso.ts`. El sitio lo relee cada 60 s y al guardar se actualiza al instante (`revalidatePath`). Al guardar, el inglés y el alemán vacíos se traducen solos (`traducirTexto`, cuenta en `/uso`).
+- Encabezado: el menú de escritorio aparece desde 1280 px (`xl`); debajo, menú móvil. Los enlaces no se parten en dos líneas (`whitespace-nowrap`) y el botón usa el texto corto `nav.portalCorto`. Al agregar un enlace nuevo al menú, revisar que quepa a 1280 px.
+- Horario: lunes a jueves 10:00 a 19:00, viernes 10:00 a 13:00 (`i18n/*.ts`, `empresa.ts` y datos estructurados de `layout.tsx`).

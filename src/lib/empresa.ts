@@ -17,7 +17,7 @@ export const empresa = {
   comuna: "La Cisterna",
   region: "Región Metropolitana",
   ciudad: "Santiago de Chile",
-  horario: "Lunes a viernes, de 10:00 a 19:00",
+  horario: "Lunes a jueves, de 10:00 a 19:00; viernes, de 10:00 a 13:00",
 
   linkedin: "https://cl.linkedin.com/company/electr%C3%B3nica-micro-wave-lab",
   // Ficha de Google Maps del negocio (sin parámetros de seguimiento).

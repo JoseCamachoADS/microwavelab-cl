@@ -21,8 +21,8 @@ export const es = {
     eslogan: "Laboratorio electrónico: reparación de tarjetas y equipos",
     descripcionEmpresa:
       "Prestamos servicio de laboratorio electrónico, con más de 45 años de experiencia en la reparación de todo tipo de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores. Servicio de diagnóstico, con atención personalizada y adaptándonos a sus requerimientos.",
-    horario: "Lunes a viernes, de 10:00 a 19:00",
-    horarioCorto: "Lun a vie, 10:00 a 19:00",
+    horario: "Lunes a jueves, de 10:00 a 19:00; viernes, de 10:00 a 13:00",
+    horarioCorto: "Lun a jue 10:00 a 19:00 · Vie 10:00 a 13:00",
     mensajeConsulta: "Hola, quisiera consultar por la reparación de un equipo.",
     mensajeCotizar: "Hola, quisiera cotizar la reparación de un equipo.",
     telefonoNota: "(llamadas y WhatsApp)",
@@ -37,6 +37,7 @@ export const es = {
     preguntasLarga: "Preguntas frecuentes",
     contacto: "Contacto",
     portal: "Seguimiento de mi equipo",
+    portalCorto: "Mi equipo",
     privacidad: "Privacidad y cookies",
     menuAbrir: "Abrir menú",
     menuCerrar: "Cerrar menú",
@@ -79,7 +80,8 @@ export const es = {
     notaIdioma: "",
   },
   mapa: { titulo: "Mapa de ubicación de {nombre}" },
-  clientes: { titulo: "Empresas que confían en nosotros", pausar: "Pausar la animación", reanudar: "Reanudar la animación" },
+  aviso: { etiqueta: "Aviso importante", pausar: "Pausar el aviso", reanudar: "Reanudar el aviso" },
+  clientes: { titulo: "Empresas que confían en nosotros", pausar: "Pausar el carrusel", reanudar: "Reanudar el carrusel" },
   multimedia: {
     meta: {
       titulo: "Multimedia",

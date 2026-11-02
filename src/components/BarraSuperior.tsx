@@ -10,7 +10,7 @@ export default function BarraSuperior({ lang }: { lang: Idioma }) {
   const tel = enlaceTelefono(empresa.whatsapp);
   return (
     <div className="bg-noche text-sm text-white/85">
-      <div className="contenedor flex items-center justify-between gap-4 py-2">
+      <div className="contenedor flex max-w-7xl items-center justify-between gap-4 py-2">
         <p className="flex items-center gap-2">
           <IconoReloj className="h-4 w-4 text-peri" />
           <span className="hidden sm:inline">{d.comun.horario}</span>

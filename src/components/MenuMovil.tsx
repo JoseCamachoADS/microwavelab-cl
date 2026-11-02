@@ -37,7 +37,7 @@ export default function MenuMovil({
   }, [abierto]);
 
   return (
-    <div className="md:hidden">
+    <div className="xl:hidden">
       <button
         ref={boton}
         type="button"

@@ -12,6 +12,27 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.9.0: Carrusel de empresas, pizarra electrónica, menú y horario (01-11-2026)
+
+### Qué cambió
+- **Empresas que confían en nosotros** vuelve al diseño inicial (tarjetas claras con esquinas cortadas), ahora como **carrusel que avanza solo**, sin la cinta de película ni las antenas. Se detiene al pasar el cursor o al enfocarlo con el teclado, tiene el botón "Pausar el carrusel" y, con "reducir movimiento", queda quieto y se desplaza con el dedo.
+- **Pizarra electrónica**: franja oscura arriba de todo el sitio, con letras de puntos luminosos rojos que se desplazan, el rayo del logo como separador y un botón para pausar. Con "reducir movimiento" el mensaje queda fijo y completo.
+- **Se escribe y se enciende o apaga desde `/aviso`** (solo español, fuera de Google): interruptor grande, mensaje en español (hasta 240 caracteres), vista previa en vivo y botón "Guardar cambios". Se entra con la misma clave de `/uso` (`USO_API_TOKEN`). El inglés y el alemán se traducen solos al guardar si se dejan vacíos (se pueden corregir a mano). El sitio se actualiza al instante; no hace falta tocar el código ni volver a desplegar.
+- **Mensaje inicial** (encendido): "Durante el mes de diciembre estaré atendiendo en Buenos Aires, Argentina. Favor contactarse para agendar y reservar su cupo de atención o servicio." (corregí las faltas de ortografía del texto original). Mientras Redis no tenga nada guardado, se muestra este.
+- **Menú del encabezado arreglado**: "Cómo trabajamos" ya no se parte en dos líneas ni sobresale. El menú completo aparece desde 1280 px de ancho; en pantallas más angostas se usa el menú de tres rayas. El botón del encabezado dice "Mi equipo" (el nombre completo sigue en el menú móvil y en la página).
+- **Nuevo horario** en todo el sitio, el pie, la barra superior, las preguntas frecuentes, los tres idiomas y los datos que lee Google: lunes a jueves de 10:00 a 19:00; viernes de 10:00 a 13:00.
+
+### Cómo usar la pizarra
+1. Entrar a `electronicamicrowavelab.cl/aviso` y escribir la clave.
+2. Cambiar el interruptor (encendido o apagado), escribir el mensaje y pulsar **Guardar cambios**.
+3. Si cambia el mensaje en español, borre los campos de inglés y alemán (están en "Inglés y alemán") para que se traduzcan de nuevo.
+Requiere Redis (Upstash) conectado y `USO_API_TOKEN` en Vercel, igual que `/uso`. La traducción automática necesita `GOOGLE_TRANSLATE_API_KEY`; sin ella, en inglés y alemán se verá el texto en español.
+
+### Para borrar
+- `src/components/AntenasClientes.tsx` y, si aún existe, `src/components/CintaClientes.tsx` (ya no se usan): `git rm src/components/AntenasClientes.tsx src/components/CintaClientes.tsx`.
+
+---
+
 ## v1.8.0: Antenas parabólicas y 19 empresas (01-11-2026)
 
 ### Qué cambió

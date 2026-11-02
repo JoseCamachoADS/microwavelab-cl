@@ -20,8 +20,8 @@ export const en: Diccionario = {
     eslogan: "Electronics laboratory: board and equipment repair",
     descripcionEmpresa:
       "We run an electronics laboratory with more than 45 years of experience repairing all kinds of electronic boards, computers, touch-screen monitors, I/O modules, power supplies, chargers and inverters. Diagnostic service with personal attention, adapting to your requirements.",
-    horario: "Monday to Friday, 10:00 am to 7:00 pm",
-    horarioCorto: "Mon to Fri, 10 am to 7 pm",
+    horario: "Monday to Thursday, 10:00 am to 7:00 pm; Friday, 10:00 am to 1:00 pm",
+    horarioCorto: "Mon to Thu 10 am to 7 pm · Fri 10 am to 1 pm",
     mensajeConsulta: "Hello, I would like to ask about repairing a piece of equipment.",
     mensajeCotizar: "Hello, I would like a quote for repairing a piece of equipment.",
     telefonoNota: "(calls and WhatsApp)",
@@ -36,6 +36,7 @@ export const en: Diccionario = {
     preguntasLarga: "Frequently asked questions",
     contacto: "Contact",
     portal: "Track my equipment",
+    portalCorto: "My equipment",
     privacidad: "Privacy and cookies",
     menuAbrir: "Open menu",
     menuCerrar: "Close menu",
@@ -78,7 +79,8 @@ export const en: Diccionario = {
     notaIdioma: "Reviews are shown in the language in which they were written.",
   },
   mapa: { titulo: "Location map of {nombre}" },
-  clientes: { titulo: "Companies that trust us", pausar: "Pause the animation", reanudar: "Resume the animation" },
+  aviso: { etiqueta: "Important notice", pausar: "Pause the notice", reanudar: "Resume the notice" },
+  clientes: { titulo: "Companies that trust us", pausar: "Pause the carousel", reanudar: "Resume the carousel" },
   multimedia: {
     meta: {
       titulo: "Media",

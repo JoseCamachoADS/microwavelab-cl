@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, IBM_Plex_Sans } from "next/font/google";
 import "../globals.css";
 import Analitica from "@/components/Analitica";
+import AvisoPizarra from "@/components/AvisoPizarra";
 import BotonWhatsApp from "@/components/BotonWhatsApp";
 import Encabezado from "@/components/Encabezado";
 import PieDePagina from "@/components/PieDePagina";
@@ -9,6 +10,7 @@ import { IDIOMAS, ruta } from "@/i18n/config";
 import { obtenerDiccionario } from "@/i18n";
 import { idiomaDe, variables } from "@/i18n/servidor";
 import { fmt } from "@/i18n/config";
+import { leerAviso, textoAviso } from "@/lib/aviso";
 import { empresa } from "@/lib/empresa";
 import { datoPublico } from "@/lib/utilidades";
 
@@ -81,9 +83,15 @@ function datosEstructurados(descripcion: string, url: string) {
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
         opens: "10:00",
         closes: "19:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Friday",
+        opens: "10:00",
+        closes: "13:00",
       },
     ],
     sameAs: [empresa.linkedin],
@@ -93,6 +101,7 @@ function datosEstructurados(descripcion: string, url: string) {
 export default async function RootLayout({ children, params }: Props) {
   const lang = await idiomaDe(params);
   const d = obtenerDiccionario(lang);
+  const aviso = textoAviso(await leerAviso(), lang);
   const json = JSON.stringify(
     datosEstructurados(d.comun.descripcionEmpresa, `${empresa.sitioUrl}${ruta(lang, "/")}`)
   ).replace(/</g, "\\u003c");
@@ -101,6 +110,14 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={d.idioma.htmlLang} className={`${titulo.variable} ${cuerpo.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />
+        {aviso && (
+          <AvisoPizarra
+            texto={aviso}
+            etiqueta={d.aviso.etiqueta}
+            pausar={d.aviso.pausar}
+            reanudar={d.aviso.reanudar}
+          />
+        )}
         <Encabezado lang={lang} />
         <main>{children}</main>
         <PieDePagina lang={lang} />

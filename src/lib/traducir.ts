@@ -22,7 +22,8 @@ function decodificar(texto: string): string {
   return texto.replace(/&(amp|lt|gt|quot|#39);/g, (m) => ENTIDADES[m] ?? m);
 }
 
-export async function traducirAEspanol(texto: string, origen: IdiomaOrigen): Promise<string | null> {
+/** Traduce un texto entre dos idiomas (códigos de Google: "es", "en", "de"). Null si no se pudo. */
+export async function traducirTexto(texto: string, origen: string, destino: string): Promise<string | null> {
   const clave = process.env.GOOGLE_TRANSLATE_API_KEY;
   if (!clave) {
     console.warn("[traducción] Desactivada: falta GOOGLE_TRANSLATE_API_KEY.");
@@ -46,7 +47,7 @@ export async function traducirAEspanol(texto: string, origen: IdiomaOrigen): Pro
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ q: [texto], source: origen, target: "es", format: "text" }),
+        body: JSON.stringify({ q: [texto], source: origen, target: destino, format: "text" }),
         cache: "no-store",
       }
     );
@@ -75,3 +76,6 @@ export async function traducirAEspanol(texto: string, origen: IdiomaOrigen): Pro
     return null;
   }
 }
+
+/** Traduce al español lo que escribe un cliente en inglés o alemán. */
+export const traducirAEspanol = (texto: string, origen: IdiomaOrigen) => traducirTexto(texto, origen, "es");

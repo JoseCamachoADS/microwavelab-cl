@@ -19,12 +19,13 @@ export default function Encabezado({ lang }: { lang: Idioma }) {
     { href: ruta(lang, "/contacto"), texto: d.nav.contacto },
   ];
   const portal = { href: ruta(lang, "/portal"), texto: d.nav.portal };
+  const portalCorto = d.nav.portalCorto;
 
   return (
     <>
       <BarraSuperior lang={lang} />
       <header className="sticky top-0 z-40 border-b border-azul-100 bg-white/95 backdrop-blur">
-        <div className="contenedor relative flex items-center justify-between gap-4 py-2">
+        <div className="contenedor relative flex max-w-7xl items-center justify-between gap-4 py-2">
           <Link
             href={ruta(lang, "/")}
             aria-label={fmt(d.nav.inicioDe, { nombre: empresa.nombreCompleto })}
@@ -38,21 +39,21 @@ export default function Encabezado({ lang }: { lang: Idioma }) {
               className="h-14 w-auto sm:h-16"
             />
           </Link>
-          <nav aria-label={d.nav.principal} className="hidden items-center gap-6 md:flex">
+          <nav aria-label={d.nav.principal} className="hidden items-center gap-5 xl:flex 2xl:gap-7">
             {enlaces.map((e) => (
               <Link
                 key={e.href}
                 href={e.href}
-                className="font-titulo text-base font-semibold text-noche hover:text-rojo-accion"
+                className="whitespace-nowrap font-titulo text-base font-semibold text-noche hover:text-rojo-accion"
               >
                 {e.texto}
               </Link>
             ))}
           </nav>
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-4 xl:flex">
             <SelectorDeIdioma lang={lang} />
-            <Link href={portal.href} className="boton">
-              {portal.texto}
+            <Link href={portal.href} className="boton whitespace-nowrap">
+              {portalCorto}
             </Link>
           </div>
           <MenuMovil
