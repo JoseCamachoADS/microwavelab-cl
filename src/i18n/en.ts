@@ -83,7 +83,7 @@ export const en: Diccionario = {
     abrir: "Open the virtual assistant",
     titulo: "Virtual assistant",
     cerrar: "Close the assistant",
-    saludo: "Hello, I am the virtual assistant of Micro Wave Lab CL. I can guide you on our services, opening hours, process and warranty. How can I help?",
+    saludo: "Hello, I am the virtual assistant of Electrónica Micro Wave Lab. I can guide you on our services, opening hours, process and warranty. How can I help?",
     sugerencias: ["What equipment do you repair?", "How does the process work?", "What are your opening hours?"],
     placeholder: "Type your question",
     enviar: "Send",
@@ -101,7 +101,7 @@ export const en: Diccionario = {
   multimedia: {
     meta: {
       titulo: "Media",
-      descripcion: "Photos of electronic repairs in our laboratory and Micro Wave Lab CL posts on LinkedIn.",
+      descripcion: "Photos of electronic repairs in our laboratory and Electrónica Micro Wave Lab posts on LinkedIn.",
     },
     titulo: "Media",
     bajada: "Real repairs from our laboratory and the news we post on LinkedIn.",
@@ -300,7 +300,7 @@ export const en: Diccionario = {
   proceso: {
     meta: {
       titulo: "How we work",
-      descripcion: "Stages of a repair at Micro Wave Lab CL: reception, diagnosis, quote, repair, testing and delivery with warranty.",
+      descripcion: "Stages of a repair at Electrónica Micro Wave Lab: reception, diagnosis, quote, repair, testing and delivery with warranty.",
     },
     titulo: "How we work",
     bajada: "Every piece of equipment follows the same stages, so you always know the status of your repair.",

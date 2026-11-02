@@ -12,6 +12,12 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.13.1: Nombre de la empresa (02-11-2026)
+
+- El nombre pasa a ser **"Electrónica Micro Wave Lab"** (sin "CL") en el título de la portada, el sufijo de los títulos de todas las páginas, el pie de página, los datos para Google, el asistente y los textos que lo mencionaban. El nombre vive en `nombre` y `nombreCompleto` de `src/lib/empresa.ts`.
+
+---
+
 ## v1.13.0: Posicionamiento en buscadores (02-11-2026)
 
 ### Qué cambió

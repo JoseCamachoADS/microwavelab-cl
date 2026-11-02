@@ -83,7 +83,7 @@ export const ger: Diccionario = {
     abrir: "Virtuellen Assistenten öffnen",
     titulo: "Virtueller Assistent",
     cerrar: "Assistenten schließen",
-    saludo: "Guten Tag, ich bin der virtuelle Assistent von Micro Wave Lab CL. Ich informiere Sie gern über unsere Leistungen, Öffnungszeiten, den Ablauf und die Garantie. Wie kann ich helfen?",
+    saludo: "Guten Tag, ich bin der virtuelle Assistent von Electrónica Micro Wave Lab. Ich informiere Sie gern über unsere Leistungen, Öffnungszeiten, den Ablauf und die Garantie. Wie kann ich helfen?",
     sugerencias: ["Welche Geräte reparieren Sie?", "Wie läuft die Reparatur ab?", "Wie sind Ihre Öffnungszeiten?"],
     placeholder: "Ihre Frage eingeben",
     enviar: "Senden",
@@ -101,7 +101,7 @@ export const ger: Diccionario = {
   multimedia: {
     meta: {
       titulo: "Medien",
-      descripcion: "Fotos elektronischer Reparaturen in unserem Labor und Beiträge von Micro Wave Lab CL auf LinkedIn.",
+      descripcion: "Fotos elektronischer Reparaturen in unserem Labor und Beiträge von Electrónica Micro Wave Lab auf LinkedIn.",
     },
     titulo: "Medien",
     bajada: "Echte Reparaturen aus unserem Labor und die Neuigkeiten, die wir auf LinkedIn veröffentlichen.",
@@ -300,7 +300,7 @@ export const ger: Diccionario = {
   proceso: {
     meta: {
       titulo: "So arbeiten wir",
-      descripcion: "Ablauf einer Reparatur bei Micro Wave Lab CL: Annahme, Diagnose, Angebot, Reparatur, Tests und Übergabe mit Garantie.",
+      descripcion: "Ablauf einer Reparatur bei Electrónica Micro Wave Lab: Annahme, Diagnose, Angebot, Reparatur, Tests und Übergabe mit Garantie.",
     },
     titulo: "So arbeiten wir",
     bajada: "Jedes Gerät durchläuft dieselben Etappen, damit Sie jederzeit den Stand Ihrer Reparatur kennen.",

@@ -84,7 +84,7 @@ export const es = {
     abrir: "Abrir el asistente virtual",
     titulo: "Asistente virtual",
     cerrar: "Cerrar el asistente",
-    saludo: "Hola, soy el asistente virtual de Micro Wave Lab CL. Puedo orientarle sobre nuestros servicios, horario, proceso y garantía. ¿En qué le ayudo?",
+    saludo: "Hola, soy el asistente virtual de Electrónica Micro Wave Lab. Puedo orientarle sobre nuestros servicios, horario, proceso y garantía. ¿En qué le ayudo?",
     sugerencias: ["¿Qué equipos reparan?", "¿Cómo es el proceso?", "¿Cuál es el horario?"],
     placeholder: "Escriba su consulta",
     enviar: "Enviar",
@@ -102,7 +102,7 @@ export const es = {
   multimedia: {
     meta: {
       titulo: "Multimedia",
-      descripcion: "Fotos de reparaciones electrónicas en nuestro laboratorio y publicaciones de Micro Wave Lab CL en LinkedIn.",
+      descripcion: "Fotos de reparaciones electrónicas en nuestro laboratorio y publicaciones de Electrónica Micro Wave Lab en LinkedIn.",
     },
     titulo: "Multimedia",
     bajada: "Reparaciones reales de nuestro laboratorio y las novedades que publicamos en LinkedIn.",
@@ -301,7 +301,7 @@ export const es = {
   proceso: {
     meta: {
       titulo: "Cómo trabajamos",
-      descripcion: "Etapas de una reparación en Micro Wave Lab CL: recepción, diagnóstico, presupuesto, reparación, pruebas y entrega con garantía.",
+      descripcion: "Etapas de una reparación en Electrónica Micro Wave Lab: recepción, diagnóstico, presupuesto, reparación, pruebas y entrega con garantía.",
     },
     titulo: "Cómo trabajamos",
     bajada: "Cada equipo sigue las mismas etapas, para que usted conozca en todo momento el estado de su reparación.",

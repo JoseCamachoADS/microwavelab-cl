@@ -2,8 +2,8 @@
 // Los campos con "PENDIENTE" no se muestran al público hasta completarlos.
 
 export const empresa = {
-  nombre: "Micro Wave Lab CL",
-  nombreCompleto: "Electrónica Micro Wave Lab CL",
+  nombre: "Electrónica Micro Wave Lab",
+  nombreCompleto: "Electrónica Micro Wave Lab",
   eslogan: "Laboratorio de electrónica industrial: reparación de tarjetas y equipos",
   aniosTrayectoria: 45, // "más de 45 años"
   garantiaMeses: 6,
