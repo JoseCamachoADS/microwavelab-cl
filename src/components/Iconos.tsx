@@ -138,6 +138,15 @@ export function IconoChat({ className }: Props) {
   );
 }
 
+/** Rayo simple de línea, dibujado para este sitio (urgencias). */
+export function IconoRayo({ className }: Props) {
+  return (
+    <Base className={className}>
+      <path d="M13.5 2.5L5 13.5h6l-1 8 8.5-11h-6l1-8z" />
+    </Base>
+  );
+}
+
 /** Globo de diálogo con destello: asistente virtual. */
 export function IconoAsistente({ className }: Props) {
   return (

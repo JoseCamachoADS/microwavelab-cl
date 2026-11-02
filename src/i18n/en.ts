@@ -12,18 +12,17 @@ export const en: Diccionario = {
     cambiarA: "Switch to {idioma}",
   },
   meta: {
-    titulo: "Electronic board and equipment repair",
-    descripcion:
-      "Electronics laboratory in La Cisterna, Santiago, Chile. Over {anios} years repairing electronic boards, I/O modules, power supplies, inverters and touch-screen monitors. {garantia}-month warranty.",
+    titulo: "Industrial electronics repair",
+    descripcion: "Industrial electronics repair laboratory in La Cisterna, Santiago, Chile. Over {anios} years repairing electronic boards, I/O modules, power supplies, inverters and industrial touch-screen monitors. {garantia}-month warranty.",
   },
   comun: {
-    eslogan: "Electronics laboratory: board and equipment repair",
-    descripcionEmpresa:
-      "We run an electronics laboratory with more than 45 years of experience repairing all kinds of electronic boards, computers, touch-screen monitors, I/O modules, power supplies, chargers and inverters. Diagnostic service with personal attention, adapting to your requirements.",
+    eslogan: "Industrial electronics laboratory: board and equipment repair",
+    descripcionEmpresa: "Industrial electronics laboratory with more than 45 years of experience. Component-level diagnosis and repair of electronic boards, I/O modules, power supplies, chargers, inverters, computers and touch-screen monitors, with personalized attention for businesses.",
     horario: "Monday to Thursday, 10:00 am to 7:00 pm; Friday, 10:00 am to 1:00 pm",
     horarioCorto: "Mon to Thu 10 am to 7 pm · Fri 10 am to 1 pm",
-    mensajeConsulta: "Hello, I would like to ask about repairing a piece of equipment.",
-    mensajeCotizar: "Hello, I would like a quote for repairing a piece of equipment.",
+    mensajeConsulta: "Hello, I would like to inquire about the repair of equipment for my company.",
+    mensajeCotizar: "Hello, I would like to request a quote for the repair of a piece of equipment.",
+    mensajeUrgencia: "Hello, I have an emergency: a piece of equipment has stopped my company's operation and I need a priority repair.",
     telefonoNota: "(calls and WhatsApp)",
     externo: "opens in a new tab",
   },
@@ -47,20 +46,19 @@ export const en: Diccionario = {
     visitenos: "Visit us",
   },
   pie: {
-    titulo: "Has a device that won't turn on?",
-    texto:
-      "Tell us about the fault and we will point you in the right direction at no cost. Over {anios} years of experience and a {garantia}-month warranty on every repair.",
+    titulo: "Having trouble with your industrial or specialized equipment?",
+    texto: "You have come to the right place. Tell us about the fault and we will help you solve it with personalized attention. Do not let a piece of equipment stop your company's operation: we handle emergencies with priority repairs, including on site. Over {anios} years of experience and a {garantia}-month warranty on every job.",
     whatsapp: "Message us on WhatsApp",
     llamar: "Call",
     derechos: "All rights reserved.",
-    irWaze: "Go with Waze",
+    irWaze: "Navigate with Waze",
     linkedin: "LinkedIn",
   },
   whatsapp: { aria: "Message us on WhatsApp", etiqueta: "WhatsApp" },
+  urgencia: { aria: "Report an emergency on WhatsApp", etiqueta: "I have an emergency" },
   cookies: {
     aria: "Cookie notice",
-    texto:
-      "We use measurement cookies (Google Analytics and Microsoft Clarity) to understand how the site is used and to improve it. We do not use them for advertising. You can accept or decline.",
+    texto: "We use measurement cookies (Google Analytics and Microsoft Clarity) to understand how the site is used and to improve it. We do not use them for advertising. You may accept or decline them.",
     mas: "More information",
     aceptar: "Accept",
     rechazar: "Necessary only",
@@ -134,30 +132,31 @@ export const en: Diccionario = {
   tecnico: {
     meta: {
       titulo: "Industrial technical service",
-      descripcion:
-        "Diagnosis and repair of boards, I/O modules, power supplies, inverters and touch-screen monitors for industrial equipment. Request your quote.",
+      descripcion: "Component-level diagnosis and repair of boards, I/O modules, power supplies, inverters and industrial touch-screen monitors. Request your quote.",
     },
     titulo: "Industrial technical service",
-    bajada: "Diagnosis and repair of the electronics in industrial equipment, so it can run again.",
+    bajada: "Diagnosis and repair of industrial equipment electronics, restoring operational continuity at your company.",
     alcance: {
-      h: "Scope",
+      h: "Scope of service",
       items: [
         "Technical diagnosis of electrical and electronic faults.",
-        "Component-level repair of boards, I/O modules, power supplies, inverters and touch-screen monitors.",
+        "Component-level repair of boards, I/O modules, power supplies, inverters and industrial touch-screen monitors.",
         "Functional testing before delivery.",
-        "Spare-part sourcing, including imported parts.",
+        "Spare-parts sourcing, including imported parts.",
       ],
     },
     valor: {
-      h: "What you gain",
+      h: "Benefits for your company",
       items: [
-        "Diagnosis before the quote: you decide with the facts in hand.",
+        "Diagnosis before the quote, so you decide with technical information.",
         "{garantia}-month warranty on every repair.",
-        "Stage-by-stage tracking, so you know where your equipment stands.",
+        "Stage-by-stage tracking, with visibility of the status of each piece of equipment.",
         "Over {anios} years of experience in electronics.",
       ],
     },
-    equipos: { h: "Equipment we service" },
+    equipos: {
+      h: "Equipment we service",
+    },
     formulario: {
       titulo: "Request a quote",
       intro: "Tell us what the equipment is and what is wrong. The more details, the more precise our reply.",
@@ -195,66 +194,98 @@ export const en: Diccionario = {
   },
   inicio: {
     hero: {
-      kicker: "Over {anios} years repairing electronics",
-      titulo: "If your equipment has stopped, we get it running again",
-      texto:
-        "Electronics laboratory specialised in boards, I/O modules, power supplies, inverters and touch-screen monitors. Professional diagnosis and a {garantia}-month warranty.",
-      cotizar: "Get a quote on WhatsApp",
+      kicker: "Over {anios} years of experience in industrial electronics",
+      titulo: "We restore the electronics that keep your operation running",
+      texto: "Laboratory specialized in the repair of boards, I/O modules, power supplies, inverters and industrial touch-screen monitors. Technical diagnosis first and a {garantia}-month warranty.",
+      cotizar: "Request a quote on WhatsApp",
       llamar: "Call {telefono}",
     },
     queReparamos: {
       titulo: "What we repair",
-      texto: "Industrial and general electronics, repaired down to component level.",
-      ver: "See all services",
+      texto: "Industrial, automotive and medical electronics, repaired at component level.",
+      ver: "View all services",
+    },
+    urgencias: {
+      titulo: "Emergency repairs",
+      bajada: "Do not let a piece of equipment stop your company's operation. Our emergency service handles priority repairs, including on site.",
+      puntos: [
+        {
+          t: "Priority response",
+          d: "Emergencies are attended with the highest priority, to restore your operation as soon as possible.",
+        },
+        {
+          t: "On-site repairs",
+          d: "We attend emergencies at your company's facilities, arranged in advance with our team.",
+        },
+        {
+          t: "Personalized attention",
+          d: "Direct, personalized service from the moment you report the fault.",
+        },
+      ],
+      respaldo: "Over {anios} years of experience. Every job we carry out comes with a {garantia}-month warranty.",
+      cta: "Report an emergency on WhatsApp",
+      llamar: "Call now",
     },
     trayectoria: {
-      titulo: "{anios} years of experience under one roof",
+      titulo: "{anios} years of experience in a single laboratory",
       linkedin: "Follow us on LinkedIn",
       porQue: "Why choose us",
       puntos: [
-        { t: "Proven experience", d: "over {anios} years repairing electronics." },
-        { t: "Warranty", d: "{garantia} months on our repairs." },
-        { t: "Diagnosis first", d: "we identify the fault before quoting." },
-        { t: "Personal attention", d: "we adapt to your requirements." },
+        {
+          t: "Proven track record",
+          d: "over {anios} years of experience in electronics repair.",
+        },
+        {
+          t: "Warranty",
+          d: "{garantia} months on every repair.",
+        },
+        {
+          t: "Diagnosis first",
+          d: "we identify the fault before issuing a quote.",
+        },
+        {
+          t: "Personalized attention",
+          d: "we adapt to the requirements of each company.",
+        },
       ],
-      proceso: "How the repair process works",
+      proceso: "Learn about our repair process",
     },
     ubicacion: {
-      titulo: "Where to find us",
-      maps: "Directions with Google Maps",
-      waze: "Directions with Waze",
+      titulo: "Where we are",
+      maps: "Get directions with Google Maps",
+      waze: "Get directions with Waze",
     },
-    resenas: { titulo: "What our customers say" },
-    preguntas: { titulo: "Frequently asked questions" },
+    resenas: {
+      titulo: "What our clients say",
+    },
+    preguntas: {
+      titulo: "Frequently asked questions",
+    },
   },
   servicios: {
     meta: {
       titulo: "Services",
-      descripcion:
-        "Repair of electronic boards and of industrial, medical and automotive equipment.",
+      descripcion: "Component-level electronics repair: boards, I/O modules, power supplies, inverters, industrial touch-screen monitors, and automotive and medical equipment.",
     },
     titulo: "Services",
-    bajada: "We service electronic equipment of every kind, with a focus on industry.",
+    bajada: "Specialized electronics repair for industrial equipment, focused on your company's operational continuity.",
     solicitar: "Request a quote",
     items: {
       tarjetas: {
         titulo: "Electronic boards",
-        descripcion: "Diagnosis and repair of all kinds of electronic boards and circuit boards.",
+        descripcion: "Component-level diagnosis and repair of all types of electronic boards.",
       },
       industrial: {
-        titulo: "I/O modules and industrial equipment",
-        descripcion:
-          "Repair of input/output modules and of the electronics in industrial equipment.",
+        titulo: "I/O modules and industrial electronics",
+        descripcion: "Repair of input and output modules and of the electronics of industrial equipment.",
       },
       fuentes: {
         titulo: "Power supplies, chargers and inverters",
-        descripcion:
-          "Power supplies, chargers and inverters repaired down to component level.",
+        descripcion: "Component-level repair of power supplies, chargers and inverters.",
       },
       monitores: {
         titulo: "Industrial touch-screen monitors and displays",
-        descripcion:
-          "Repair of industrial or interface (HMI) touch-screen monitors and of displays on industrial equipment.",
+        descripcion: "Repair of industrial and interface (HMI) touch-screen monitors and of displays on industrial equipment.",
       },
       computadoras: {
         titulo: "Computers",
@@ -262,66 +293,101 @@ export const en: Diccionario = {
       },
       otros: {
         titulo: "Other industrial equipment",
-        descripcion:
-          "Automotive, medical and other industrial equipment. Ask us about your case.",
+        descripcion: "Automotive, medical and other industrial equipment. Ask us about your case.",
       },
     },
   },
   proceso: {
     meta: {
       titulo: "How we work",
-      descripcion:
-        "Stages of a repair at Micro Wave Lab CL: reception, diagnosis, quote, repair, testing and delivery with warranty.",
+      descripcion: "Stages of a repair at Micro Wave Lab CL: reception, diagnosis, quote, repair, testing and delivery with warranty.",
     },
     titulo: "How we work",
-    bajada:
-      "Every piece of equipment goes through the same stages, so you always know where your repair stands.",
-    notaRepuesto: "This stage only happens if the repair requires a spare part.",
+    bajada: "Every piece of equipment follows the same stages, so you always know the status of your repair.",
+    notaRepuesto: "This stage applies only when the repair requires a spare part.",
     garantiaAntes: "All our repairs come with a ",
     garantiaNegrita: "{garantia}-month warranty",
     garantiaDespues: ".",
-    cta: "Ask about my equipment",
+    cta: "Inquire about a piece of equipment",
     pasos: {
-      PRE_INGRESO: { etiqueta: "Awaiting drop-off", descripcion: "We have your details. Your equipment still needs to arrive at our laboratory." },
-      RECEPCION: { etiqueta: "Received", descripcion: "Your equipment has arrived at our laboratory." },
-      REVISION: { etiqueta: "Under inspection", descripcion: "We are checking the overall condition of the equipment." },
-      DIAGNOSTICO: { etiqueta: "Under diagnosis", descripcion: "We are identifying the fault and its causes." },
-      PRESUPUESTO: { etiqueta: "Quote sent", descripcion: "We have sent you the quote for your review." },
-      DECISION_CLIENTE: { etiqueta: "Waiting for your reply", descripcion: "We are waiting for you to accept or decline the quote." },
-      SOLICITUD_REPUESTO: { etiqueta: "Part ordered", descripcion: "We are sourcing a spare part. Some are imported and can take longer." },
-      REPARACION: { etiqueta: "Being repaired", descripcion: "Your equipment is being repaired." },
-      PRUEBAS: { etiqueta: "Under testing", descripcion: "We check that the equipment works correctly." },
-      LISTO_RETIRO: { etiqueta: "Ready for pickup", descripcion: "Your equipment is ready. You can come and collect it." },
-      ENTREGADO: { etiqueta: "Delivered", descripcion: "Equipment delivered. Thank you for trusting us!" },
-      RECHAZADO: { etiqueta: "Quote declined", descripcion: "The quote was not accepted. The equipment is held for return." },
-      SIN_REPARACION: { etiqueta: "Not repairable", descripcion: "It was not possible to repair this equipment." },
+      PRE_INGRESO: {
+        etiqueta: "Awaiting reception",
+        descripcion: "We have recorded your details. The equipment has yet to arrive at our laboratory.",
+      },
+      RECEPCION: {
+        etiqueta: "Received",
+        descripcion: "The equipment has arrived at our laboratory.",
+      },
+      REVISION: {
+        etiqueta: "Under inspection",
+        descripcion: "We are assessing the general condition of the equipment.",
+      },
+      DIAGNOSTICO: {
+        etiqueta: "Under diagnosis",
+        descripcion: "We are identifying the fault and its causes.",
+      },
+      PRESUPUESTO: {
+        etiqueta: "Quote sent",
+        descripcion: "We have sent the quote for your evaluation.",
+      },
+      DECISION_CLIENTE: {
+        etiqueta: "Awaiting your approval",
+        descripcion: "We are awaiting your acceptance or rejection of the quote.",
+      },
+      SOLICITUD_REPUESTO: {
+        etiqueta: "Spare part requested",
+        descripcion: "We are sourcing a spare part. Some are imported and may take longer.",
+      },
+      REPARACION: {
+        etiqueta: "Under repair",
+        descripcion: "The equipment is being repaired.",
+      },
+      PRUEBAS: {
+        etiqueta: "Under testing",
+        descripcion: "We are verifying that the equipment operates correctly.",
+      },
+      LISTO_RETIRO: {
+        etiqueta: "Ready for pickup",
+        descripcion: "The equipment is ready. You may arrange its pickup with us.",
+      },
+      ENTREGADO: {
+        etiqueta: "Delivered",
+        descripcion: "Equipment delivered. Thank you for trusting us.",
+      },
+      RECHAZADO: {
+        etiqueta: "Quote declined",
+        descripcion: "The quote was not accepted. The equipment is available to be returned.",
+      },
+      SIN_REPARACION: {
+        etiqueta: "Not repairable",
+        descripcion: "It was not possible to repair this equipment.",
+      },
     },
   },
   contacto: {
     meta: {
       titulo: "Contact",
-      descripcion:
-        "Contact us by phone or WhatsApp, or visit us at General Freire 80, La Cisterna, Santiago, Chile.",
+      descripcion: "Contact us by phone or WhatsApp, or visit us at General Freire 80, La Cisterna, Santiago, Chile.",
     },
     titulo: "Contact",
-    bajada: "Tell us which equipment needs repair and we will reply as soon as possible.",
+    bajada: "Tell us which equipment needs repair and we will reply shortly.",
     telefonoNota: "Calls, text messages and WhatsApp.",
     whatsapp: "Message us on WhatsApp",
     maps: "Google Maps",
     waze: "Waze",
     formulario: {
-      titulo: "Quote request form",
-      texto:
-        "Fill in the technical service form with your equipment and the fault; WhatsApp opens with your message already written.",
+      titulo: "Quote request",
+      texto: "Complete the technical service form with the equipment and fault details; WhatsApp opens with your message already written.",
       ir: "Go to the form",
     },
   },
   portal: {
-    meta: { titulo: "Track my equipment" },
+    meta: {
+      titulo: "Track my equipment",
+    },
     titulo: "Track my equipment",
-    bajada:
-      "Soon you will be able to sign in with your email address to see which stage your repair is at, review and accept your quote, and pay online.",
-    nota: "In the meantime, if you need to know the status of your equipment, message us on WhatsApp with your name and the equipment you left with us.",
+    bajada: "Soon you will be able to sign in with your email address to see the stage of your equipment's repair, review and approve your quote, and pay online.",
+    nota: "In the meantime, to learn the status of your equipment, message us on WhatsApp with your name or company and the equipment you left with us.",
   },
   privacidad: {
     meta: {
@@ -385,27 +451,24 @@ export const en: Diccionario = {
   },
   faq: [
     {
-      pregunta: "What kind of equipment do you repair?",
-      respuesta:
-        "We repair all kinds of electronic boards, computers, touch-screen monitors, I/O modules, power supplies, chargers and inverters. If your equipment is not on the list, ask us by phone or WhatsApp.",
+      pregunta: "What equipment do you repair?",
+      respuesta: "We repair electronic boards, I/O modules, power supplies, chargers, inverters, computers and touch-screen monitors, focused on industrial equipment; we also service automotive and medical equipment. If your equipment is not listed, contact us by phone or WhatsApp.",
     },
     {
-      pregunta: "Do repairs come with a warranty?",
-      respuesta: "Yes. Our repairs come with a {garantia}-month warranty.",
+      pregunta: "Do repairs include a warranty?",
+      respuesta: "Yes. All our repairs come with a {garantia}-month warranty.",
     },
     {
       pregunta: "How do I request a quote?",
-      respuesta:
-        "First we inspect and diagnose your equipment. With the diagnosis we send you the quote, and you decide whether to go ahead with the repair.",
+      respuesta: "We first inspect and diagnose the equipment. Based on the diagnosis we send you the quote, and you decide whether to proceed with the repair.",
     },
     {
-      pregunta: "Where are you and what are your opening hours?",
-      respuesta: "We are at {calle}, {comuna}, Santiago, Chile. Our hours are: {horario}.",
+      pregunta: "Where are you located and what are your opening hours?",
+      respuesta: "We are at {calle}, {comuna}. Opening hours: {horario}.",
     },
     {
       pregunta: "How can I contact you?",
-      respuesta:
-        "By phone call, text message or WhatsApp on the main number shown on this page.",
+      respuesta: "By phone call, text message or WhatsApp, at the main number shown on this page.",
     },
   ],
 };

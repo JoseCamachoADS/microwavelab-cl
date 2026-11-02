@@ -12,6 +12,31 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.12.2: Botón flotante de urgencias (02-11-2026)
+
+- **Botón con rayo "Tengo una urgencia"**, fijo en todas las páginas, justo sobre el botón de WhatsApp (rojo corporativo con borde blanco; en pantallas angostas solo el rayo). Al pulsarlo abre WhatsApp con el mensaje de urgencia ya escrito, igual que el botón "Reportar una urgencia por WhatsApp" de la portada. Cuenta como clic de WhatsApp en Analytics. En español, inglés y alemán.
+
+---
+
+## v1.12.1: Reparaciones de emergencia y llamado a la acción (02-11-2026)
+
+- **Nueva sección "Reparaciones de emergencia"** en la portada (debajo de los servicios): mensaje de continuidad operativa, tres puntos (atención prioritaria, reparación en sitio, atención personalizada), respaldo de más de 45 años y 6 meses de garantía, y dos botones: "Reportar una urgencia por WhatsApp" (con un mensaje de urgencia ya escrito) y "Llamar ahora". Ancla `#urgencias`. En español, inglés y alemán.
+- **Llamado a la acción del pie de página** (aparece en todas las páginas): ahora "¿Problemas con su equipo industrial o especializado?", con el texto de atención personalizada y urgencias.
+- El asistente virtual conoce el servicio de urgencias (sin prometer tiempos).
+
+---
+
+## v1.12.0: Textos corporativos para empresas (02-11-2026)
+
+### Qué cambió
+- Reescritura de los textos públicos con un tono profesional y corporativo, dirigido a empresas y a un público latinoamericano e internacional: español neutro y formal (trato de "usted", sin giros locales), inglés de negocios y alemán formal (Sie). Se mantienen intactos los datos reales (más de 45 años, 6 meses de garantía, dirección, horario, teléfono) y **no se agregó ninguna cifra, certificación ni promesa nueva**.
+- **Portada**: nuevo título ("Recuperamos la electrónica que mantiene operando su empresa"), subtítulo, "Qué reparamos" (electrónica industrial, automotriz y médica), "Por qué elegirnos" y llamados a la acción ("Solicitar cotización por WhatsApp").
+- **Servicios**: títulos y descripciones precisos y consistentes (reparación a nivel de componente; módulos I/O y electrónica industrial; fuentes de alimentación, cargadores e inversores; monitores táctiles y pantallas industriales; computadoras; otros equipos industriales).
+- **Servicio técnico industrial**, **Cómo trabajamos** (incluye las etapas que verá el cliente), **Contacto**, **Seguimiento de equipos**, **preguntas frecuentes**, mensaje inicial de WhatsApp, aviso de cookies, descripción de la empresa y eslogan: "Laboratorio de electrónica industrial: reparación de tarjetas y equipos".
+- Los textos de empresa.ts (usados por el asistente y los datos que lee Google) quedaron iguales a los del sitio.
+
+---
+
 ## v1.11.2: Modelo por defecto y prueba de modelos alternativos (01-11-2026)
 
 - El modelo por defecto pasa a `gemini-3.5-flash-lite` (el anterior ya no está disponible para claves nuevas).

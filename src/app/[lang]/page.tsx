@@ -42,6 +42,7 @@ export default async function Inicio({ params }: Props) {
   const d = obtenerDiccionario(lang);
   const v = variables(d);
   const whatsapp = enlaceWhatsApp(empresa.whatsapp, d.comun.mensajeCotizar);
+  const urgencia = enlaceWhatsApp(empresa.whatsapp, d.comun.mensajeUrgencia);
   const llamar = enlaceTelefono(empresa.whatsapp);
   const telefono = datoPublico(empresa.telefono);
   const destacados = servicios.filter((s) => s.destacado);
@@ -103,6 +104,40 @@ export default async function Inicio({ params }: Props) {
               {h.queReparamos.ver}
             </Link>
           </p>
+          {/* Reparaciones de emergencia */}
+          <div
+            id="urgencias"
+            className="panel relative mt-16 scroll-mt-24 overflow-hidden bg-noche p-8 text-white [--c:28px] md:p-12"
+          >
+            <Rayo className="pointer-events-none absolute -right-12 -top-10 h-64 w-64 text-rojo/25 md:h-80 md:w-80" />
+            <div className="relative">
+              <h2 className="font-titulo text-3xl font-bold leading-tight sm:text-4xl">{h.urgencias.titulo}</h2>
+              <p className="mt-4 max-w-2xl text-lg text-white/90">{h.urgencias.bajada}</p>
+              <ul className="mt-8 grid gap-6 md:grid-cols-3">
+                {h.urgencias.puntos.map((p) => (
+                  <li key={p.t} className="border-l-4 border-rojo pl-4">
+                    <strong className="block font-titulo text-lg text-white">{p.t}</strong>
+                    <span className="mt-1 block text-white/80">{p.d}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 max-w-2xl font-semibold text-peri">{fmt(h.urgencias.respaldo, v)}</p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                {urgencia && (
+                  <a href={urgencia} target="_blank" rel="noopener noreferrer" className="boton">
+                    <IconoChat className="h-5 w-5" />
+                    {h.urgencias.cta}
+                  </a>
+                )}
+                {llamar && (
+                  <a href={llamar} className="boton-claro">
+                    <IconoTelefono className="h-5 w-5" />
+                    {h.urgencias.llamar}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
           <ClientesConfian lang={lang} />
         </div>
       </section>

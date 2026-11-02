@@ -12,18 +12,17 @@ export const ger: Diccionario = {
     cambiarA: "Wechseln zu {idioma}",
   },
   meta: {
-    titulo: "Reparatur von Elektronikplatinen und Geräten",
-    descripcion:
-      "Elektroniklabor in La Cisterna, Santiago de Chile. Seit über {anios} Jahren Reparatur von Elektronikplatinen, I/O-Modulen, Netzteilen, Wechselrichtern und Touchscreen-Monitoren. {garantia} Monate Garantie.",
+    titulo: "Industrielle Elektronikreparatur",
+    descripcion: "Elektroniklabor für industrielle Reparaturen in La Cisterna, Santiago de Chile. Seit über {anios} Jahren Reparatur von Elektronikplatinen, I/O-Modulen, Netzteilen, Wechselrichtern und industriellen Touchscreen-Monitoren. {garantia} Monate Garantie.",
   },
   comun: {
-    eslogan: "Elektroniklabor: Reparatur von Platinen und Geräten",
-    descripcionEmpresa:
-      "Wir betreiben ein Elektroniklabor mit mehr als 45 Jahren Erfahrung in der Reparatur aller Arten von Elektronikplatinen, Computern, Touchscreen-Monitoren, I/O-Modulen, Netzteilen, Ladegeräten und Wechselrichtern. Diagnoseservice mit persönlicher Betreuung, angepasst an Ihre Anforderungen.",
+    eslogan: "Labor für Industrieelektronik: Reparatur von Platinen und Geräten",
+    descripcionEmpresa: "Labor für Industrieelektronik mit mehr als 45 Jahren Erfahrung. Diagnose und Reparatur auf Bauteilebene von Elektronikplatinen, I/O-Modulen, Netzteilen, Ladegeräten, Wechselrichtern, Computern und Touchscreen-Monitoren, mit persönlicher Betreuung für Unternehmen.",
     horario: "Montag bis Donnerstag, 10:00 bis 19:00 Uhr; Freitag, 10:00 bis 13:00 Uhr",
     horarioCorto: "Mo bis Do 10:00 bis 19:00 Uhr · Fr 10:00 bis 13:00 Uhr",
-    mensajeConsulta: "Guten Tag, ich möchte mich zur Reparatur eines Geräts erkundigen.",
-    mensajeCotizar: "Guten Tag, ich hätte gern ein Angebot für die Reparatur eines Geräts.",
+    mensajeConsulta: "Guten Tag, ich möchte mich nach der Reparatur eines Geräts für mein Unternehmen erkundigen.",
+    mensajeCotizar: "Guten Tag, ich möchte ein Angebot für die Reparatur eines Geräts anfragen.",
+    mensajeUrgencia: "Guten Tag, ich habe einen Notfall: Ein Gerät hat den Betrieb meines Unternehmens zum Stillstand gebracht, und ich benötige eine vorrangige Reparatur.",
     telefonoNota: "(Anrufe und WhatsApp)",
     externo: "öffnet in einem neuen Tab",
   },
@@ -47,9 +46,8 @@ export const ger: Diccionario = {
     visitenos: "Besuchen Sie uns",
   },
   pie: {
-    titulo: "Ihr Gerät lässt sich nicht einschalten?",
-    texto:
-      "Schildern Sie uns den Fehler, wir beraten Sie kostenlos. Über {anios} Jahre Erfahrung und {garantia} Monate Garantie auf jede Reparatur.",
+    titulo: "Probleme mit Ihrem Industriegerät oder Spezialgerät?",
+    texto: "Dann sind Sie bei uns richtig. Schildern Sie uns den Fehler, und wir helfen Ihnen mit persönlicher Betreuung bei der Lösung. Lassen Sie nicht zu, dass ein Gerät den Betrieb Ihres Unternehmens stoppt: Wir übernehmen Notfälle mit vorrangigen Reparaturen, auch vor Ort. Über {anios} Jahre Erfahrung und {garantia} Monate Garantie auf jede Arbeit.",
     whatsapp: "Per WhatsApp schreiben",
     llamar: "Anrufen",
     derechos: "Alle Rechte vorbehalten.",
@@ -57,10 +55,10 @@ export const ger: Diccionario = {
     linkedin: "LinkedIn",
   },
   whatsapp: { aria: "Per WhatsApp schreiben", etiqueta: "WhatsApp" },
+  urgencia: { aria: "Notfall per WhatsApp melden", etiqueta: "Ich habe einen Notfall" },
   cookies: {
     aria: "Cookie-Hinweis",
-    texto:
-      "Wir verwenden Mess-Cookies (Google Analytics und Microsoft Clarity), um zu verstehen, wie die Website genutzt wird, und sie zu verbessern. Für Werbung setzen wir sie nicht ein. Sie können zustimmen oder ablehnen.",
+    texto: "Wir verwenden Messungs-Cookies (Google Analytics und Microsoft Clarity), um zu verstehen, wie die Website genutzt wird, und sie zu verbessern. Wir setzen sie nicht zu Werbezwecken ein. Sie können sie akzeptieren oder ablehnen.",
     mas: "Mehr Informationen",
     aceptar: "Akzeptieren",
     rechazar: "Nur notwendige",
@@ -133,31 +131,32 @@ export const ger: Diccionario = {
   },
   tecnico: {
     meta: {
-      titulo: "Technischer Service für die Industrie",
-      descripcion:
-        "Diagnose und Reparatur von Platinen, I/O-Modulen, Netzteilen, Wechselrichtern und Touchscreen-Monitoren von Industrieanlagen. Fordern Sie Ihr Angebot an.",
+      titulo: "Industrieller Technikservice",
+      descripcion: "Diagnose und Reparatur auf Bauteilebene von Platinen, I/O-Modulen, Netzteilen, Wechselrichtern und industriellen Touchscreen-Monitoren. Fordern Sie Ihr Angebot an.",
     },
-    titulo: "Technischer Service für die Industrie",
-    bajada: "Diagnose und Reparatur der Elektronik von Industrieanlagen, damit sie wieder laufen.",
+    titulo: "Industrieller Technikservice",
+    bajada: "Diagnose und Reparatur der Elektronik industrieller Anlagen, damit der Betrieb in Ihrem Unternehmen zuverlässig weiterläuft.",
     alcance: {
       h: "Leistungsumfang",
       items: [
         "Technische Diagnose elektrischer und elektronischer Fehler.",
-        "Reparatur auf Bauteilebene von Platinen, I/O-Modulen, Netzteilen, Wechselrichtern und Touchscreen-Monitoren.",
+        "Reparatur auf Bauteilebene von Platinen, I/O-Modulen, Netzteilen, Wechselrichtern und industriellen Touchscreen-Monitoren.",
         "Funktionstests vor der Übergabe.",
-        "Beschaffung von Ersatzteilen, auch importierten.",
+        "Beschaffung von Ersatzteilen, auch aus dem Ausland.",
       ],
     },
     valor: {
-      h: "Ihr Nutzen",
+      h: "Ihre Vorteile",
       items: [
-        "Diagnose vor dem Angebot: Sie entscheiden mit allen Informationen.",
+        "Diagnose vor dem Angebot, damit Sie auf fachlicher Grundlage entscheiden.",
         "{garantia} Monate Garantie auf jede Reparatur.",
-        "Statusverfolgung in Phasen, damit Sie wissen, wo Ihr Gerät steht.",
+        "Statusverfolgung in Etappen, mit Einblick in den Stand jedes Geräts.",
         "Über {anios} Jahre Erfahrung in der Elektronik.",
       ],
     },
-    equipos: { h: "Geräte, die wir betreuen" },
+    equipos: {
+      h: "Geräte, die wir betreuen",
+    },
     formulario: {
       titulo: "Angebot anfordern",
       intro: "Sagen Sie uns, um welches Gerät es geht und was nicht funktioniert. Je mehr Angaben, desto genauer unsere Antwort.",
@@ -195,66 +194,98 @@ export const ger: Diccionario = {
   },
   inicio: {
     hero: {
-      kicker: "Seit über {anios} Jahren in der Elektronikreparatur",
-      titulo: "Steht Ihr Gerät still, bringen wir es wieder zum Laufen",
-      texto:
-        "Elektroniklabor, spezialisiert auf Platinen, I/O-Module, Netzteile, Wechselrichter und Touchscreen-Monitore. Professionelle Diagnose und {garantia} Monate Garantie.",
-      cotizar: "Angebot per WhatsApp",
+      kicker: "Über {anios} Jahre Erfahrung in der Industrieelektronik",
+      titulo: "Wir stellen die Elektronik wieder her, die Ihren Betrieb am Laufen hält",
+      texto: "Spezialisiertes Labor für die Reparatur von Platinen, I/O-Modulen, Netzteilen, Wechselrichtern und industriellen Touchscreen-Monitoren. Zuerst die technische Diagnose, dazu {garantia} Monate Garantie.",
+      cotizar: "Angebot per WhatsApp anfragen",
       llamar: "{telefono} anrufen",
     },
     queReparamos: {
       titulo: "Was wir reparieren",
-      texto: "Industrielle und allgemeine Elektronik, repariert bis auf Bauteilebene.",
+      texto: "Industrie-, Fahrzeug- und Medizinelektronik, repariert auf Bauteilebene.",
       ver: "Alle Leistungen ansehen",
     },
+    urgencias: {
+      titulo: "Notfallreparaturen",
+      bajada: "Lassen Sie nicht zu, dass ein Gerät den Betrieb Ihres Unternehmens stoppt. Unser Notfallservice übernimmt vorrangige Reparaturen, auch vor Ort.",
+      puntos: [
+        {
+          t: "Vorrangige Bearbeitung",
+          d: "Notfälle werden mit höchster Priorität bearbeitet, damit Ihr Betrieb so schnell wie möglich wieder läuft.",
+        },
+        {
+          t: "Reparatur vor Ort",
+          d: "Wir übernehmen Notfälle in den Räumlichkeiten Ihres Unternehmens, vorab mit unserem Team abgestimmt.",
+        },
+        {
+          t: "Persönliche Betreuung",
+          d: "Direkte, persönliche Betreuung ab der Fehlermeldung.",
+        },
+      ],
+      respaldo: "Über {anios} Jahre Erfahrung. Jede von uns ausgeführte Arbeit ist mit {garantia} Monaten Garantie abgedeckt.",
+      cta: "Notfall per WhatsApp melden",
+      llamar: "Jetzt anrufen",
+    },
     trayectoria: {
-      titulo: "{anios} Jahre Erfahrung in einer Werkstatt",
+      titulo: "{anios} Jahre Erfahrung in einem Labor",
       linkedin: "Folgen Sie uns auf LinkedIn",
       porQue: "Warum wir",
       puntos: [
-        { t: "Bewährte Erfahrung", d: "seit über {anios} Jahren in der Elektronikreparatur." },
-        { t: "Garantie", d: "{garantia} Monate auf unsere Reparaturen." },
-        { t: "Erst die Diagnose", d: "wir finden den Fehler, bevor wir ein Angebot machen." },
-        { t: "Persönliche Betreuung", d: "wir richten uns nach Ihren Anforderungen." },
+        {
+          t: "Bewährte Erfahrung",
+          d: "über {anios} Jahre in der Elektronikreparatur.",
+        },
+        {
+          t: "Garantie",
+          d: "{garantia} Monate auf jede Reparatur.",
+        },
+        {
+          t: "Erst die Diagnose",
+          d: "wir ermitteln den Fehler, bevor wir ein Angebot erstellen.",
+        },
+        {
+          t: "Persönliche Betreuung",
+          d: "wir richten uns nach den Anforderungen jedes Unternehmens.",
+        },
       ],
-      proceso: "So läuft eine Reparatur ab",
+      proceso: "So läuft unsere Reparatur ab",
     },
     ubicacion: {
-      titulo: "So finden Sie uns",
+      titulo: "Hier finden Sie uns",
       maps: "Route mit Google Maps",
       waze: "Route mit Waze",
     },
-    resenas: { titulo: "Das sagen unsere Kunden" },
-    preguntas: { titulo: "Häufig gestellte Fragen" },
+    resenas: {
+      titulo: "Das sagen unsere Kunden",
+    },
+    preguntas: {
+      titulo: "Häufige Fragen",
+    },
   },
   servicios: {
     meta: {
       titulo: "Leistungen",
-      descripcion:
-        "Reparatur von Elektronikplatinen sowie von Industrie-, Medizin- und Fahrzeuggeräten.",
+      descripcion: "Elektronikreparatur auf Bauteilebene: Platinen, I/O-Module, Netzteile, Wechselrichter, industrielle Touchscreen-Monitore sowie Fahrzeug- und Medizingeräte.",
     },
     titulo: "Leistungen",
-    bajada: "Wir betreuen elektronische Geräte aller Art, mit Schwerpunkt Industrie.",
-    solicitar: "Angebot anfordern",
+    bajada: "Spezialisierte Elektronikreparatur für Industrieanlagen, mit Fokus auf die Betriebssicherheit Ihres Unternehmens.",
+    solicitar: "Angebot anfragen",
     items: {
       tarjetas: {
         titulo: "Elektronikplatinen",
-        descripcion: "Diagnose und Reparatur aller Arten von Elektronikplatinen und Leiterplatten.",
+        descripcion: "Diagnose und Reparatur aller Arten von Elektronikplatinen auf Bauteilebene.",
       },
       industrial: {
-        titulo: "I/O-Module und Industriegeräte",
-        descripcion:
-          "Reparatur von Ein-/Ausgabemodulen und der Elektronik von Industriegeräten.",
+        titulo: "I/O-Module und Industrieelektronik",
+        descripcion: "Reparatur von Ein- und Ausgabemodulen sowie der Elektronik industrieller Anlagen.",
       },
       fuentes: {
         titulo: "Netzteile, Ladegeräte und Wechselrichter",
-        descripcion:
-          "Netzteile, Ladegeräte und Wechselrichter, repariert bis auf Bauteilebene.",
+        descripcion: "Reparatur von Netzteilen, Ladegeräten und Wechselrichtern auf Bauteilebene.",
       },
       monitores: {
         titulo: "Industrielle Touchscreen-Monitore und Displays",
-        descripcion:
-          "Reparatur industrieller Touchscreen-Monitore bzw. Bedienoberflächen (HMI) und von Displays an Industrieanlagen.",
+        descripcion: "Reparatur industrieller Touchscreen-Monitore bzw. Bedienoberflächen (HMI) und von Displays an Industrieanlagen.",
       },
       computadoras: {
         titulo: "Computer",
@@ -262,66 +293,101 @@ export const ger: Diccionario = {
       },
       otros: {
         titulo: "Weitere Industriegeräte",
-        descripcion:
-          "Fahrzeug-, Medizin- und weitere Industriegeräte. Fragen Sie uns zu Ihrem Fall.",
+        descripcion: "Fahrzeug-, Medizin- und weitere Industriegeräte. Fragen Sie uns zu Ihrem Fall.",
       },
     },
   },
   proceso: {
     meta: {
-      titulo: "Unser Ablauf",
-      descripcion:
-        "Die Phasen einer Reparatur bei Micro Wave Lab CL: Annahme, Diagnose, Angebot, Reparatur, Tests und Übergabe mit Garantie.",
+      titulo: "So arbeiten wir",
+      descripcion: "Ablauf einer Reparatur bei Micro Wave Lab CL: Annahme, Diagnose, Angebot, Reparatur, Tests und Übergabe mit Garantie.",
     },
-    titulo: "Unser Ablauf",
-    bajada:
-      "Jedes Gerät durchläuft dieselben Phasen, damit Sie immer wissen, wo Ihre Reparatur steht.",
-    notaRepuesto: "Diese Phase tritt nur ein, wenn für die Reparatur ein Ersatzteil nötig ist.",
+    titulo: "So arbeiten wir",
+    bajada: "Jedes Gerät durchläuft dieselben Etappen, damit Sie jederzeit den Stand Ihrer Reparatur kennen.",
+    notaRepuesto: "Diese Etappe entfällt, wenn kein Ersatzteil benötigt wird.",
     garantiaAntes: "Auf alle unsere Reparaturen gewähren wir ",
     garantiaNegrita: "{garantia} Monate Garantie",
     garantiaDespues: ".",
-    cta: "Zu meinem Gerät anfragen",
+    cta: "Anfrage zu einem Gerät",
     pasos: {
-      PRE_INGRESO: { etiqueta: "Anlieferung ausstehend", descripcion: "Wir haben Ihre Daten erhalten. Ihr Gerät muss noch in unserem Labor eintreffen." },
-      RECEPCION: { etiqueta: "Angenommen", descripcion: "Ihr Gerät ist in unserem Labor eingetroffen." },
-      REVISION: { etiqueta: "In Prüfung", descripcion: "Wir prüfen den Gesamtzustand des Geräts." },
-      DIAGNOSTICO: { etiqueta: "In Diagnose", descripcion: "Wir ermitteln den Fehler und seine Ursachen." },
-      PRESUPUESTO: { etiqueta: "Angebot gesendet", descripcion: "Wir haben Ihnen das Angebot zur Prüfung geschickt." },
-      DECISION_CLIENTE: { etiqueta: "Warten auf Ihre Antwort", descripcion: "Wir warten darauf, dass Sie das Angebot annehmen oder ablehnen." },
-      SOLICITUD_REPUESTO: { etiqueta: "Ersatzteil bestellt", descripcion: "Wir beschaffen ein Ersatzteil. Manche werden importiert und können länger dauern." },
-      REPARACION: { etiqueta: "In Reparatur", descripcion: "Ihr Gerät wird repariert." },
-      PRUEBAS: { etiqueta: "In Tests", descripcion: "Wir prüfen, ob das Gerät einwandfrei funktioniert." },
-      LISTO_RETIRO: { etiqueta: "Abholbereit", descripcion: "Ihr Gerät ist fertig. Sie können es abholen." },
-      ENTREGADO: { etiqueta: "Übergeben", descripcion: "Gerät übergeben. Vielen Dank für Ihr Vertrauen!" },
-      RECHAZADO: { etiqueta: "Angebot abgelehnt", descripcion: "Das Angebot wurde nicht angenommen. Das Gerät liegt zur Rückgabe bereit." },
-      SIN_REPARACION: { etiqueta: "Nicht reparierbar", descripcion: "Dieses Gerät konnte nicht repariert werden." },
+      PRE_INGRESO: {
+        etiqueta: "Wartet auf Annahme",
+        descripcion: "Ihre Daten sind erfasst. Das Gerät muss noch in unserem Labor eintreffen.",
+      },
+      RECEPCION: {
+        etiqueta: "Angenommen",
+        descripcion: "Das Gerät ist in unserem Labor eingegangen.",
+      },
+      REVISION: {
+        etiqueta: "In Prüfung",
+        descripcion: "Wir beurteilen den Gesamtzustand des Geräts.",
+      },
+      DIAGNOSTICO: {
+        etiqueta: "In Diagnose",
+        descripcion: "Wir ermitteln den Fehler und seine Ursachen.",
+      },
+      PRESUPUESTO: {
+        etiqueta: "Angebot gesendet",
+        descripcion: "Wir haben Ihnen das Angebot zur Prüfung gesendet.",
+      },
+      DECISION_CLIENTE: {
+        etiqueta: "Wartet auf Ihre Freigabe",
+        descripcion: "Wir warten auf Ihre Annahme oder Ablehnung des Angebots.",
+      },
+      SOLICITUD_REPUESTO: {
+        etiqueta: "Ersatzteil bestellt",
+        descripcion: "Wir beschaffen ein Ersatzteil. Manche werden importiert und können länger dauern.",
+      },
+      REPARACION: {
+        etiqueta: "In Reparatur",
+        descripcion: "Das Gerät wird repariert.",
+      },
+      PRUEBAS: {
+        etiqueta: "Im Test",
+        descripcion: "Wir prüfen, ob das Gerät einwandfrei funktioniert.",
+      },
+      LISTO_RETIRO: {
+        etiqueta: "Abholbereit",
+        descripcion: "Das Gerät ist fertig. Sie können die Abholung mit uns abstimmen.",
+      },
+      ENTREGADO: {
+        etiqueta: "Übergeben",
+        descripcion: "Gerät übergeben. Vielen Dank für Ihr Vertrauen.",
+      },
+      RECHAZADO: {
+        etiqueta: "Angebot abgelehnt",
+        descripcion: "Das Angebot wurde nicht angenommen. Das Gerät steht zur Rückgabe bereit.",
+      },
+      SIN_REPARACION: {
+        etiqueta: "Reparatur nicht möglich",
+        descripcion: "Eine Reparatur dieses Geräts war nicht möglich.",
+      },
     },
   },
   contacto: {
     meta: {
       titulo: "Kontakt",
-      descripcion:
-        "Kontaktieren Sie uns per Telefon oder WhatsApp oder besuchen Sie uns in der General Freire 80, La Cisterna, Santiago de Chile.",
+      descripcion: "Kontaktieren Sie uns telefonisch oder per WhatsApp oder besuchen Sie uns in der General Freire 80, La Cisterna, Santiago de Chile.",
     },
     titulo: "Kontakt",
-    bajada: "Sagen Sie uns, welches Gerät repariert werden soll, wir antworten so schnell wie möglich.",
+    bajada: "Teilen Sie uns mit, welches Gerät repariert werden soll, und wir antworten Ihnen zeitnah.",
     telefonoNota: "Anrufe, Textnachrichten und WhatsApp.",
     whatsapp: "Per WhatsApp schreiben",
     maps: "Google Maps",
     waze: "Waze",
     formulario: {
-      titulo: "Angebotsformular",
-      texto:
-        "Füllen Sie das Formular des technischen Service mit Ihrem Gerät und dem Fehler aus; WhatsApp öffnet sich mit Ihrer fertig geschriebenen Nachricht.",
+      titulo: "Angebotsanfrage",
+      texto: "Füllen Sie das Formular des technischen Service mit den Angaben zu Gerät und Fehler aus; WhatsApp öffnet sich mit Ihrer vorbereiteten Nachricht.",
       ir: "Zum Formular",
     },
   },
   portal: {
-    meta: { titulo: "Status meines Geräts" },
+    meta: {
+      titulo: "Status meines Geräts",
+    },
     titulo: "Status meines Geräts",
-    bajada:
-      "Bald können Sie sich mit Ihrer E-Mail-Adresse anmelden, um zu sehen, in welcher Phase Ihre Reparatur steht, Ihr Angebot zu prüfen und anzunehmen und online zu bezahlen.",
-    nota: "Wenn Sie bis dahin den Stand Ihres Geräts wissen möchten, schreiben Sie uns per WhatsApp mit Ihrem Namen und dem Gerät, das Sie bei uns abgegeben haben.",
+    bajada: "In Kürze können Sie sich mit Ihrer E-Mail-Adresse anmelden, um die Reparaturetappe Ihres Geräts einzusehen, Ihr Angebot zu prüfen und freizugeben und online zu bezahlen.",
+    nota: "Bis dahin erfahren Sie den Stand Ihres Geräts per WhatsApp: Nennen Sie uns Ihren Namen oder Ihr Unternehmen und das abgegebene Gerät.",
   },
   privacidad: {
     meta: {
@@ -385,27 +451,24 @@ export const ger: Diccionario = {
   },
   faq: [
     {
-      pregunta: "Welche Arten von Geräten reparieren Sie?",
-      respuesta:
-        "Wir reparieren alle Arten von Elektronikplatinen, Computern, Touchscreen-Monitoren, I/O-Modulen, Netzteilen, Ladegeräten und Wechselrichtern. Steht Ihr Gerät nicht in der Liste, fragen Sie uns per Telefon oder WhatsApp.",
+      pregunta: "Welche Geräte reparieren Sie?",
+      respuesta: "Wir reparieren Elektronikplatinen, I/O-Module, Netzteile, Ladegeräte, Wechselrichter, Computer und Touchscreen-Monitore, mit Schwerpunkt auf Industrieanlagen; auch Fahrzeug- und Medizingeräte gehören dazu. Falls Ihr Gerät nicht aufgeführt ist, fragen Sie uns telefonisch oder per WhatsApp.",
     },
     {
-      pregunta: "Gibt es Garantie auf die Reparaturen?",
-      respuesta: "Ja. Auf unsere Reparaturen gewähren wir {garantia} Monate Garantie.",
+      pregunta: "Gibt es Garantie auf Reparaturen?",
+      respuesta: "Ja. Auf alle unsere Reparaturen gewähren wir {garantia} Monate Garantie.",
     },
     {
-      pregunta: "Wie bekomme ich ein Angebot?",
-      respuesta:
-        "Zuerst prüfen und diagnostizieren wir Ihr Gerät. Mit dem Ergebnis senden wir Ihnen das Angebot, und Sie entscheiden, ob die Reparatur durchgeführt werden soll.",
+      pregunta: "Wie erhalte ich ein Angebot?",
+      respuesta: "Zunächst prüfen und diagnostizieren wir das Gerät. Auf Grundlage der Diagnose senden wir Ihnen das Angebot, und Sie entscheiden, ob die Reparatur durchgeführt werden soll.",
     },
     {
-      pregunta: "Wo finde ich Sie und wann haben Sie geöffnet?",
-      respuesta: "Sie finden uns in der {calle}, {comuna}, Santiago de Chile. Unsere Öffnungszeiten: {horario}.",
+      pregunta: "Wo befinden Sie sich und wie sind Ihre Öffnungszeiten?",
+      respuesta: "Sie finden uns in der {calle}, {comuna}. Öffnungszeiten: {horario}.",
     },
     {
-      pregunta: "Wie kann ich Sie erreichen?",
-      respuesta:
-        "Per Anruf, Textnachricht oder WhatsApp unter der Hauptnummer, die auf dieser Seite steht.",
+      pregunta: "Wie kann ich Sie kontaktieren?",
+      respuesta: "Telefonisch, per Textnachricht oder WhatsApp unter der auf dieser Seite angegebenen Hauptnummer.",
     },
   ],
 };

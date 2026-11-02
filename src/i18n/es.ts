@@ -13,18 +13,17 @@ export const es = {
     cambiarA: "Cambiar a {idioma}",
   },
   meta: {
-    titulo: "Reparación de tarjetas y equipos electrónicos",
-    descripcion:
-      "Laboratorio electrónico en La Cisterna, Santiago. Más de {anios} años reparando tarjetas electrónicas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles. {garantia} meses de garantía.",
+    titulo: "Reparación electrónica industrial",
+    descripcion: "Laboratorio de reparación electrónica industrial en La Cisterna, Santiago de Chile. Más de {anios} años reparando tarjetas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles industriales. {garantia} meses de garantía.",
   },
   comun: {
-    eslogan: "Laboratorio electrónico: reparación de tarjetas y equipos",
-    descripcionEmpresa:
-      "Prestamos servicio de laboratorio electrónico, con más de 45 años de experiencia en la reparación de todo tipo de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores. Servicio de diagnóstico, con atención personalizada y adaptándonos a sus requerimientos.",
+    eslogan: "Laboratorio de electrónica industrial: reparación de tarjetas y equipos",
+    descripcionEmpresa: "Laboratorio de electrónica industrial con más de 45 años de trayectoria. Diagnóstico y reparación a nivel de componente de tarjetas electrónicas, módulos I/O, fuentes de alimentación, cargadores, inversores, computadoras y monitores táctiles, con atención personalizada para empresas.",
     horario: "Lunes a jueves, de 10:00 a 19:00; viernes, de 10:00 a 13:00",
     horarioCorto: "Lun a jue 10:00 a 19:00 · Vie 10:00 a 13:00",
-    mensajeConsulta: "Hola, quisiera consultar por la reparación de un equipo.",
-    mensajeCotizar: "Hola, quisiera cotizar la reparación de un equipo.",
+    mensajeConsulta: "Hola, quisiera consultar por la reparación de un equipo de mi empresa.",
+    mensajeCotizar: "Hola, quisiera solicitar una cotización para la reparación de un equipo.",
+    mensajeUrgencia: "Hola, tengo una urgencia: un equipo detuvo la operación de mi empresa y necesito una reparación prioritaria.",
     telefonoNota: "(llamadas y WhatsApp)",
     externo: "se abre en otra pestaña",
   },
@@ -48,9 +47,8 @@ export const es = {
     visitenos: "Visítenos",
   },
   pie: {
-    titulo: "¿Tiene un equipo que no enciende?",
-    texto:
-      "Cuéntenos la falla y le orientamos sin costo. Más de {anios} años y {garantia} meses de garantía en cada reparación.",
+    titulo: "¿Problemas con su equipo industrial o especializado?",
+    texto: "Llegó al lugar correcto. Cuéntenos la falla que presenta y le ayudaremos a solucionarla, con atención personalizada. No deje que su equipo detenga la operación de su compañía: atendemos urgencias, con reparaciones prioritarias, incluso en sitio. Más de {anios} años de experiencia y {garantia} meses de garantía en cada trabajo.",
     whatsapp: "Escribir por WhatsApp",
     llamar: "Llamar",
     derechos: "Todos los derechos reservados.",
@@ -58,10 +56,10 @@ export const es = {
     linkedin: "LinkedIn",
   },
   whatsapp: { aria: "Escribir por WhatsApp", etiqueta: "WhatsApp" },
+  urgencia: { aria: "Reportar una urgencia por WhatsApp", etiqueta: "Tengo una urgencia" },
   cookies: {
     aria: "Aviso de cookies",
-    texto:
-      "Usamos cookies de medición (Google Analytics y Microsoft Clarity) para entender cómo se usa el sitio y mejorarlo. No las usamos para publicidad. Puede aceptar o rechazar.",
+    texto: "Utilizamos cookies de medición (Google Analytics y Microsoft Clarity) para comprender cómo se usa el sitio y mejorarlo. No las empleamos con fines publicitarios. Usted puede aceptarlas o rechazarlas.",
     mas: "Más información",
     aceptar: "Aceptar",
     rechazar: "Solo necesarias",
@@ -135,30 +133,31 @@ export const es = {
   tecnico: {
     meta: {
       titulo: "Servicio técnico industrial",
-      descripcion:
-        "Diagnóstico y reparación de tarjetas, módulos I/O, fuentes, inversores y monitores táctiles de equipos industriales. Solicite su cotización.",
+      descripcion: "Diagnóstico y reparación a nivel de componente de tarjetas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles industriales. Solicite su cotización.",
     },
     titulo: "Servicio técnico industrial",
-    bajada: "Diagnóstico y reparación de la electrónica de equipos industriales, para que vuelvan a operar.",
+    bajada: "Diagnóstico y reparación de la electrónica de equipos industriales, para recuperar la continuidad operativa de su empresa.",
     alcance: {
-      h: "Alcance",
+      h: "Alcance del servicio",
       items: [
         "Diagnóstico técnico de fallas eléctricas y electrónicas.",
-        "Reparación a nivel de componente de tarjetas, módulos I/O, fuentes, inversores y monitores táctiles.",
-        "Pruebas funcionales antes de la entrega.",
-        "Gestión de repuestos, incluidos los que se importan.",
+        "Reparación a nivel de componente de tarjetas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles industriales.",
+        "Pruebas funcionales previas a la entrega.",
+        "Gestión de repuestos, incluidos los de importación.",
       ],
     },
     valor: {
-      h: "Lo que usted gana",
+      h: "Beneficios para su empresa",
       items: [
-        "Diagnóstico antes del presupuesto: usted decide con información.",
+        "Diagnóstico previo al presupuesto, para decidir con información técnica.",
         "{garantia} meses de garantía en cada reparación.",
-        "Seguimiento por etapas, para saber en qué punto está su equipo.",
+        "Seguimiento por etapas, con visibilidad del estado de cada equipo.",
         "Más de {anios} años de experiencia en electrónica.",
       ],
     },
-    equipos: { h: "Equipos que atendemos" },
+    equipos: {
+      h: "Equipos que atendemos",
+    },
     formulario: {
       titulo: "Solicitar cotización",
       intro: "Cuéntenos qué equipo es y qué le pasa. Mientras más datos, más precisa será la respuesta.",
@@ -196,66 +195,98 @@ export const es = {
   },
   inicio: {
     hero: {
-      kicker: "Más de {anios} años reparando electrónica",
-      titulo: "Si su equipo se detuvo, lo hacemos funcionar de nuevo",
-      texto:
-        "Laboratorio electrónico especializado en tarjetas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles. Diagnóstico profesional y {garantia} meses de garantía.",
-      cotizar: "Cotizar por WhatsApp",
+      kicker: "Más de {anios} años de experiencia en electrónica industrial",
+      titulo: "Recuperamos la electrónica que mantiene operando su empresa",
+      texto: "Laboratorio especializado en la reparación de tarjetas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles industriales. Diagnóstico técnico previo y {garantia} meses de garantía.",
+      cotizar: "Solicitar cotización por WhatsApp",
       llamar: "Llamar al {telefono}",
     },
     queReparamos: {
       titulo: "Qué reparamos",
-      texto: "Electrónica industrial y de todo tipo, reparada a nivel de componente.",
+      texto: "Electrónica industrial, automotriz y médica, reparada a nivel de componente.",
       ver: "Ver todos los servicios",
     },
+    urgencias: {
+      titulo: "Reparaciones de emergencia",
+      bajada: "No deje que un equipo detenga la operación de su compañía. Contamos con un servicio de urgencias para reparaciones prioritarias, incluso en sitio.",
+      puntos: [
+        {
+          t: "Atención prioritaria",
+          d: "Las urgencias se atienden con la máxima prioridad, para restablecer su operación lo antes posible.",
+        },
+        {
+          t: "Reparación en sitio",
+          d: "Atendemos urgencias en las instalaciones de su empresa, coordinadas previamente con nuestro equipo.",
+        },
+        {
+          t: "Atención personalizada",
+          d: "Trato directo y personalizado desde el momento en que reporta la falla.",
+        },
+      ],
+      respaldo: "Más de {anios} años de experiencia. Cada trabajo que realizamos cuenta con {garantia} meses de garantía.",
+      cta: "Reportar una urgencia por WhatsApp",
+      llamar: "Llamar ahora",
+    },
     trayectoria: {
-      titulo: "{anios} años de experiencia en un solo taller",
+      titulo: "{anios} años de experiencia en un solo laboratorio",
       linkedin: "Síganos en LinkedIn",
       porQue: "Por qué elegirnos",
       puntos: [
-        { t: "Experiencia comprobada", d: "más de {anios} años reparando electrónica." },
-        { t: "Garantía", d: "{garantia} meses en nuestras reparaciones." },
-        { t: "Diagnóstico primero", d: "identificamos la falla antes de presupuestar." },
-        { t: "Atención personalizada", d: "nos adaptamos a sus requerimientos." },
+        {
+          t: "Trayectoria comprobada",
+          d: "más de {anios} años de experiencia en reparación electrónica.",
+        },
+        {
+          t: "Garantía",
+          d: "{garantia} meses en cada reparación.",
+        },
+        {
+          t: "Diagnóstico previo",
+          d: "identificamos la falla antes de emitir el presupuesto.",
+        },
+        {
+          t: "Atención personalizada",
+          d: "nos adaptamos a los requerimientos de cada empresa.",
+        },
       ],
-      proceso: "Cómo es el proceso de reparación",
+      proceso: "Conozca nuestro proceso de reparación",
     },
     ubicacion: {
       titulo: "Dónde estamos",
       maps: "Cómo llegar con Google Maps",
       waze: "Cómo llegar con Waze",
     },
-    resenas: { titulo: "Lo que dicen nuestros clientes" },
-    preguntas: { titulo: "Preguntas frecuentes" },
+    resenas: {
+      titulo: "Lo que dicen nuestros clientes",
+    },
+    preguntas: {
+      titulo: "Preguntas frecuentes",
+    },
   },
   servicios: {
     meta: {
       titulo: "Servicios",
-      descripcion:
-        "Reparación de placas electrónicas y de equipos industriales, médicos y automotrices.",
+      descripcion: "Reparación electrónica a nivel de componente: tarjetas, módulos I/O, fuentes de alimentación, inversores, monitores táctiles industriales y equipos automotrices y médicos.",
     },
     titulo: "Servicios",
-    bajada: "Atendemos equipos electrónicos de todo tipo, con foco en el área industrial.",
+    bajada: "Reparación electrónica especializada para equipos industriales, con foco en la continuidad operativa de su empresa.",
     solicitar: "Solicitar cotización",
     items: {
       tarjetas: {
         titulo: "Tarjetas electrónicas",
-        descripcion: "Diagnóstico y reparación de todo tipo de tarjetas y placas electrónicas.",
+        descripcion: "Diagnóstico y reparación a nivel de componente de todo tipo de tarjetas y placas electrónicas.",
       },
       industrial: {
-        titulo: "Módulos I/O y equipos industriales",
-        descripcion:
-          "Reparación de módulos de entrada y salida y de la electrónica de equipos industriales.",
+        titulo: "Módulos I/O y electrónica industrial",
+        descripcion: "Reparación de módulos de entrada y salida y de la electrónica de equipos industriales.",
       },
       fuentes: {
-        titulo: "Fuentes, cargadores e inversores",
-        descripcion:
-          "Fuentes de alimentación, cargadores e inversores reparados a nivel de componente.",
+        titulo: "Fuentes de alimentación, cargadores e inversores",
+        descripcion: "Reparación a nivel de componente de fuentes de alimentación, cargadores e inversores.",
       },
       monitores: {
         titulo: "Monitores táctiles y pantallas industriales",
-        descripcion:
-          "Reparación de monitores táctiles industriales o de interfaz (HMI) y de pantallas de equipos industriales.",
+        descripcion: "Reparación de monitores táctiles industriales y de interfaz (HMI), y de pantallas de equipos industriales.",
       },
       computadoras: {
         titulo: "Computadoras",
@@ -263,66 +294,101 @@ export const es = {
       },
       otros: {
         titulo: "Otros equipos industriales",
-        descripcion:
-          "Equipos automotrices, médicos y otros equipos industriales. Consúltenos por su caso.",
+        descripcion: "Equipos automotrices, médicos y otros equipos industriales. Consulte por su caso.",
       },
     },
   },
   proceso: {
     meta: {
       titulo: "Cómo trabajamos",
-      descripcion:
-        "Etapas de una reparación en Micro Wave Lab CL: recepción, diagnóstico, presupuesto, reparación, pruebas y entrega con garantía.",
+      descripcion: "Etapas de una reparación en Micro Wave Lab CL: recepción, diagnóstico, presupuesto, reparación, pruebas y entrega con garantía.",
     },
     titulo: "Cómo trabajamos",
-    bajada:
-      "Cada equipo pasa por las mismas etapas, para que usted sepa siempre en qué punto está su reparación.",
-    notaRepuesto: "Esta etapa solo ocurre si la reparación requiere un repuesto.",
-    garantiaAntes: "Todas nuestras reparaciones tienen ",
+    bajada: "Cada equipo sigue las mismas etapas, para que usted conozca en todo momento el estado de su reparación.",
+    notaRepuesto: "Esta etapa aplica solo cuando la reparación requiere un repuesto.",
+    garantiaAntes: "Todas nuestras reparaciones cuentan con ",
     garantiaNegrita: "{garantia} meses de garantía",
     garantiaDespues: ".",
-    cta: "Consultar por mi equipo",
+    cta: "Consultar por un equipo",
     pasos: {
-      PRE_INGRESO: { etiqueta: "Pendiente de recepción", descripcion: "Recibimos sus datos. Falta que su equipo llegue a nuestro laboratorio." },
-      RECEPCION: { etiqueta: "Recibido", descripcion: "Su equipo ingresó a nuestro laboratorio." },
-      REVISION: { etiqueta: "En revisión", descripcion: "Estamos revisando el estado general del equipo." },
-      DIAGNOSTICO: { etiqueta: "En diagnóstico", descripcion: "Estamos identificando la falla y sus causas." },
-      PRESUPUESTO: { etiqueta: "Presupuesto enviado", descripcion: "Le enviamos el presupuesto para su revisión." },
-      DECISION_CLIENTE: { etiqueta: "Esperando su respuesta", descripcion: "Esperamos que acepte o rechace el presupuesto." },
-      SOLICITUD_REPUESTO: { etiqueta: "Repuesto solicitado", descripcion: "Estamos gestionando un repuesto. Algunos se importan y pueden demorar." },
-      REPARACION: { etiqueta: "En reparación", descripcion: "Su equipo está siendo reparado." },
-      PRUEBAS: { etiqueta: "En pruebas", descripcion: "Verificamos que el equipo funcione correctamente." },
-      LISTO_RETIRO: { etiqueta: "Listo para retiro", descripcion: "Su equipo está listo. Puede pasar a retirarlo." },
-      ENTREGADO: { etiqueta: "Entregado", descripcion: "Equipo entregado. ¡Gracias por confiar en nosotros!" },
-      RECHAZADO: { etiqueta: "Presupuesto rechazado", descripcion: "El presupuesto no fue aceptado. El equipo queda para devolución." },
-      SIN_REPARACION: { etiqueta: "Sin reparación posible", descripcion: "No fue posible reparar este equipo." },
+      PRE_INGRESO: {
+        etiqueta: "Pendiente de recepción",
+        descripcion: "Registramos sus datos. Resta la llegada del equipo a nuestro laboratorio.",
+      },
+      RECEPCION: {
+        etiqueta: "Recibido",
+        descripcion: "El equipo ingresó a nuestro laboratorio.",
+      },
+      REVISION: {
+        etiqueta: "En revisión",
+        descripcion: "Evaluamos el estado general del equipo.",
+      },
+      DIAGNOSTICO: {
+        etiqueta: "En diagnóstico",
+        descripcion: "Identificamos la falla y sus causas.",
+      },
+      PRESUPUESTO: {
+        etiqueta: "Presupuesto enviado",
+        descripcion: "Enviamos el presupuesto para su evaluación.",
+      },
+      DECISION_CLIENTE: {
+        etiqueta: "Pendiente de su aprobación",
+        descripcion: "Aguardamos su aceptación o rechazo del presupuesto.",
+      },
+      SOLICITUD_REPUESTO: {
+        etiqueta: "Repuesto solicitado",
+        descripcion: "Gestionamos un repuesto. Algunos se importan y pueden requerir más tiempo.",
+      },
+      REPARACION: {
+        etiqueta: "En reparación",
+        descripcion: "El equipo se encuentra en reparación.",
+      },
+      PRUEBAS: {
+        etiqueta: "En pruebas",
+        descripcion: "Verificamos el correcto funcionamiento del equipo.",
+      },
+      LISTO_RETIRO: {
+        etiqueta: "Listo para retiro",
+        descripcion: "El equipo está listo. Puede coordinar su retiro con nosotros.",
+      },
+      ENTREGADO: {
+        etiqueta: "Entregado",
+        descripcion: "Equipo entregado. Gracias por confiar en nosotros.",
+      },
+      RECHAZADO: {
+        etiqueta: "Presupuesto rechazado",
+        descripcion: "El presupuesto no fue aceptado. El equipo queda disponible para su devolución.",
+      },
+      SIN_REPARACION: {
+        etiqueta: "Sin reparación posible",
+        descripcion: "No fue posible reparar este equipo.",
+      },
     },
   },
   contacto: {
     meta: {
       titulo: "Contacto",
-      descripcion:
-        "Contáctenos por teléfono, WhatsApp o visítenos en General Freire 80, La Cisterna.",
+      descripcion: "Contáctenos por teléfono o WhatsApp, o visítenos en General Freire 80, La Cisterna, Santiago de Chile.",
     },
     titulo: "Contacto",
-    bajada: "Cuéntenos qué equipo necesita reparar y le responderemos a la brevedad.",
+    bajada: "Cuéntenos qué equipo requiere reparación y le responderemos a la brevedad.",
     telefonoNota: "Llamadas, mensajes de texto y WhatsApp.",
     whatsapp: "Escribir por WhatsApp",
     maps: "Google Maps",
     waze: "Waze",
     formulario: {
-      titulo: "Formulario de cotización",
-      texto:
-        "Complete el formulario de servicio técnico con los datos de su equipo y la falla; se abre WhatsApp con su mensaje ya escrito.",
+      titulo: "Solicitud de cotización",
+      texto: "Complete el formulario de servicio técnico con los datos del equipo y de la falla; se abrirá WhatsApp con su mensaje ya redactado.",
       ir: "Ir al formulario",
     },
   },
   portal: {
-    meta: { titulo: "Seguimiento de mi equipo" },
+    meta: {
+      titulo: "Seguimiento de mi equipo",
+    },
     titulo: "Seguimiento de mi equipo",
-    bajada:
-      "Pronto podrá ingresar con su correo electrónico para ver en qué etapa está la reparación de su equipo, revisar y aceptar su presupuesto y pagar en línea.",
-    nota: "Mientras tanto, si necesita saber el estado de su equipo, escríbanos por WhatsApp indicando su nombre y el equipo que dejó.",
+    bajada: "Próximamente podrá ingresar con su correo electrónico para conocer la etapa de reparación de su equipo, revisar y aprobar su presupuesto y pagar en línea.",
+    nota: "Mientras tanto, para conocer el estado de su equipo escríbanos por WhatsApp, indicando su nombre o empresa y el equipo ingresado.",
   },
   privacidad: {
     meta: {
@@ -386,27 +452,24 @@ export const es = {
   },
   faq: [
     {
-      pregunta: "¿Qué tipo de equipos reparan?",
-      respuesta:
-        "Reparamos todo tipo de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores. Si su equipo no aparece en la lista, consúltenos por teléfono o WhatsApp.",
+      pregunta: "¿Qué equipos reparan?",
+      respuesta: "Reparamos tarjetas electrónicas, módulos I/O, fuentes de alimentación, cargadores, inversores, computadoras y monitores táctiles, con foco en equipos industriales; también equipos automotrices y médicos. Si su equipo no figura en la lista, consúltenos por teléfono o WhatsApp.",
     },
     {
       pregunta: "¿Las reparaciones tienen garantía?",
-      respuesta: "Sí. Nuestras reparaciones cuentan con {garantia} meses de garantía.",
+      respuesta: "Sí. Todas nuestras reparaciones cuentan con {garantia} meses de garantía.",
     },
     {
       pregunta: "¿Cómo solicito un presupuesto?",
-      respuesta:
-        "Primero revisamos y diagnosticamos su equipo. Con el diagnóstico le enviamos el presupuesto y usted decide si desea continuar con la reparación.",
+      respuesta: "Primero revisamos y diagnosticamos el equipo. Con el diagnóstico le enviamos el presupuesto y usted decide si desea continuar con la reparación.",
     },
     {
-      pregunta: "¿Dónde están y en qué horario atienden?",
-      respuesta: "Estamos en {calle}, {comuna}. Atendemos {horarioMin}.",
+      pregunta: "¿Dónde están y cuál es su horario de atención?",
+      respuesta: "Nos encontramos en {calle}, {comuna}. Atendemos {horarioMin}.",
     },
     {
       pregunta: "¿Cómo puedo contactarlos?",
-      respuesta:
-        "Por llamada telefónica, mensaje de texto o WhatsApp al número principal que aparece en esta página.",
+      respuesta: "Por llamada telefónica, mensaje de texto o WhatsApp, al número principal indicado en esta página.",
     },
   ],
 };

@@ -4,7 +4,7 @@
 export const empresa = {
   nombre: "Micro Wave Lab CL",
   nombreCompleto: "Electrónica Micro Wave Lab CL",
-  eslogan: "Laboratorio electrónico: reparación de tarjetas y equipos",
+  eslogan: "Laboratorio de electrónica industrial: reparación de tarjetas y equipos",
   aniosTrayectoria: 45, // "más de 45 años"
   garantiaMeses: 6,
   sitioUrl: "https://electronicamicrowavelab.cl",
@@ -26,7 +26,7 @@ export const empresa = {
     "https://www.google.com/maps?q=Electronica+Micro+Wave+Lab+-+Gral+Freire+80,+7980110+La+Cisterna,+Regi%C3%B3n+Metropolitana&ftid=0x9662dbce29a80eb9:0x6dd6336a5197aa50",
 
   descripcion:
-    "Prestamos servicio de laboratorio electrónico, con más de 45 años de experiencia en la reparación de todo tipo de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores. Servicio de diagnóstico, con atención personalizada y adaptándonos a sus requerimientos.",
+    "Laboratorio de electrónica industrial con más de 45 años de trayectoria. Diagnóstico y reparación a nivel de componente de tarjetas electrónicas, módulos I/O, fuentes de alimentación, cargadores, inversores, computadoras y monitores táctiles, con atención personalizada para empresas.",
 } as const;
 
 /** Dirección en una línea. */
@@ -50,27 +50,27 @@ export const servicios = [
     id: "tarjetas",
     titulo: "Tarjetas electrónicas",
     descripcion:
-      "Diagnóstico y reparación de todo tipo de tarjetas y placas electrónicas.",
+      "Diagnóstico y reparación a nivel de componente de todo tipo de tarjetas y placas electrónicas.",
     destacado: true,
   },
   {
     id: "industrial",
-    titulo: "Módulos I/O y equipos industriales",
+    titulo: "Módulos I/O y electrónica industrial",
     descripcion:
       "Reparación de módulos de entrada y salida y de la electrónica de equipos industriales.",
     destacado: true,
   },
   {
     id: "fuentes",
-    titulo: "Fuentes, cargadores e inversores",
+    titulo: "Fuentes de alimentación, cargadores e inversores",
     descripcion:
-      "Fuentes de alimentación, cargadores e inversores reparados a nivel de componente.",
+      "Reparación a nivel de componente de fuentes de alimentación, cargadores e inversores.",
     destacado: true,
   },
   {
     id: "monitores",
     titulo: "Monitores táctiles y pantallas industriales",
-    descripcion: "Reparación de monitores táctiles industriales o de interfaz (HMI) y de pantallas de equipos industriales.",
+    descripcion: "Reparación de monitores táctiles industriales y de interfaz (HMI), y de pantallas de equipos industriales.",
     destacado: false,
   },
   {
@@ -83,34 +83,34 @@ export const servicios = [
     id: "otros",
     titulo: "Otros equipos industriales",
     descripcion:
-      "Equipos automotrices, médicos y otros equipos industriales. Consúltenos por su caso.",
+      "Equipos automotrices, médicos y otros equipos industriales. Consulte por su caso.",
     destacado: false,
   },
 ] as const;
 
 export const preguntasFrecuentes = [
   {
-    pregunta: "¿Qué tipo de equipos reparan?",
+    pregunta: "¿Qué equipos reparan?",
     respuesta:
-      "Reparamos todo tipo de tarjetas electrónicas, computadoras, monitores táctiles, módulos I/O, fuentes de alimentación, cargadores e inversores. Si su equipo no aparece en la lista, consúltenos por teléfono o WhatsApp.",
+      "Reparamos tarjetas electrónicas, módulos I/O, fuentes de alimentación, cargadores, inversores, computadoras y monitores táctiles, con foco en equipos industriales; también equipos automotrices y médicos. Si su equipo no figura en la lista, consúltenos por teléfono o WhatsApp.",
   },
   {
     pregunta: "¿Las reparaciones tienen garantía?",
-    respuesta: `Sí. Nuestras reparaciones cuentan con ${empresa.garantiaMeses} meses de garantía.`,
+    respuesta: `Sí. Todas nuestras reparaciones cuentan con ${empresa.garantiaMeses} meses de garantía.`,
   },
   {
     pregunta: "¿Cómo solicito un presupuesto?",
     respuesta:
-      "Primero revisamos y diagnosticamos su equipo. Con el diagnóstico le enviamos el presupuesto y usted decide si desea continuar con la reparación.",
+      "Primero revisamos y diagnosticamos el equipo. Con el diagnóstico le enviamos el presupuesto y usted decide si desea continuar con la reparación.",
   },
   {
-    pregunta: "¿Dónde están y en qué horario atienden?",
-    respuesta: `Estamos en ${empresa.direccionCalle}, ${empresa.comuna}. Atendemos ${empresa.horario.toLowerCase()}.`,
+    pregunta: "¿Dónde están y cuál es su horario de atención?",
+    respuesta: `Nos encontramos en ${empresa.direccionCalle}, ${empresa.comuna}. Atendemos ${empresa.horario.toLowerCase()}.`,
   },
   {
     pregunta: "¿Cómo puedo contactarlos?",
     respuesta:
-      "Por llamada telefónica, mensaje de texto o WhatsApp al número principal que aparece en esta página.",
+      "Por llamada telefónica, mensaje de texto o WhatsApp, al número principal indicado en esta página.",
   },
 ] as const;
 

@@ -141,6 +141,7 @@ DATOS DEL NEGOCIO (tu única fuente de información):
 - Dirección: ${empresa.direccionCalle}, ${empresa.comuna}. Horario: ${empresa.horario}.
 - Teléfono y WhatsApp: ${empresa.telefono}.
 - El foco es todo a nivel industrial. También se atienden equipos automotrices y médicos. NO se reparan equipos domésticos.
+- Se atienden urgencias con reparaciones prioritarias, incluso en sitio (en las instalaciones del cliente), coordinadas con el equipo por WhatsApp o teléfono. No prometas tiempos de llegada.
 - Proceso: recepción del equipo, diagnóstico, presupuesto, aprobación del cliente, reparación, pruebas y entrega con garantía. Se diagnostica primero y el cliente decide si continúa con la reparación.
 - Servicios:
 ${lista}

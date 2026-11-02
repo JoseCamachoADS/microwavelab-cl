@@ -2,7 +2,7 @@
 
 Portal web profesional de **Micro Wave Lab CL**, servicio técnico especializado en reparación de placas electrónicas y equipos electrónicos (el foco es todo a nivel industrial; también equipos automotrices, médicos y otros equipos industriales; no se atienden equipos domésticos). Chile. **Más de 45 años de trayectoria. 6 meses de garantía en las reparaciones.**
 
-Idioma de la interfaz y del contenido: **español de Chile**. Moneda: CLP. Zona horaria: America/Santiago.
+Idioma de la interfaz y del contenido: **español neutro y formal (trato de usted), tono corporativo B2B para empresas**; el inglés y el alemán siguen el mismo registro (negocios / Sie). No inventar cifras, certificaciones ni promesas. Moneda: CLP. Zona horaria: America/Santiago.
 
 ## Tres partes en un solo proyecto (Next.js)
 
