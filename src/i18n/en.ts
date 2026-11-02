@@ -12,8 +12,8 @@ export const en: Diccionario = {
     cambiarA: "Switch to {idioma}",
   },
   meta: {
-    titulo: "Industrial electronics repair",
-    descripcion: "Industrial electronics repair laboratory in La Cisterna, Santiago, Chile. Over {anios} years repairing electronic boards, I/O modules, power supplies, inverters and industrial touch-screen monitors. {garantia}-month warranty.",
+    titulo: "Industrial electronic board repair",
+    descripcion: "Industrial electronic board repair in Santiago, Chile: I/O modules, power supplies, inverters and touch-screen monitors. Over {anios} years of experience and a {garantia}-month warranty.",
   },
   comun: {
     eslogan: "Industrial electronics laboratory: board and equipment repair",
@@ -195,7 +195,7 @@ export const en: Diccionario = {
   inicio: {
     hero: {
       kicker: "Over {anios} years of experience in industrial electronics",
-      titulo: "We restore the electronics that keep your operation running",
+      titulo: "Industrial electronic board repair, so your operation never stops",
       texto: "Laboratory specialized in the repair of boards, I/O modules, power supplies, inverters and industrial touch-screen monitors. Technical diagnosis first and a {garantia}-month warranty.",
       cotizar: "Request a quote on WhatsApp",
       llamar: "Call {telefono}",
@@ -215,7 +215,7 @@ export const en: Diccionario = {
         },
         {
           t: "On-site repairs",
-          d: "We attend emergencies at your company's facilities, arranged in advance with our team.",
+          d: "We attend emergencies at your company's facilities in the Santiago Metropolitan Region; in other regions of Chile, by prior arrangement.",
         },
         {
           t: "Personalized attention",
@@ -285,7 +285,7 @@ export const en: Diccionario = {
       },
       monitores: {
         titulo: "Industrial touch-screen monitors and displays",
-        descripcion: "Repair of industrial and interface (HMI) touch-screen monitors and of displays on industrial equipment.",
+        descripcion: "Repair of industrial and interface (HMI) touch-screen monitors and of displays on industrial equipment, such as those of compressors.",
       },
       computadoras: {
         titulo: "Computers",
@@ -469,6 +469,11 @@ export const en: Diccionario = {
     {
       pregunta: "How can I contact you?",
       respuesta: "By phone call, text message or WhatsApp, at the main number shown on this page.",
+    },
+    {
+      pregunta: "Do you serve areas outside Santiago?",
+      respuesta:
+        "Our coverage is the Santiago Metropolitan Region. By prior arrangement we can also serve other regions of Chile; contact us by WhatsApp or phone.",
     },
   ],
 };

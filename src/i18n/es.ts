@@ -13,8 +13,8 @@ export const es = {
     cambiarA: "Cambiar a {idioma}",
   },
   meta: {
-    titulo: "Reparación electrónica industrial",
-    descripcion: "Laboratorio de reparación electrónica industrial en La Cisterna, Santiago de Chile. Más de {anios} años reparando tarjetas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles industriales. {garantia} meses de garantía.",
+    titulo: "Reparación de tarjetas electrónicas industriales",
+    descripcion: "Reparación de tarjetas electrónicas industriales en Santiago de Chile: módulos I/O, fuentes de alimentación, inversores y monitores táctiles. Más de {anios} años de experiencia y {garantia} meses de garantía.",
   },
   comun: {
     eslogan: "Laboratorio de electrónica industrial: reparación de tarjetas y equipos",
@@ -196,7 +196,7 @@ export const es = {
   inicio: {
     hero: {
       kicker: "Más de {anios} años de experiencia en electrónica industrial",
-      titulo: "Recuperamos la electrónica que mantiene operando su empresa",
+      titulo: "Reparación de tarjetas electrónicas industriales para que su operación no se detenga",
       texto: "Laboratorio especializado en la reparación de tarjetas, módulos I/O, fuentes de alimentación, inversores y monitores táctiles industriales. Diagnóstico técnico previo y {garantia} meses de garantía.",
       cotizar: "Solicitar cotización por WhatsApp",
       llamar: "Llamar al {telefono}",
@@ -216,7 +216,7 @@ export const es = {
         },
         {
           t: "Reparación en sitio",
-          d: "Atendemos urgencias en las instalaciones de su empresa, coordinadas previamente con nuestro equipo.",
+          d: "Atendemos urgencias en las instalaciones de su empresa en la Región Metropolitana; en otras regiones de Chile, con coordinación previa.",
         },
         {
           t: "Atención personalizada",
@@ -286,7 +286,7 @@ export const es = {
       },
       monitores: {
         titulo: "Monitores táctiles y pantallas industriales",
-        descripcion: "Reparación de monitores táctiles industriales y de interfaz (HMI), y de pantallas de equipos industriales.",
+        descripcion: "Reparación de monitores táctiles industriales y de interfaz (HMI), y de pantallas de equipos industriales, como las de compresores.",
       },
       computadoras: {
         titulo: "Computadoras",
@@ -470,6 +470,11 @@ export const es = {
     {
       pregunta: "¿Cómo puedo contactarlos?",
       respuesta: "Por llamada telefónica, mensaje de texto o WhatsApp, al número principal indicado en esta página.",
+    },
+    {
+      pregunta: "¿Atienden fuera de Santiago?",
+      respuesta:
+        "Nuestra cobertura es la Región Metropolitana. Con coordinación previa también podemos atender en otras regiones de Chile; consúltenos por WhatsApp o teléfono.",
     },
   ],
 };

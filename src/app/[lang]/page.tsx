@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const lang = await idiomaDe(params);
   const d = obtenerDiccionario(lang);
   // El título de la portada es el predeterminado del layout.
-  return { ...metaPagina(lang, "/", `${empresa.nombre} | ${d.meta.titulo}`), title: { absolute: `${empresa.nombre} | ${d.meta.titulo}` } };
+  return { ...metaPagina(lang, "/", `${d.meta.titulo} | ${empresa.nombre}`), title: { absolute: `${d.meta.titulo} | ${empresa.nombre}` } };
 }
 
 export default async function Inicio({ params }: Props) {
@@ -59,7 +59,7 @@ export default async function Inicio({ params }: Props) {
             <p className="anim-texto font-titulo text-lg font-semibold text-peri">
               {fmt(h.hero.kicker, v)}
             </p>
-            <h1 className="anim-texto anim-texto-2 mt-4 font-titulo text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl">
+            <h1 className="anim-texto anim-texto-2 mt-4 font-titulo text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
               {h.hero.titulo}
             </h1>
             <p className="anim-texto anim-texto-3 mt-6 max-w-xl text-lg text-white/85">

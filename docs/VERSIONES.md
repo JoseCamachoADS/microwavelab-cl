@@ -12,7 +12,22 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
-## v1.12.2: Botón flotante de urgencias (02-11-2026)
+## v1.13.0: Posicionamiento en buscadores (02-11-2026)
+
+### Qué cambió
+- **Título de la portada** con la palabra clave primero: "Reparación de tarjetas electrónicas industriales | Micro Wave Lab CL" (en inglés y alemán equivalentes). Descripción nueva con Santiago, módulos I/O, fuentes, inversores y monitores táctiles.
+- **H1 de la portada** con la palabra clave: "Reparación de tarjetas electrónicas industriales para que su operación no se detenga".
+- **Datos para Google (LocalBusiness)**: se agregan logo, imagen, mapa, zona de servicio (Región Metropolitana y Chile), temas de especialidad y catálogo de servicios.
+- **Cobertura**: nueva pregunta frecuente "¿Atienden fuera de Santiago?" (Región Metropolitana; otras regiones con coordinación previa) y la sección de emergencias aclara la zona. El asistente lo sabe.
+- **Monitores táctiles y pantallas industriales** menciona las pantallas de compresores (caso real de LinkedIn: cambio de pantalla táctil de un compresor Delcos XL).
+- Pendiente (necesita información del técnico): páginas por servicio con marcas, equipos y fallas típicas.
+
+### Para después de publicar
+Search Console: verificar el dominio (DNS) y enviar `/sitemap.xml`; Bing Webmaster Tools; revisar la ficha de Google Business Profile (categoría, servicios, horario, descripción).
+
+---
+
+: Botón flotante de urgencias (02-11-2026)
 
 - **Botón con rayo "Tengo una urgencia"**, fijo en todas las páginas, justo sobre el botón de WhatsApp (rojo corporativo con borde blanco; en pantallas angostas solo el rayo). Al pulsarlo abre WhatsApp con el mensaje de urgencia ya escrito, igual que el botón "Reportar una urgencia por WhatsApp" de la portada. Cuenta como clic de WhatsApp en Analytics. En español, inglés y alemán.
 

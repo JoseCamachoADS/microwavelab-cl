@@ -70,7 +70,7 @@ export const servicios = [
   {
     id: "monitores",
     titulo: "Monitores táctiles y pantallas industriales",
-    descripcion: "Reparación de monitores táctiles industriales y de interfaz (HMI), y de pantallas de equipos industriales.",
+    descripcion: "Reparación de monitores táctiles industriales y de interfaz (HMI), y de pantallas de equipos industriales, como las de compresores.",
     destacado: false,
   },
   {
@@ -111,6 +111,11 @@ export const preguntasFrecuentes = [
     pregunta: "¿Cómo puedo contactarlos?",
     respuesta:
       "Por llamada telefónica, mensaje de texto o WhatsApp, al número principal indicado en esta página.",
+  },
+  {
+    pregunta: "¿Atienden fuera de Santiago?",
+    respuesta:
+      "Nuestra cobertura es la Región Metropolitana. Con coordinación previa también podemos atender en otras regiones de Chile; consúltenos por WhatsApp o teléfono.",
   },
 ] as const;
 

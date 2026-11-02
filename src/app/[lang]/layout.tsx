@@ -14,7 +14,7 @@ import { idiomaDe, variables } from "@/i18n/servidor";
 import { fmt } from "@/i18n/config";
 import { hayGemini, leerAsistente, saludoPersonalizado } from "@/lib/asistente";
 import { leerAviso, textoAviso } from "@/lib/aviso";
-import { empresa } from "@/lib/empresa";
+import { empresa, servicios } from "@/lib/empresa";
 import { datoPublico, enlaceWhatsApp } from "@/lib/utilidades";
 
 const titulo = Chakra_Petch({
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return {
     metadataBase: new URL(empresa.sitioUrl),
     title: {
-      default: `${empresa.nombre} | ${d.meta.titulo}`,
+      default: `${d.meta.titulo} | ${empresa.nombre}`,
       template: `%s | ${empresa.nombre}`,
     },
     description: fmt(d.meta.descripcion, variables(d)),
@@ -74,7 +74,23 @@ function datosEstructurados(descripcion: string, url: string) {
     name: empresa.nombreCompleto,
     description: descripcion,
     url,
+    logo: `${empresa.sitioUrl}/logo/logo-color-640.png`,
+    image: `${empresa.sitioUrl}/logo/logo-color-960.png`,
+    hasMap: empresa.urlGoogle,
     telephone: empresa.telefono,
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Región Metropolitana de Santiago" },
+      { "@type": "Country", name: "Chile" },
+    ],
+    knowsAbout: servicios.map((s) => s.titulo),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Servicios de reparación electrónica industrial",
+      itemListElement: servicios.map((s) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: s.titulo, description: s.descripcion },
+      })),
+    },
     ...(correo ? { email: correo } : {}),
     address: {
       "@type": "PostalAddress",

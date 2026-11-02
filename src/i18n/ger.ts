@@ -12,8 +12,8 @@ export const ger: Diccionario = {
     cambiarA: "Wechseln zu {idioma}",
   },
   meta: {
-    titulo: "Industrielle Elektronikreparatur",
-    descripcion: "Elektroniklabor für industrielle Reparaturen in La Cisterna, Santiago de Chile. Seit über {anios} Jahren Reparatur von Elektronikplatinen, I/O-Modulen, Netzteilen, Wechselrichtern und industriellen Touchscreen-Monitoren. {garantia} Monate Garantie.",
+    titulo: "Reparatur industrieller Elektronikplatinen",
+    descripcion: "Reparatur industrieller Elektronikplatinen in Santiago de Chile: I/O-Module, Netzteile, Wechselrichter und Touchscreen-Monitore. Über {anios} Jahre Erfahrung und {garantia} Monate Garantie.",
   },
   comun: {
     eslogan: "Labor für Industrieelektronik: Reparatur von Platinen und Geräten",
@@ -195,7 +195,7 @@ export const ger: Diccionario = {
   inicio: {
     hero: {
       kicker: "Über {anios} Jahre Erfahrung in der Industrieelektronik",
-      titulo: "Wir stellen die Elektronik wieder her, die Ihren Betrieb am Laufen hält",
+      titulo: "Reparatur industrieller Elektronikplatinen, damit Ihr Betrieb nicht stillsteht",
       texto: "Spezialisiertes Labor für die Reparatur von Platinen, I/O-Modulen, Netzteilen, Wechselrichtern und industriellen Touchscreen-Monitoren. Zuerst die technische Diagnose, dazu {garantia} Monate Garantie.",
       cotizar: "Angebot per WhatsApp anfragen",
       llamar: "{telefono} anrufen",
@@ -215,7 +215,7 @@ export const ger: Diccionario = {
         },
         {
           t: "Reparatur vor Ort",
-          d: "Wir übernehmen Notfälle in den Räumlichkeiten Ihres Unternehmens, vorab mit unserem Team abgestimmt.",
+          d: "Wir übernehmen Notfälle in den Räumlichkeiten Ihres Unternehmens in der Metropolregion Santiago; in anderen Regionen Chiles nach vorheriger Absprache.",
         },
         {
           t: "Persönliche Betreuung",
@@ -285,7 +285,7 @@ export const ger: Diccionario = {
       },
       monitores: {
         titulo: "Industrielle Touchscreen-Monitore und Displays",
-        descripcion: "Reparatur industrieller Touchscreen-Monitore bzw. Bedienoberflächen (HMI) und von Displays an Industrieanlagen.",
+        descripcion: "Reparatur industrieller Touchscreen-Monitore bzw. Bedienoberflächen (HMI) und von Displays an Industrieanlagen, etwa von Kompressoren.",
       },
       computadoras: {
         titulo: "Computer",
@@ -469,6 +469,11 @@ export const ger: Diccionario = {
     {
       pregunta: "Wie kann ich Sie kontaktieren?",
       respuesta: "Telefonisch, per Textnachricht oder WhatsApp unter der auf dieser Seite angegebenen Hauptnummer.",
+    },
+    {
+      pregunta: "Betreuen Sie auch Kunden außerhalb von Santiago?",
+      respuesta:
+        "Unser Einsatzgebiet ist die Metropolregion Santiago. Nach vorheriger Absprache können wir auch in anderen Regionen Chiles tätig werden; fragen Sie uns per WhatsApp oder Telefon.",
     },
   ],
 };
