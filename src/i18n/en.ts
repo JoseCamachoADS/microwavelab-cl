@@ -39,6 +39,7 @@ export const en: Diccionario = {
     privacidad: "Privacy and cookies",
     menuAbrir: "Open menu",
     menuCerrar: "Close menu",
+    multimedia: "Media",
     inicioDe: "{nombre}, home",
     pie: "Footer",
     sitio: "The site",
@@ -77,7 +78,38 @@ export const en: Diccionario = {
     notaIdioma: "Reviews are shown in the language in which they were written.",
   },
   mapa: { titulo: "Location map of {nombre}" },
-  clientes: { titulo: "Companies that trust us" },
+  clientes: { titulo: "Companies that trust us", pausar: "Pause the film strip", reanudar: "Resume the film strip" },
+  multimedia: {
+    meta: {
+      titulo: "Media",
+      descripcion: "Photos of electronic repairs in our laboratory and Micro Wave Lab CL posts on LinkedIn.",
+    },
+    titulo: "Media",
+    bajada: "Real repairs from our laboratory and the news we post on LinkedIn.",
+    fotos: {
+      h: "Repairs in our laboratory",
+      intro: "Real diagnostic and repair work. Tap a photo to see it larger.",
+      vacio: "We are preparing the repair gallery. In the meantime, you can follow our news on LinkedIn.",
+      todas: "All",
+      filtro: "Filter by equipment type",
+      ampliar: "Enlarge photo: {texto}",
+      cerrar: "Close",
+      anterior: "Previous",
+      siguiente: "Next",
+      contador: "{n} of {total}",
+    },
+    linkedin: {
+      h: "LinkedIn posts",
+      intro: "The latest we share as a company: jobs, equipment and laboratory news.",
+      cargar: "View post here",
+      aviso: "When you view it here, LinkedIn may store data from your browser. If you prefer, open it directly on LinkedIn.",
+      abrir: "Open on LinkedIn",
+      verTodas: "See all posts on LinkedIn",
+      tituloPublicacion: "LinkedIn post",
+      mas: "More posts",
+      publicacionN: "Post {n} on LinkedIn",
+    },
+  },
   tecnico: {
     meta: {
       titulo: "Industrial technical service",
@@ -306,6 +338,10 @@ export const en: Diccionario = {
     traduccion: {
       h: "Form and translation",
       p: "If you write in English or German, the text describing the fault is sent to the Google Cloud Translation service to be translated into Spanish before WhatsApp opens, because our team works in Spanish. The text is not stored on this site.",
+    },
+    multimedia: {
+      h: "Media and LinkedIn",
+      p: "The repair photos are hosted on this site. LinkedIn posts only load if you press the button on each one; at that moment LinkedIn may receive data from your browser and store cookies, according to its own privacy policy.",
     },
     seguridad: {
       h: "Form security",

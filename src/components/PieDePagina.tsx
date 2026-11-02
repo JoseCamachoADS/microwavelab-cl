@@ -10,6 +10,7 @@ import {
   enlaceWaze,
   logosExternos,
 } from "@/lib/empresa";
+import { hayMultimedia } from "@/lib/galeria";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
 import ContadorVisitas from "./ContadorVisitas";
 import EnlaceRed from "./EnlaceRed";
@@ -29,6 +30,7 @@ export default function PieDePagina({ lang }: { lang: Idioma }) {
     { href: ruta(lang, "/servicios"), texto: d.nav.servicios },
     { href: ruta(lang, "/servicio-tecnico"), texto: d.tecnico.titulo },
     { href: ruta(lang, "/proceso"), texto: d.nav.proceso },
+    ...(hayMultimedia ? [{ href: ruta(lang, "/multimedia"), texto: d.nav.multimedia }] : []),
     { href: ruta(lang, "/#trayectoria"), texto: d.nav.trayectoria },
     { href: ruta(lang, "/#preguntas"), texto: d.nav.preguntasLarga },
     { href: ruta(lang, "/contacto"), texto: d.nav.contacto },

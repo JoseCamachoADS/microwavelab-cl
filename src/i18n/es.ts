@@ -40,6 +40,7 @@ export const es = {
     privacidad: "Privacidad y cookies",
     menuAbrir: "Abrir menú",
     menuCerrar: "Cerrar menú",
+    multimedia: "Multimedia",
     inicioDe: "{nombre}, inicio",
     pie: "Pie de página",
     sitio: "El sitio",
@@ -78,7 +79,38 @@ export const es = {
     notaIdioma: "",
   },
   mapa: { titulo: "Mapa de ubicación de {nombre}" },
-  clientes: { titulo: "Empresas que confían en nosotros" },
+  clientes: { titulo: "Empresas que confían en nosotros", pausar: "Pausar la cinta", reanudar: "Reanudar la cinta" },
+  multimedia: {
+    meta: {
+      titulo: "Multimedia",
+      descripcion: "Fotos de reparaciones electrónicas en nuestro laboratorio y publicaciones de Micro Wave Lab CL en LinkedIn.",
+    },
+    titulo: "Multimedia",
+    bajada: "Reparaciones reales de nuestro laboratorio y las novedades que publicamos en LinkedIn.",
+    fotos: {
+      h: "Reparaciones en nuestro laboratorio",
+      intro: "Trabajos reales de diagnóstico y reparación. Toque una foto para verla más grande.",
+      vacio: "Estamos preparando la galería de reparaciones. Mientras tanto, puede ver nuestras novedades en LinkedIn.",
+      todas: "Todas",
+      filtro: "Filtrar por tipo de equipo",
+      ampliar: "Ampliar foto: {texto}",
+      cerrar: "Cerrar",
+      anterior: "Anterior",
+      siguiente: "Siguiente",
+      contador: "{n} de {total}",
+    },
+    linkedin: {
+      h: "Publicaciones en LinkedIn",
+      intro: "Lo último que compartimos como empresa: trabajos, equipos y novedades del laboratorio.",
+      cargar: "Ver publicación aquí",
+      aviso: "Al verla aquí, LinkedIn puede guardar datos de su navegador. Si prefiere, ábrala directamente en LinkedIn.",
+      abrir: "Abrir en LinkedIn",
+      verTodas: "Ver todas las publicaciones en LinkedIn",
+      tituloPublicacion: "Publicación de LinkedIn",
+      mas: "Más publicaciones",
+      publicacionN: "Publicación {n} en LinkedIn",
+    },
+  },
   tecnico: {
     meta: {
       titulo: "Servicio técnico industrial",
@@ -307,6 +339,10 @@ export const es = {
     traduccion: {
       h: "Formulario y traducción",
       p: "Si usted escribe en inglés o alemán, el texto de la falla se envía al servicio Google Cloud Translation para traducirlo al español antes de abrir WhatsApp, porque nuestro equipo atiende en español. El texto no se guarda en este sitio.",
+    },
+    multimedia: {
+      h: "Multimedia y LinkedIn",
+      p: "Las fotos de reparaciones están alojadas en este sitio. Las publicaciones de LinkedIn solo se cargan si usted pulsa el botón de cada una; en ese momento LinkedIn puede recibir datos de su navegador y guardar cookies, según su propia política de privacidad.",
     },
     seguridad: {
       h: "Seguridad del formulario",

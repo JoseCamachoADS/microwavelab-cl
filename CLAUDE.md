@@ -175,3 +175,9 @@ Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administra
 - Todo servicio externo nuevo debe registrarse con `registrarUso()` (`src/lib/uso-api.ts`) y agregarse a `SERVICIOS`. Nunca registrar datos de personas (IP, textos, correos).
 - `/uso` y `/api/uso` muestran el consumo; se protegen con `USO_API_TOKEN`. Pasarán al panel del administrador.
 - Tope mensual de traducción: `LIMITE_TRADUCCION_CARACTERES_MES` (por defecto 400000).
+
+## Multimedia y cinta de empresas (v1.7.0)
+
+- `/multimedia`: fotos en `public/galeria/` y publicaciones de LinkedIn, todo registrado en `src/lib/galeria.ts` (fotos con texto en es/en/ger; publicaciones por `urn:li:share:...`). El menú, el pie y el sitemap muestran el enlace solo si hay contenido (`hayMultimedia`).
+- LinkedIn nunca se carga sin que la persona pulse el botón (`PublicacionesLinkedIn.tsx`); no agregar scripts de LinkedIn al cargar la página. No se puede leer LinkedIn de forma automática.
+- Cinta de clientes: `CintaClientes.tsx` + clases `.cinta*` en `globals.css`. Cada cuadro mide 13 rem + 2 rem de separación = 8 perforaciones de 1,875 rem; si se cambia una medida, mantener ese múltiplo o la cinta salta al repetirse. Debe poder pausarse y respetar "reducir movimiento".

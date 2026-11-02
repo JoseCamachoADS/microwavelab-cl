@@ -39,6 +39,7 @@ export const ger: Diccionario = {
     privacidad: "Datenschutz und Cookies",
     menuAbrir: "Menü öffnen",
     menuCerrar: "Menü schließen",
+    multimedia: "Medien",
     inicioDe: "{nombre}, Startseite",
     pie: "Fußzeile",
     sitio: "Die Website",
@@ -77,7 +78,38 @@ export const ger: Diccionario = {
     notaIdioma: "Die Bewertungen werden in der Sprache angezeigt, in der sie verfasst wurden.",
   },
   mapa: { titulo: "Standortkarte von {nombre}" },
-  clientes: { titulo: "Unternehmen, die uns vertrauen" },
+  clientes: { titulo: "Unternehmen, die uns vertrauen", pausar: "Filmstreifen anhalten", reanudar: "Filmstreifen fortsetzen" },
+  multimedia: {
+    meta: {
+      titulo: "Medien",
+      descripcion: "Fotos elektronischer Reparaturen in unserem Labor und Beiträge von Micro Wave Lab CL auf LinkedIn.",
+    },
+    titulo: "Medien",
+    bajada: "Echte Reparaturen aus unserem Labor und die Neuigkeiten, die wir auf LinkedIn veröffentlichen.",
+    fotos: {
+      h: "Reparaturen in unserem Labor",
+      intro: "Echte Diagnose- und Reparaturarbeiten. Tippen Sie auf ein Foto, um es größer zu sehen.",
+      vacio: "Wir bereiten die Reparaturgalerie vor. In der Zwischenzeit finden Sie unsere Neuigkeiten auf LinkedIn.",
+      todas: "Alle",
+      filtro: "Nach Gerätetyp filtern",
+      ampliar: "Foto vergrößern: {texto}",
+      cerrar: "Schließen",
+      anterior: "Zurück",
+      siguiente: "Weiter",
+      contador: "{n} von {total}",
+    },
+    linkedin: {
+      h: "LinkedIn-Beiträge",
+      intro: "Das Neueste, das wir als Unternehmen teilen: Arbeiten, Geräte und Neuigkeiten aus dem Labor.",
+      cargar: "Beitrag hier ansehen",
+      aviso: "Wenn Sie ihn hier ansehen, kann LinkedIn Daten Ihres Browsers speichern. Öffnen Sie ihn auf Wunsch direkt auf LinkedIn.",
+      abrir: "Auf LinkedIn öffnen",
+      verTodas: "Alle Beiträge auf LinkedIn ansehen",
+      tituloPublicacion: "LinkedIn-Beitrag",
+      mas: "Weitere Beiträge",
+      publicacionN: "Beitrag {n} auf LinkedIn",
+    },
+  },
   tecnico: {
     meta: {
       titulo: "Technischer Service für die Industrie",
@@ -306,6 +338,10 @@ export const ger: Diccionario = {
     traduccion: {
       h: "Formular und Übersetzung",
       p: "Wenn Sie auf Englisch oder Deutsch schreiben, wird der Text zur Fehlerbeschreibung an den Dienst Google Cloud Translation gesendet und ins Spanische übersetzt, bevor sich WhatsApp öffnet, da unser Team auf Spanisch arbeitet. Der Text wird auf dieser Website nicht gespeichert.",
+    },
+    multimedia: {
+      h: "Medien und LinkedIn",
+      p: "Die Reparaturfotos werden auf dieser Website gehostet. LinkedIn-Beiträge werden nur geladen, wenn Sie die Schaltfläche des jeweiligen Beitrags drücken; in diesem Moment kann LinkedIn Daten Ihres Browsers erhalten und Cookies speichern, gemäß der eigenen Datenschutzerklärung.",
     },
     seguridad: {
       h: "Sicherheit des Formulars",

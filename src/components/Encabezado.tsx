@@ -3,6 +3,7 @@ import Link from "next/link";
 import { fmt, ruta, type Idioma } from "@/i18n/config";
 import { obtenerDiccionario } from "@/i18n";
 import { empresa } from "@/lib/empresa";
+import { hayMultimedia } from "@/lib/galeria";
 import BarraSuperior from "./BarraSuperior";
 import MenuMovil from "./MenuMovil";
 import SelectorDeIdioma from "./SelectorDeIdioma";
@@ -12,6 +13,7 @@ export default function Encabezado({ lang }: { lang: Idioma }) {
   const enlaces = [
     { href: ruta(lang, "/servicios"), texto: d.nav.servicios },
     { href: ruta(lang, "/proceso"), texto: d.nav.proceso },
+    ...(hayMultimedia ? [{ href: ruta(lang, "/multimedia"), texto: d.nav.multimedia }] : []),
     { href: ruta(lang, "/#trayectoria"), texto: d.nav.trayectoria },
     { href: ruta(lang, "/#preguntas"), texto: d.nav.preguntas },
     { href: ruta(lang, "/contacto"), texto: d.nav.contacto },

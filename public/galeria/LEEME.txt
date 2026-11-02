@@ -1,0 +1,5 @@
+Fotos de reparaciones para la sección Multimedia.
+
+1. Copie aquí las fotos (JPG, 1600 px de ancho como máximo, idealmente menos de 1,5 MB cada una).
+2. Regístrelas en src/lib/galeria.ts.
+3. No incluya datos de clientes (placas con nombre, rótulos, pantallas con información) ni personas sin su permiso.

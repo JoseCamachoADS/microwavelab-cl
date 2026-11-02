@@ -12,6 +12,51 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.7.1: Primeras fotos y publicaciones de LinkedIn (01-11-2026)
+
+### Qué cambió
+- **6 fotos de reparaciones** registradas en `src/lib/galeria.ts` (tarjetas, fuente de alimentación y equipo industrial), con descripción en español, inglés y alemán. Se copiaron con nombres limpios (`/galeria/tarjeta-control-modulo-potencia.jpg`, etc.), porque los nombres de WhatsApp tienen espacios y paréntesis.
+- **3 publicaciones de LinkedIn incrustadas** (`urn:li:ugcPost:...` y `urn:li:share:...`), con carga solo al pulsar el botón.
+- **10 publicaciones más como tarjetas con enlace**: LinkedIn no permite insertar algunas publicaciones en otros sitios, así que se muestran en "Más publicaciones" con su enlace corto (`lnkd.in/p/...`). Solo se aceptan enlaces de ese tipo. Cada tarjeta puede llevar una línea de texto (`texto`) que cuente de qué trata; sin ella dice "Publicación N en LinkedIn".
+- Con contenido cargado, el enlace "Multimedia" ya aparece en el menú, el pie y el mapa del sitio.
+
+### Pendiente
+- Borrar de `public/galeria/` las 6 fotos con nombre `WhatsApp Image ...` (son copias; las que se usan tienen nombre nuevo).
+- Una línea de descripción para cada tarjeta de enlace (opcional).
+
+---
+
+## v1.7.0: Multimedia y cinta de empresas (01-11-2026)
+
+### Qué cambió
+- **Empresas que confían en nosotros** ahora es una **cinta de película** que avanza sola, con perforaciones y un cuadro por empresa. Se detiene al pasar el cursor o al enfocarla con el teclado, y tiene un botón "Pausar la cinta". Con la opción "reducir movimiento" del equipo no se anima: queda quieta y se desplaza con el dedo. Cuando haya logos (`clientes` en `src/lib/empresa.ts`), aparecen dentro de cada cuadro.
+- **Página Multimedia** (`/multimedia`, `/en/multimedia`, `/ger/multimedia`; en inglés y alemán se llama "Media" y "Medien"):
+  - **Reparaciones en nuestro laboratorio:** galería de fotos con filtro por tipo de equipo y visor ampliado (flechas del teclado, Esc para cerrar).
+  - **Publicaciones en LinkedIn:** se muestran dentro del sitio con el recuadro oficial de LinkedIn, pero **solo se cargan cuando la persona pulsa el botón** de cada una, para que LinkedIn no reciba datos de quien solo visita. Cada publicación tiene además su enlace "Abrir en LinkedIn", y hay un botón a todas las publicaciones de la empresa.
+- El enlace "Multimedia" aparece en el menú, el pie y el mapa del sitio **solo cuando hay contenido cargado**. Mientras tanto, la página existe y muestra un aviso con el enlace a LinkedIn.
+- `/privacidad` explica que las publicaciones de LinkedIn solo se cargan si se pulsa el botón.
+
+### Cómo cargar fotos
+1. Copiar las fotos en `public/galeria/` (JPG, hasta 1600 px de ancho y menos de 1,5 MB cada una).
+2. Registrar cada una en `src/lib/galeria.ts`, en la lista `fotos`:
+   `{ archivo: "/galeria/variador.jpg", categoria: "industrial", texto: { es: "Variador de frecuencia reparado", en: "Repaired frequency drive", ger: "Reparierter Frequenzumrichter" } },`
+   `categoria` es uno de: `tarjetas`, `industrial`, `fuentes`, `monitores`, `computadoras`, `otros`. Si falta el texto en inglés o alemán, se usa el español.
+3. No mostrar datos de clientes (rótulos, nombres, pantallas con información) ni personas sin su permiso.
+
+### Cómo cargar publicaciones de LinkedIn
+LinkedIn no permite leer sus publicaciones de forma automática (la página lo bloquea), así que cada una se agrega a mano, una sola vez:
+1. En LinkedIn, abrir la publicación de la empresa, tocar los tres puntos (⋯) y elegir **"Insertar esta publicación"** (*Embed this post*).
+2. En el código que aparece, buscar la dirección que contiene `urn:li:share:` seguida de un número largo y copiar solo esa parte (por ejemplo `urn:li:share:7123456789012345678`).
+3. Pegarla en `src/lib/galeria.ts`, en la lista `publicaciones`: `{ urn: "urn:li:share:7123456789012345678" },`.
+Las publicaciones nuevas se agregan arriba de la lista. Una alternativa automática serían servicios de terceros de pago que cargan scripts externos; por ahora no se recomienda.
+
+### Pendiente
+- Entregar las fotos y los enlaces de LinkedIn.
+- Logos de las empresas clientes (ver v1.4.0).
+- Revisión de los textos en inglés y alemán por una persona nativa.
+
+---
+
 ## v1.6.0: Captcha del formulario y registro de uso de APIs (01-11-2026)
 
 ### Qué cambió

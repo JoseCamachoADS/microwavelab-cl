@@ -1,8 +1,9 @@
 import type { Idioma } from "@/i18n/config";
 import { obtenerDiccionario } from "@/i18n";
 import { clientes } from "@/lib/empresa";
+import CintaClientes from "./CintaClientes";
 
-/** Empresas que confían en el laboratorio. Logo si existe; si no, su nombre en texto. */
+/** Empresas que confían en el laboratorio, en una cinta de película que avanza sola. Logo si existe; si no, su nombre. */
 export default function ClientesConfian({ lang }: { lang: Idioma }) {
   const d = obtenerDiccionario(lang);
   if (clientes.length === 0) return null;
@@ -10,24 +11,14 @@ export default function ClientesConfian({ lang }: { lang: Idioma }) {
   return (
     <div className="mt-16">
       <h3 className="font-titulo text-xl font-bold text-noche">{d.clientes.titulo}</h3>
-      <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        {clientes.map((c) => (
-          <li
-            key={c.nombre}
-            className="panel flex h-20 items-center justify-center bg-hielo px-4 text-center [--c:12px]"
-          >
-            {c.logo ? (
-              // Logo entregado por la empresa; se muestra sin modificar.
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={c.logo} alt={c.nombre} className="max-h-12 w-auto max-w-full object-contain" />
-            ) : (
-              <span className="font-titulo text-base font-semibold leading-tight text-noche">
-                {c.nombre}
-              </span>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-6">
+        <CintaClientes
+          items={[...clientes]}
+          etiqueta={d.clientes.titulo}
+          pausar={d.clientes.pausar}
+          reanudar={d.clientes.reanudar}
+        />
+      </div>
     </div>
   );
 }
