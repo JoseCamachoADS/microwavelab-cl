@@ -138,6 +138,16 @@ export function IconoChat({ className }: Props) {
   );
 }
 
+/** Globo de diálogo con destello: asistente virtual. */
+export function IconoAsistente({ className }: Props) {
+  return (
+    <Base className={className}>
+      <path d="M20 12.5a7.5 7.5 0 0 1-11 6.6L4 20.5l1.5-4.4A7.5 7.5 0 1 1 20 12.5z" />
+      <path d="M12.5 8.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" />
+    </Base>
+  );
+}
+
 /** Flecha de navegación genérica (no es el logo de ninguna app). */
 export function IconoNavegar({ className }: Props) {
   return (

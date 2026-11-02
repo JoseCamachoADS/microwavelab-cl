@@ -80,6 +80,24 @@ export const en: Diccionario = {
   },
   mapa: { titulo: "Location map of {nombre}" },
   clima: { etiqueta: "Current weather in Santiago", santiago: "Santiago", credito: "Weather data:", despejado: "Clear", parcial: "Partly cloudy", nublado: "Cloudy", niebla: "Fog", lluvia: "Rain", tormenta: "Thunderstorm", nieve: "Snow", aguanieve: "Sleet" },
+  asistente: {
+    boton: "Assistant",
+    abrir: "Open the virtual assistant",
+    titulo: "Virtual assistant",
+    cerrar: "Close the assistant",
+    saludo: "Hello, I am the virtual assistant of Micro Wave Lab CL. I can guide you on our services, opening hours, process and warranty. How can I help?",
+    sugerencias: ["What equipment do you repair?", "How does the process work?", "What are your opening hours?"],
+    placeholder: "Type your question",
+    enviar: "Send",
+    escribiendo: "Typing...",
+    aviso: "Automatic answers by artificial intelligence: they may contain errors. Do not type personal data.",
+    captcha: "Checking that you are a person...",
+    captchaFallo: "Verification failed. Reload the page and try again.",
+    error: "We could not answer right now. Try again or contact us directly.",
+    tope: "The assistant is not available at the moment. Please contact us directly.",
+    limite: "You have sent many queries in a row. Wait a few minutes or contact us directly.",
+    whatsapp: "Write on WhatsApp",
+  },
   aviso: { etiqueta: "Important notice", pausar: "Pause the notice", reanudar: "Resume the notice" },
   clientes: { titulo: "Companies that trust us", pausar: "Pause the carousel", reanudar: "Resume the carousel" },
   multimedia: {
@@ -346,6 +364,10 @@ export const en: Diccionario = {
     multimedia: {
       h: "Media and LinkedIn",
       p: "The repair photos are hosted on this site. LinkedIn posts only load if you press the button on each one; at that moment LinkedIn may receive data from your browser and store cookies, according to its own privacy policy.",
+    },
+    asistente: {
+      h: "Virtual assistant",
+      p: "The assistant answers using artificial intelligence (Gemini, by Google). Only if you open it and send a question, our server sends the latest messages of that conversation to Google, without your IP address or other data. We do not store them. To prevent abuse we use the Cloudflare Turnstile captcha, and on the free plan Google may use those texts to improve its products: do not type personal or confidential data.",
     },
     clima: {
       h: "Time and weather",

@@ -80,6 +80,24 @@ export const ger: Diccionario = {
   },
   mapa: { titulo: "Standortkarte von {nombre}" },
   clima: { etiqueta: "Aktuelles Wetter in Santiago", santiago: "Santiago", credito: "Wetterdaten:", despejado: "Klar", parcial: "Teilweise bewölkt", nublado: "Bewölkt", niebla: "Nebel", lluvia: "Regen", tormenta: "Gewitter", nieve: "Schnee", aguanieve: "Schneeregen" },
+  asistente: {
+    boton: "Assistent",
+    abrir: "Virtuellen Assistenten öffnen",
+    titulo: "Virtueller Assistent",
+    cerrar: "Assistenten schließen",
+    saludo: "Guten Tag, ich bin der virtuelle Assistent von Micro Wave Lab CL. Ich informiere Sie gern über unsere Leistungen, Öffnungszeiten, den Ablauf und die Garantie. Wie kann ich helfen?",
+    sugerencias: ["Welche Geräte reparieren Sie?", "Wie läuft die Reparatur ab?", "Wie sind Ihre Öffnungszeiten?"],
+    placeholder: "Ihre Frage eingeben",
+    enviar: "Senden",
+    escribiendo: "Schreibt...",
+    aviso: "Automatische Antworten durch künstliche Intelligenz: Sie können Fehler enthalten. Geben Sie keine persönlichen Daten ein.",
+    captcha: "Es wird geprüft, ob Sie ein Mensch sind...",
+    captchaFallo: "Die Prüfung ist fehlgeschlagen. Laden Sie die Seite neu und versuchen Sie es erneut.",
+    error: "Wir konnten gerade nicht antworten. Versuchen Sie es erneut oder kontaktieren Sie uns direkt.",
+    tope: "Der Assistent ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt.",
+    limite: "Sie haben viele Anfragen hintereinander gesendet. Warten Sie einige Minuten oder kontaktieren Sie uns direkt.",
+    whatsapp: "Per WhatsApp schreiben",
+  },
   aviso: { etiqueta: "Wichtiger Hinweis", pausar: "Hinweis anhalten", reanudar: "Hinweis fortsetzen" },
   clientes: { titulo: "Unternehmen, die uns vertrauen", pausar: "Karussell anhalten", reanudar: "Karussell fortsetzen" },
   multimedia: {
@@ -346,6 +364,10 @@ export const ger: Diccionario = {
     multimedia: {
       h: "Medien und LinkedIn",
       p: "Die Reparaturfotos werden auf dieser Website gehostet. LinkedIn-Beiträge werden nur geladen, wenn Sie die Schaltfläche des jeweiligen Beitrags drücken; in diesem Moment kann LinkedIn Daten Ihres Browsers erhalten und Cookies speichern, gemäß der eigenen Datenschutzerklärung.",
+    },
+    asistente: {
+      h: "Virtueller Assistent",
+      p: "Der Assistent antwortet mit künstlicher Intelligenz (Gemini von Google). Nur wenn Sie ihn öffnen und eine Frage senden, übermittelt unser Server die letzten Nachrichten dieser Unterhaltung an Google, ohne Ihre IP-Adresse oder andere Daten. Wir speichern sie nicht. Zum Schutz vor Missbrauch nutzen wir das Cloudflare-Turnstile-Captcha; im kostenlosen Tarif darf Google diese Texte zur Verbesserung seiner Produkte verwenden: Geben Sie keine persönlichen oder vertraulichen Daten ein.",
     },
     clima: {
       h: "Uhrzeit und Wetter",

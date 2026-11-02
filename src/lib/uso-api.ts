@@ -7,7 +7,7 @@
 
 import { redisLote, redisDisponible, type ComandoRedis } from "./redis";
 
-export type Servicio = "google_places" | "google_translate" | "turnstile";
+export type Servicio = "google_places" | "google_translate" | "turnstile" | "gemini";
 
 export const SERVICIOS: Record<Servicio, { nombre: string; unidad: string | null; nota: string }> = {
   google_places: {
@@ -19,6 +19,11 @@ export const SERVICIOS: Record<Servicio, { nombre: string; unidad: string | null
     nombre: "Google Translate (formularios)",
     unidad: "caracteres",
     nota: "Google cobra por caracteres enviados a traducir. Se cuentan solo los de las traducciones exitosas.",
+  },
+  gemini: {
+    nombre: "Gemini (asistente virtual)",
+    unidad: "tokens",
+    nota: "Cada respuesta del asistente es una llamada. El plan gratuito de Google AI Studio tiene límites por minuto y por día; el tope diario de mensajes se fija en /asistente. Consumo y cuotas: aistudio.google.com → Dashboard.",
   },
   turnstile: {
     nombre: "Cloudflare Turnstile (captcha)",
@@ -56,7 +61,7 @@ const DIAS_VISIBLES = 14;
 const LARGO_LOG = 500;
 
 /** Fecha AAAA-MM-DD en hora de Chile. */
-function fechaChile(fecha: Date): string {
+export function fechaChile(fecha: Date): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: ZONA,
     year: "numeric",

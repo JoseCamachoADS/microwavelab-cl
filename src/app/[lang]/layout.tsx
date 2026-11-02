@@ -3,6 +3,7 @@ import { Chakra_Petch, IBM_Plex_Sans } from "next/font/google";
 import "../globals.css";
 import Analitica from "@/components/Analitica";
 import AvisoPizarra from "@/components/AvisoPizarra";
+import AsistenteChat from "@/components/AsistenteChat";
 import BotonWhatsApp from "@/components/BotonWhatsApp";
 import Encabezado from "@/components/Encabezado";
 import PieDePagina from "@/components/PieDePagina";
@@ -10,9 +11,10 @@ import { IDIOMAS, ruta } from "@/i18n/config";
 import { obtenerDiccionario } from "@/i18n";
 import { idiomaDe, variables } from "@/i18n/servidor";
 import { fmt } from "@/i18n/config";
+import { hayGemini, leerAsistente, saludoPersonalizado } from "@/lib/asistente";
 import { leerAviso, textoAviso } from "@/lib/aviso";
 import { empresa } from "@/lib/empresa";
-import { datoPublico } from "@/lib/utilidades";
+import { datoPublico, enlaceWhatsApp } from "@/lib/utilidades";
 
 const titulo = Chakra_Petch({
   subsets: ["latin"],
@@ -102,6 +104,7 @@ export default async function RootLayout({ children, params }: Props) {
   const lang = await idiomaDe(params);
   const d = obtenerDiccionario(lang);
   const aviso = textoAviso(await leerAviso(), lang);
+  const asistente = hayGemini ? await leerAsistente() : null;
   const json = JSON.stringify(
     datosEstructurados(d.comun.descripcionEmpresa, `${empresa.sitioUrl}${ruta(lang, "/")}`)
   ).replace(/</g, "\\u003c");
@@ -121,6 +124,14 @@ export default async function RootLayout({ children, params }: Props) {
         <Encabezado lang={lang} />
         <main>{children}</main>
         <PieDePagina lang={lang} />
+        {asistente?.activo && (
+          <AsistenteChat
+            lang={lang}
+            textos={d.asistente}
+            saludo={saludoPersonalizado(asistente, lang) || d.asistente.saludo}
+            enlaceWhatsApp={enlaceWhatsApp(empresa.whatsapp, d.comun.mensajeConsulta)}
+          />
+        )}
         <BotonWhatsApp lang={lang} />
         <Analitica lang={lang} textos={d.cookies} />
       </body>

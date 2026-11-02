@@ -12,6 +12,23 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.11.0: Asistente virtual con Gemini (01-11-2026)
+
+### Qué cambió
+- **Botón "Asistente"** abajo a la izquierda (WhatsApp sigue a la derecha). **No se abre solo**: la persona lo pulsa, aparece un panel pequeño con saludo, tres preguntas sugeridas y una caja de texto. Se cierra con la ×, con Escape, y el foco vuelve al botón. Está en español, inglés y alemán y avisa que las respuestas son automáticas (IA) y que no se escriban datos personales.
+- **Responde con Gemini** (Google AI Studio, plan gratuito), siempre desde el servidor: la clave nunca llega al navegador. Solo conoce los datos reales del sitio (servicios, horario, dirección, garantía, proceso y preguntas frecuentes). No inventa precios ni plazos y deriva a WhatsApp para presupuestos. Respuestas de máximo 4 frases. Ignora pedidos de cambiar sus reglas.
+- **Parametrizable en `/asistente`** (solo español, fuera de Google, misma clave que `/uso` y `/aviso`): encender o apagar, saludo inicial (el inglés y el alemán se traducen solos si se dejan vacíos), instrucciones adicionales (por ejemplo, "en diciembre atiendo en Buenos Aires") y **tope de mensajes por día** (por defecto 300). Muestra los mensajes de hoy. Se aplica en el sitio en minutos, sin desplegar.
+- **Protección**: Cloudflare Turnstile una vez por conversación (luego una sesión firmada de 30 min), solo desde el propio sitio, límite por IP (20 cada 10 min), conversación de máximo 10 mensajes de 600 caracteres, y el tope diario. Si se alcanza el tope o Gemini falla, el panel ofrece escribir por WhatsApp.
+- **Registro**: cada respuesta cuenta en `/uso` como "Gemini (asistente virtual)", en llamadas y tokens. Las conversaciones **no se guardan**.
+- **Privacidad**: nuevo párrafo en los tres idiomas (en el plan gratuito Google puede usar los textos para mejorar sus productos).
+
+### Para activarlo
+1. Crear la clave gratuita en aistudio.google.com → Get API key, y agregar `GEMINI_API_KEY` en Vercel (Settings → Environment Variables). Volver a desplegar.
+2. Opcional: `GEMINI_MODEL` si Google cambia o retira el modelo (por defecto `gemini-2.5-flash-lite`). Confirmar el nombre vigente en AI Studio.
+3. Sin `GEMINI_API_KEY` el botón no aparece. Entrar a `/asistente` para ajustar saludo, instrucciones y tope. Requiere Redis para guardar los cambios.
+
+---
+
 ## v1.10.0: Servicios 100 % industriales, fecha, hora y clima en la barra superior (01-11-2026)
 
 ### Qué cambió

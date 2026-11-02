@@ -81,6 +81,24 @@ export const es = {
   },
   mapa: { titulo: "Mapa de ubicación de {nombre}" },
   clima: { etiqueta: "Clima actual en Santiago", santiago: "Santiago", credito: "Datos del clima:", despejado: "Despejado", parcial: "Parcialmente nublado", nublado: "Nublado", niebla: "Niebla", lluvia: "Lluvia", tormenta: "Tormenta eléctrica", nieve: "Nieve", aguanieve: "Aguanieve" },
+  asistente: {
+    boton: "Asistente",
+    abrir: "Abrir el asistente virtual",
+    titulo: "Asistente virtual",
+    cerrar: "Cerrar el asistente",
+    saludo: "Hola, soy el asistente virtual de Micro Wave Lab CL. Puedo orientarle sobre nuestros servicios, horario, proceso y garantía. ¿En qué le ayudo?",
+    sugerencias: ["¿Qué equipos reparan?", "¿Cómo es el proceso?", "¿Cuál es el horario?"],
+    placeholder: "Escriba su consulta",
+    enviar: "Enviar",
+    escribiendo: "Escribiendo...",
+    aviso: "Respuestas automáticas con inteligencia artificial: pueden tener errores. No escriba datos personales.",
+    captcha: "Verificando que es una persona...",
+    captchaFallo: "No se pudo verificar. Recargue la página e intente de nuevo.",
+    error: "No pudimos responder ahora. Intente de nuevo o escríbanos directamente.",
+    tope: "El asistente no está disponible por ahora. Escríbanos directamente.",
+    limite: "Ha enviado muchas consultas seguidas. Espere unos minutos o escríbanos directamente.",
+    whatsapp: "Escribir por WhatsApp",
+  },
   aviso: { etiqueta: "Aviso importante", pausar: "Pausar el aviso", reanudar: "Reanudar el aviso" },
   clientes: { titulo: "Empresas que confían en nosotros", pausar: "Pausar el carrusel", reanudar: "Reanudar el carrusel" },
   multimedia: {
@@ -347,6 +365,10 @@ export const es = {
     multimedia: {
       h: "Multimedia y LinkedIn",
       p: "Las fotos de reparaciones están alojadas en este sitio. Las publicaciones de LinkedIn solo se cargan si usted pulsa el botón de cada una; en ese momento LinkedIn puede recibir datos de su navegador y guardar cookies, según su propia política de privacidad.",
+    },
+    asistente: {
+      h: "Asistente virtual",
+      p: "El asistente responde con inteligencia artificial (Gemini, de Google). Solo si usted lo abre y envía una consulta, nuestro servidor envía a Google los últimos mensajes de esa conversación, sin su dirección IP ni otros datos. No los guardamos. Para evitar abusos usamos el captcha de Cloudflare Turnstile, y en el plan gratuito Google puede usar esos textos para mejorar sus productos: no escriba datos personales ni confidenciales.",
     },
     clima: {
       h: "Hora y clima",
