@@ -6,7 +6,7 @@ import { registrarUso } from "./uso-api";
 
 export type MensajeChat = { rol: "usuario" | "asistente"; texto: string };
 
-const MODELO = process.env.GEMINI_MODEL || "gemini-2.5-flash-lite";
+const MODELO = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
 // Las respuestas son cortas por instrucción; el margen evita cortes si el modelo "piensa" antes de responder.
 const MAX_SALIDA = 1024;
 

@@ -12,6 +12,13 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.11.2: Modelo por defecto y prueba de modelos alternativos (01-11-2026)
+
+- El modelo por defecto pasa a `gemini-3.5-flash-lite` (el anterior ya no está disponible para claves nuevas).
+- **Probar Gemini** ahora, si el modelo configurado falla, prueba otros modelos con la misma clave y muestra cuáles funcionan, para elegir el valor de `GEMINI_MODEL`. Un error 402 significa que el proyecto de Google tiene facturación prepago sin crédito: ese modelo no entra en el plan gratuito de esa clave.
+
+---
+
 ## v1.11.1: Prueba de conexión con Gemini (01-11-2026)
 
 ### Qué cambió
@@ -32,7 +39,7 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ### Para activarlo
 1. Crear la clave gratuita en aistudio.google.com → Get API key, y agregar `GEMINI_API_KEY` en Vercel (Settings → Environment Variables). Volver a desplegar.
-2. Opcional: `GEMINI_MODEL` si Google cambia o retira el modelo (por defecto `gemini-2.5-flash-lite`). Confirmar el nombre vigente en AI Studio.
+2. Opcional: `GEMINI_MODEL` si Google cambia o retira el modelo (por defecto `gemini-3.5-flash-lite`). Confirmar el nombre vigente en AI Studio.
 3. Sin `GEMINI_API_KEY` el botón no aparece. Entrar a `/asistente` para ajustar saludo, instrucciones y tope. Requiere Redis para guardar los cambios.
 
 ---

@@ -25,6 +25,7 @@ type Prueba = {
   respuesta?: string;
   error?: string;
   modelosDisponibles?: string[];
+  alternativas?: { modelo: string; ok: boolean; estado?: number | string; detalle?: string }[];
 };
 
 export default function PanelAsistente() {
@@ -275,7 +276,23 @@ export default function PanelAsistente() {
             </p>
             <p>Modelo: <code>{prueba.modelo}</code>{prueba.estado ? <> · Estado: <code>{String(prueba.estado)}</code></> : null}</p>
             {prueba.error && <p className="break-words text-sm">{prueba.error}</p>}
-            {prueba.modelosDisponibles && prueba.modelosDisponibles.length > 0 && (
+            {prueba.alternativas && prueba.alternativas.length > 0 && (
+              <div className="text-sm">
+                <p className="font-semibold">Otros modelos probados con su clave:</p>
+                <ul className="mt-1 space-y-1">
+                  {prueba.alternativas.map((a) => (
+                    <li key={a.modelo} className="break-words">
+                      <strong>{a.ok ? "Funciona" : "No"}</strong> · <code>{a.modelo}</code> · {String(a.estado ?? "")}
+                      {a.detalle ? ` · ${a.detalle}` : ""}
+                    </li>
+                  ))}
+                </ul>
+                {prueba.alternativas.some((a) => a.ok) && (
+                  <p className="mt-1 font-semibold">Copie uno que diga “Funciona” en GEMINI_MODEL (Vercel) y vuelva a desplegar.</p>
+                )}
+              </div>
+            )}
+            {prueba.modelosDisponibles && prueba.modelosDisponibles.length > 0 && !prueba.alternativas?.length && (
               <p className="break-words text-sm">
                 Modelos disponibles con su clave (copie uno en la variable <code>GEMINI_MODEL</code> de Vercel y vuelva a
                 desplegar): <code>{prueba.modelosDisponibles.join(", ")}</code>
