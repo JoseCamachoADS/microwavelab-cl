@@ -79,6 +79,7 @@ export const en: Diccionario = {
     notaIdioma: "Reviews are shown in the language in which they were written.",
   },
   mapa: { titulo: "Location map of {nombre}" },
+  clima: { etiqueta: "Current weather in Santiago", santiago: "Santiago", credito: "Weather data:", despejado: "Clear", parcial: "Partly cloudy", nublado: "Cloudy", niebla: "Fog", lluvia: "Rain", tormenta: "Thunderstorm", nieve: "Snow", aguanieve: "Sleet" },
   aviso: { etiqueta: "Important notice", pausar: "Pause the notice", reanudar: "Resume the notice" },
   clientes: { titulo: "Companies that trust us", pausar: "Pause the carousel", reanudar: "Resume the carousel" },
   multimedia: {
@@ -212,7 +213,7 @@ export const en: Diccionario = {
     meta: {
       titulo: "Services",
       descripcion:
-        "Repair of electronic boards and of industrial, medical, household and automotive equipment.",
+        "Repair of electronic boards and of industrial, medical and automotive equipment.",
     },
     titulo: "Services",
     bajada: "We service electronic equipment of every kind, with a focus on industry.",
@@ -233,17 +234,18 @@ export const en: Diccionario = {
           "Power supplies, chargers and inverters repaired down to component level.",
       },
       monitores: {
-        titulo: "Touch-screen monitors",
-        descripcion: "Repair of touch-screen monitors and equipment displays.",
+        titulo: "Industrial touch-screen monitors and displays",
+        descripcion:
+          "Repair of industrial or interface (HMI) touch-screen monitors and of displays on industrial equipment.",
       },
       computadoras: {
         titulo: "Computers",
         descripcion: "Electronic diagnosis and repair of computers.",
       },
       otros: {
-        titulo: "Other electronic equipment",
+        titulo: "Other industrial equipment",
         descripcion:
-          "Household, automotive, medical and other equipment. Ask us about your case.",
+          "Automotive, medical and other industrial equipment. Ask us about your case.",
       },
     },
   },
@@ -344,6 +346,10 @@ export const en: Diccionario = {
     multimedia: {
       h: "Media and LinkedIn",
       p: "The repair photos are hosted on this site. LinkedIn posts only load if you press the button on each one; at that moment LinkedIn may receive data from your browser and store cookies, according to its own privacy policy.",
+    },
+    clima: {
+      h: "Time and weather",
+      p: "The date and time are calculated in your browser. The weather in Santiago is requested by our server from MET Norway (the Norwegian meteorological service); you do not connect to that service and none of your data is sent.",
     },
     seguridad: {
       h: "Form security",

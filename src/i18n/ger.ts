@@ -79,6 +79,7 @@ export const ger: Diccionario = {
     notaIdioma: "Die Bewertungen werden in der Sprache angezeigt, in der sie verfasst wurden.",
   },
   mapa: { titulo: "Standortkarte von {nombre}" },
+  clima: { etiqueta: "Aktuelles Wetter in Santiago", santiago: "Santiago", credito: "Wetterdaten:", despejado: "Klar", parcial: "Teilweise bewölkt", nublado: "Bewölkt", niebla: "Nebel", lluvia: "Regen", tormenta: "Gewitter", nieve: "Schnee", aguanieve: "Schneeregen" },
   aviso: { etiqueta: "Wichtiger Hinweis", pausar: "Hinweis anhalten", reanudar: "Hinweis fortsetzen" },
   clientes: { titulo: "Unternehmen, die uns vertrauen", pausar: "Karussell anhalten", reanudar: "Karussell fortsetzen" },
   multimedia: {
@@ -212,7 +213,7 @@ export const ger: Diccionario = {
     meta: {
       titulo: "Leistungen",
       descripcion:
-        "Reparatur von Elektronikplatinen sowie von Industrie-, Medizin-, Haushalts- und Fahrzeuggeräten.",
+        "Reparatur von Elektronikplatinen sowie von Industrie-, Medizin- und Fahrzeuggeräten.",
     },
     titulo: "Leistungen",
     bajada: "Wir betreuen elektronische Geräte aller Art, mit Schwerpunkt Industrie.",
@@ -233,17 +234,18 @@ export const ger: Diccionario = {
           "Netzteile, Ladegeräte und Wechselrichter, repariert bis auf Bauteilebene.",
       },
       monitores: {
-        titulo: "Touchscreen-Monitore",
-        descripcion: "Reparatur von Touchscreen-Monitoren und Gerätedisplays.",
+        titulo: "Industrielle Touchscreen-Monitore und Displays",
+        descripcion:
+          "Reparatur industrieller Touchscreen-Monitore bzw. Bedienoberflächen (HMI) und von Displays an Industrieanlagen.",
       },
       computadoras: {
         titulo: "Computer",
         descripcion: "Elektronische Diagnose und Reparatur von Computern.",
       },
       otros: {
-        titulo: "Andere elektronische Geräte",
+        titulo: "Weitere Industriegeräte",
         descripcion:
-          "Haushalts-, Fahrzeug-, Medizingeräte und mehr. Fragen Sie uns zu Ihrem Fall.",
+          "Fahrzeug-, Medizin- und weitere Industriegeräte. Fragen Sie uns zu Ihrem Fall.",
       },
     },
   },
@@ -344,6 +346,10 @@ export const ger: Diccionario = {
     multimedia: {
       h: "Medien und LinkedIn",
       p: "Die Reparaturfotos werden auf dieser Website gehostet. LinkedIn-Beiträge werden nur geladen, wenn Sie die Schaltfläche des jeweiligen Beitrags drücken; in diesem Moment kann LinkedIn Daten Ihres Browsers erhalten und Cookies speichern, gemäß der eigenen Datenschutzerklärung.",
+    },
+    clima: {
+      h: "Uhrzeit und Wetter",
+      p: "Datum und Uhrzeit werden in Ihrem Browser berechnet. Das Wetter in Santiago fragt unser Server bei MET Norway (dem norwegischen Wetterdienst) ab; Sie verbinden sich nicht mit diesem Dienst und es werden keine Daten von Ihnen gesendet.",
     },
     seguridad: {
       h: "Sicherheit des Formulars",

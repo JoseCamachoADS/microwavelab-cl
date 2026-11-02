@@ -80,6 +80,7 @@ export const es = {
     notaIdioma: "",
   },
   mapa: { titulo: "Mapa de ubicación de {nombre}" },
+  clima: { etiqueta: "Clima actual en Santiago", santiago: "Santiago", credito: "Datos del clima:", despejado: "Despejado", parcial: "Parcialmente nublado", nublado: "Nublado", niebla: "Niebla", lluvia: "Lluvia", tormenta: "Tormenta eléctrica", nieve: "Nieve", aguanieve: "Aguanieve" },
   aviso: { etiqueta: "Aviso importante", pausar: "Pausar el aviso", reanudar: "Reanudar el aviso" },
   clientes: { titulo: "Empresas que confían en nosotros", pausar: "Pausar el carrusel", reanudar: "Reanudar el carrusel" },
   multimedia: {
@@ -213,7 +214,7 @@ export const es = {
     meta: {
       titulo: "Servicios",
       descripcion:
-        "Reparación de placas electrónicas, equipos industriales, médicos, domésticos y automotrices.",
+        "Reparación de placas electrónicas y de equipos industriales, médicos y automotrices.",
     },
     titulo: "Servicios",
     bajada: "Atendemos equipos electrónicos de todo tipo, con foco en el área industrial.",
@@ -234,17 +235,18 @@ export const es = {
           "Fuentes de alimentación, cargadores e inversores reparados a nivel de componente.",
       },
       monitores: {
-        titulo: "Monitores táctiles",
-        descripcion: "Reparación de monitores táctiles y pantallas de equipos.",
+        titulo: "Monitores táctiles y pantallas industriales",
+        descripcion:
+          "Reparación de monitores táctiles industriales o de interfaz (HMI) y de pantallas de equipos industriales.",
       },
       computadoras: {
         titulo: "Computadoras",
         descripcion: "Diagnóstico y reparación electrónica de computadoras.",
       },
       otros: {
-        titulo: "Otros equipos electrónicos",
+        titulo: "Otros equipos industriales",
         descripcion:
-          "Equipos domésticos, automotrices, médicos y otros. Consúltenos por su caso.",
+          "Equipos automotrices, médicos y otros equipos industriales. Consúltenos por su caso.",
       },
     },
   },
@@ -345,6 +347,10 @@ export const es = {
     multimedia: {
       h: "Multimedia y LinkedIn",
       p: "Las fotos de reparaciones están alojadas en este sitio. Las publicaciones de LinkedIn solo se cargan si usted pulsa el botón de cada una; en ese momento LinkedIn puede recibir datos de su navegador y guardar cookies, según su propia política de privacidad.",
+    },
+    clima: {
+      h: "Hora y clima",
+      p: "La fecha y la hora se calculan en su navegador. El clima de Santiago lo consulta nuestro servidor a MET Norway (servicio meteorológico de Noruega); usted no se conecta a ese servicio ni se envía ningún dato suyo.",
     },
     seguridad: {
       h: "Seguridad del formulario",

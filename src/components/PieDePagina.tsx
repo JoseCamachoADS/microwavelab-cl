@@ -142,9 +142,18 @@ export default function PieDePagina({ lang }: { lang: Idioma }) {
 
       <div className="border-t border-white/10 py-5 text-sm text-white/70">
         <div className="contenedor flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          <p className="text-center sm:text-left">
-            © {new Date().getFullYear()} {empresa.nombreCompleto}. {d.pie.derechos}
-          </p>
+          <div className="text-center sm:text-left">
+            <p>
+              © {new Date().getFullYear()} {empresa.nombreCompleto}. {d.pie.derechos}
+            </p>
+            <p className="mt-1 text-xs text-white/60">
+              {d.clima.credito}{" "}
+              <a href="https://www.met.no/en" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+                MET Norway
+                <span className="sr-only"> {d.comun.externo}</span>
+              </a>
+            </p>
+          </div>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
             <SelectorDeIdioma lang={lang} claro arriba />
             <ContadorVisitas textos={d.contador} htmlLang={d.idioma.htmlLang} />

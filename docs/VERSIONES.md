@@ -12,6 +12,18 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.10.0: Servicios 100 % industriales, fecha, hora y clima en la barra superior (01-11-2026)
+
+### Qué cambió
+- **Servicios**: se elimina "equipos domésticos" en todo el sitio (es/en/ger, datos de empresa, descripción de la página y CLAUDE.md). Quedan equipos industriales, automotrices y médicos.
+- **Monitores táctiles y pantallas industriales**: ahora menciona monitores táctiles industriales o de interfaz (HMI) y pantallas de equipos industriales.
+- **Otros equipos industriales**: reemplaza a "Otros equipos electrónicos" (automotrices, médicos y otros equipos industriales).
+- **Barra superior**: el espacio vacío ahora muestra fecha y hora de Santiago (se actualizan solas) y el clima actual con un ícono que cambia según el tiempo (despejado, nublado, lluvia, tormenta, nieve, niebla; sol o luna según la hora) y un punto que late como señal de "en vivo". Respeta "reducir movimiento".
+- **Fuente del clima**: MET Norway (gratuita, sin clave, licencia CC BY 4.0). Nuestro servidor la consulta como máximo cada 15 minutos (`/api/clima`); el navegador de la visita no se conecta a ella. Si falla, se ve solo fecha y hora. Crédito en el pie de página y párrafo en Privacidad.
+- Pendiente de la dueña del sitio: revisar los términos de uso de MET Norway (api.met.no/doc/TermsOfService). "Computadoras" no se tocó.
+
+---
+
 ## v1.9.0: Carrusel de empresas, pizarra electrónica, menú y horario (01-11-2026)
 
 ### Qué cambió

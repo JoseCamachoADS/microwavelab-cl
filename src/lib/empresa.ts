@@ -69,8 +69,8 @@ export const servicios = [
   },
   {
     id: "monitores",
-    titulo: "Monitores táctiles",
-    descripcion: "Reparación de monitores táctiles y pantallas de equipos.",
+    titulo: "Monitores táctiles y pantallas industriales",
+    descripcion: "Reparación de monitores táctiles industriales o de interfaz (HMI) y de pantallas de equipos industriales.",
     destacado: false,
   },
   {
@@ -81,9 +81,9 @@ export const servicios = [
   },
   {
     id: "otros",
-    titulo: "Otros equipos electrónicos",
+    titulo: "Otros equipos industriales",
     descripcion:
-      "Equipos domésticos, automotrices, médicos y otros. Consúltenos por su caso.",
+      "Equipos automotrices, médicos y otros equipos industriales. Consúltenos por su caso.",
     destacado: false,
   },
 ] as const;
