@@ -435,6 +435,10 @@ export const en: Diccionario = {
       h: "Virtual assistant",
       p: "The assistant answers using artificial intelligence (Gemini, by Google). Only if you open it and send a question, our server sends the latest messages of that conversation to Google, without your IP address or other data. We do not store them. To prevent abuse we use the Cloudflare Turnstile captcha, and on the free plan Google may use those texts to improve its products: do not type personal or confidential data.",
     },
+    clics: {
+      h: "Clicks on the WhatsApp buttons",
+      p: "We count how many times the site's WhatsApp buttons are clicked and whether it was from a mobile device or a computer. Only a number is added: we do not store your IP address, identifiers or cookies, and it does not depend on your measurement choice.",
+    },
     clima: {
       h: "Time and weather",
       p: "The date and time are calculated in your browser. The weather in Santiago is requested by our server from MET Norway (the Norwegian meteorological service); you do not connect to that service and none of your data is sent.",

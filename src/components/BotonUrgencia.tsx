@@ -13,6 +13,7 @@ export default function BotonUrgencia({ lang }: { lang: Idioma }) {
   return (
     <a
       href={enlace}
+      data-clic="urgencia-flotante"
       target="_blank"
       rel="noopener noreferrer"
       aria-label={d.urgencia.aria}

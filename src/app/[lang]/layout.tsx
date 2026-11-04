@@ -4,6 +4,7 @@ import "../globals.css";
 import Analitica from "@/components/Analitica";
 import AvisoPizarra from "@/components/AvisoPizarra";
 import AsistenteChat from "@/components/AsistenteChat";
+import ClicsWhatsApp from "@/components/ClicsWhatsApp";
 import BotonUrgencia from "@/components/BotonUrgencia";
 import BotonWhatsApp from "@/components/BotonWhatsApp";
 import Encabezado from "@/components/Encabezado";
@@ -149,6 +150,7 @@ export default async function RootLayout({ children, params }: Props) {
             enlaceWhatsApp={enlaceWhatsApp(empresa.whatsapp, d.comun.mensajeConsulta)}
           />
         )}
+        <ClicsWhatsApp />
         <BotonUrgencia lang={lang} />
         <BotonWhatsApp lang={lang} />
         <Analitica lang={lang} textos={d.cookies} />

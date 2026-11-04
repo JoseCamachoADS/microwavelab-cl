@@ -46,6 +46,8 @@ export default async function Privacidad({ params }: Props) {
           <p>{p.multimedia.p}</p>
           <h2 className={h2}>{p.asistente.h}</h2>
           <p>{p.asistente.p}</p>
+          <h2 className={h2}>{p.clics.h}</h2>
+          <p>{p.clics.p}</p>
           <h2 className={h2}>{p.clima.h}</h2>
           <p>{p.clima.p}</p>
           <h2 className={h2}>{p.seguridad.h}</h2>

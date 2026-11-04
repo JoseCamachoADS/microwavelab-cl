@@ -250,6 +250,7 @@ export default function FormularioCotizacion({
           </pre>
           <div className="flex flex-col gap-3 sm:flex-row">
             <a
+              data-clic="formulario"
               href={`${mensajeEnlace}${encodeURIComponent(mensaje)}`}
               target="_blank"
               rel="noopener noreferrer"

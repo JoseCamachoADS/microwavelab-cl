@@ -50,7 +50,7 @@ export default function PieDePagina({ lang }: { lang: Idioma }) {
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             {wa && (
-              <a href={wa} target="_blank" rel="noopener noreferrer" className="boton">
+              <a href={wa} data-clic="pie" target="_blank" rel="noopener noreferrer" className="boton">
                 <IconoChat className="h-5 w-5" />
                 {d.pie.whatsapp}
               </a>

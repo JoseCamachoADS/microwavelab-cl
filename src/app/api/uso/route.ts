@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { revisarAdmin } from "@/lib/admin";
+import { leerClics } from "@/lib/clics";
 import { leerUso, limiteTraduccionMensual, SERVICIOS } from "@/lib/uso-api";
 
 export const dynamic = "force-dynamic";
@@ -14,9 +15,9 @@ export async function GET(req: Request) {
   const acceso = revisarAdmin(req);
   if (acceso === "no_configurado") return NextResponse.json({ error: acceso }, { status: 503, headers: CABECERAS });
   if (acceso === "no_autorizado") return NextResponse.json({ error: acceso }, { status: 401, headers: CABECERAS });
-  const resumen = await leerUso();
+  const [resumen, clics] = await Promise.all([leerUso(), leerClics()]);
   return NextResponse.json(
-    { ...resumen, servicios: SERVICIOS, limiteTraduccion: limiteTraduccionMensual() },
+    { ...resumen, clics, servicios: SERVICIOS, limiteTraduccion: limiteTraduccionMensual() },
     { headers: CABECERAS }
   );
 }

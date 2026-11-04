@@ -74,7 +74,7 @@ export default async function Contacto({ params }: Props) {
             </ul>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               {whatsapp && (
-                <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="boton">
+                <a href={whatsapp} data-clic="contacto" target="_blank" rel="noopener noreferrer" className="boton">
                   <IconoChat className="h-5 w-5" />
                   {c.whatsapp}
                 </a>

@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import type { ResumenClics } from "@/lib/clics";
 import type { Contadores, LineaLog, ResumenUso, Servicio } from "@/lib/uso-api";
 
 type Meta = { nombre: string; unidad: string | null; nota: string };
-type Respuesta = ResumenUso & { servicios: Record<Servicio, Meta>; limiteTraduccion: number };
+type Respuesta = ResumenUso & { servicios: Record<Servicio, Meta>; limiteTraduccion: number; clics?: ResumenClics };
 
 const CLAVE_SESION = "uso-api-clave";
 const nf = new Intl.NumberFormat("es-CL");
@@ -181,6 +182,105 @@ export default function PanelUso() {
           })}
         </div>
       </section>
+
+      {datos.clics && (
+        <section>
+          <h2 className={h2}>Clics en WhatsApp</h2>
+          <p className="mt-2 text-grisazul">
+            Cada vez que alguien pulsa un botón de WhatsApp del sitio. Solo se cuenta el número (y si fue desde móvil, incluidas
+            tablets, o desde computador): no se guarda ninguna persona. Funciona aunque rechacen la medición de Analytics.
+            {!datos.clics.disponible && " Redis no responde: los contadores no están disponibles."}
+          </p>
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[28rem] border-collapse text-left text-base">
+              <thead>
+                <tr className="border-b-2 border-noche font-titulo text-noche">
+                  <th className="py-2 pr-3">Período</th>
+                  <th className="px-3 py-2 text-right">Total</th>
+                  <th className="px-3 py-2 text-right">Móvil</th>
+                  <th className="px-3 py-2 text-right">Escritorio</th>
+                  <th className="py-2 pl-3 text-right">% móvil</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Hoy", datos.clics.hoy],
+                  [`Este mes (${nombreMes(datos.clics.mes)})`, datos.clics.esteMes],
+                  [`Mes pasado (${nombreMes(datos.clics.mesAnterior)})`, datos.clics.mesPasado],
+                ].map(([nombre, c]) => {
+                  const cc = c as Contadores;
+                  const m = n(cc, "whatsapp:movil");
+                  const e = n(cc, "whatsapp:escritorio");
+                  return (
+                    <tr key={nombre as string} className="border-b border-grisazul/20">
+                      <td className="py-2 pr-3 capitalize">{nombre as string}</td>
+                      <td className="px-3 py-2 text-right font-semibold tabular-nums">{nf.format(m + e)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums">{nf.format(m)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums">{nf.format(e)}</td>
+                      <td className="py-2 pl-3 text-right tabular-nums">{m + e ? `${Math.round((m / (m + e)) * 100)} %` : "–"}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="mt-8 font-titulo text-xl font-bold text-noche">Por botón, este mes</h3>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full min-w-[28rem] border-collapse text-left text-base">
+              <thead>
+                <tr className="border-b-2 border-noche font-titulo text-noche">
+                  <th className="py-2 pr-3">Botón</th>
+                  <th className="px-3 py-2 text-right">Total</th>
+                  <th className="px-3 py-2 text-right">Móvil</th>
+                  <th className="py-2 pl-3 text-right">Escritorio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(datos.clics.origenes)
+                  .map(([id, nombre]) => ({ id, nombre, m: n(datos.clics!.esteMes, `origen:${id}:movil`), e: n(datos.clics!.esteMes, `origen:${id}:escritorio`) }))
+                  .sort((a, b) => b.m + b.e - (a.m + a.e))
+                  .map((o) => (
+                    <tr key={o.id} className="border-b border-grisazul/20">
+                      <td className="py-2 pr-3">{o.nombre}</td>
+                      <td className="px-3 py-2 text-right font-semibold tabular-nums">{nf.format(o.m + o.e)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums">{nf.format(o.m)}</td>
+                      <td className="py-2 pl-3 text-right tabular-nums">{nf.format(o.e)}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="mt-8 font-titulo text-xl font-bold text-noche">Últimos 14 días</h3>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full min-w-[24rem] border-collapse text-left text-base">
+              <thead>
+                <tr className="border-b-2 border-noche font-titulo text-noche">
+                  <th className="py-2 pr-3">Día</th>
+                  <th className="px-3 py-2 text-right">Total</th>
+                  <th className="px-3 py-2 text-right">Móvil</th>
+                  <th className="py-2 pl-3 text-right">Escritorio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {datos.clics.dias.map((d) => {
+                  const m = n(d.c, "whatsapp:movil");
+                  const e = n(d.c, "whatsapp:escritorio");
+                  return (
+                    <tr key={d.dia} className="border-b border-grisazul/20">
+                      <td className="py-2 pr-3 capitalize">{nombreDia(d.dia)}</td>
+                      <td className="px-3 py-2 text-right font-semibold tabular-nums">{nf.format(m + e)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums">{nf.format(m)}</td>
+                      <td className="py-2 pl-3 text-right tabular-nums">{nf.format(e)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
       <section>
         <h2 className={h2}>Últimos 14 días</h2>

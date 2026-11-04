@@ -436,6 +436,10 @@ export const es = {
       h: "Asistente virtual",
       p: "El asistente responde con inteligencia artificial (Gemini, de Google). Solo si usted lo abre y envía una consulta, nuestro servidor envía a Google los últimos mensajes de esa conversación, sin su dirección IP ni otros datos. No los guardamos. Para evitar abusos usamos el captcha de Cloudflare Turnstile, y en el plan gratuito Google puede usar esos textos para mejorar sus productos: no escriba datos personales ni confidenciales.",
     },
+    clics: {
+      h: "Clics en los botones de WhatsApp",
+      p: "Contamos cuántas veces se pulsan los botones de WhatsApp del sitio y si fue desde un móvil o un computador. Solo se suma un número: no guardamos su dirección IP, ni identificadores, ni cookies, y no depende de su decisión sobre la medición.",
+    },
     clima: {
       h: "Hora y clima",
       p: "La fecha y la hora se calculan en su navegador. El clima de Santiago lo consulta nuestro servidor a MET Norway (servicio meteorológico de Noruega); usted no se conecta a ese servicio ni se envía ningún dato suyo.",

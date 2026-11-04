@@ -435,6 +435,10 @@ export const ger: Diccionario = {
       h: "Virtueller Assistent",
       p: "Der Assistent antwortet mit künstlicher Intelligenz (Gemini von Google). Nur wenn Sie ihn öffnen und eine Frage senden, übermittelt unser Server die letzten Nachrichten dieser Unterhaltung an Google, ohne Ihre IP-Adresse oder andere Daten. Wir speichern sie nicht. Zum Schutz vor Missbrauch nutzen wir das Cloudflare-Turnstile-Captcha; im kostenlosen Tarif darf Google diese Texte zur Verbesserung seiner Produkte verwenden: Geben Sie keine persönlichen oder vertraulichen Daten ein.",
     },
+    clics: {
+      h: "Klicks auf die WhatsApp-Schaltflächen",
+      p: "Wir zählen, wie oft die WhatsApp-Schaltflächen der Website angeklickt werden und ob dies über ein Mobilgerät oder einen Computer geschah. Es wird nur eine Zahl addiert: Wir speichern weder Ihre IP-Adresse noch Kennungen oder Cookies, und es hängt nicht von Ihrer Entscheidung zur Messung ab.",
+    },
     clima: {
       h: "Uhrzeit und Wetter",
       p: "Datum und Uhrzeit werden in Ihrem Browser berechnet. Das Wetter in Santiago fragt unser Server bei MET Norway (dem norwegischen Wetterdienst) ab; Sie verbinden sich nicht mit diesem Dienst und es werden keine Daten von Ihnen gesendet.",

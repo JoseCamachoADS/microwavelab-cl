@@ -187,3 +187,7 @@ Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administra
 - `AvisoPizarra.tsx` (franja arriba de todo el sitio, letras de puntos que se desplazan, con pausa) se muestra desde `layout.tsx` si el aviso está encendido. El texto vive en Upstash Redis (clave `aviso`) y se edita en `/aviso` (clave `USO_API_TOKEN`, ver `src/lib/admin.ts`); sin Redis o sin nada guardado vale `avisoInicial` de `src/lib/aviso.ts`. El sitio lo relee cada 60 s y al guardar se actualiza al instante (`revalidatePath`). Al guardar, el inglés y el alemán vacíos se traducen solos (`traducirTexto`, cuenta en `/uso`).
 - Encabezado: el menú de escritorio aparece desde 1280 px (`xl`); debajo, menú móvil. Los enlaces no se parten en dos líneas (`whitespace-nowrap`) y el botón usa el texto corto `nav.portalCorto`. Al agregar un enlace nuevo al menú, revisar que quepa a 1280 px.
 - Horario: lunes a jueves 10:00 a 19:00, viernes 10:00 a 13:00 (`i18n/*.ts`, `empresa.ts` y datos estructurados de `layout.tsx`).
+
+## Clics en WhatsApp (v1.14.0)
+
+- `ClicsWhatsApp.tsx` (en `layout.tsx`) cuenta los clics en enlaces de WhatsApp y envía `{origen, dispositivo}` a `/api/clics`; se guarda en Redis (`src/lib/clics.ts`) y se ve en `/uso`. Todo enlace de WhatsApp nuevo debe llevar `data-clic="..."` (registrar el nombre en `ORIGENES`). Nunca guardar IP ni identificadores.

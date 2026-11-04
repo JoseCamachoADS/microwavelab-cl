@@ -183,7 +183,7 @@ export default function AsistenteChat({
               <div role="alert" className="border-l-4 border-rojo bg-white px-3 py-2 text-noche">
                 <p>{mostrarAviso}</p>
                 {(aviso === "tope" || aviso === "error") && enlaceWhatsApp && (
-                  <a href={enlaceWhatsApp} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block font-semibold text-azul underline">
+                  <a href={enlaceWhatsApp} data-clic="asistente" target="_blank" rel="noopener noreferrer" className="mt-1 inline-block font-semibold text-azul underline">
                     {t.whatsapp}
                   </a>
                 )}

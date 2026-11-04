@@ -13,6 +13,7 @@ export default function BotonWhatsApp({ lang }: { lang: Idioma }) {
   return (
     <a
       href={enlace}
+      data-clic="flotante"
       target="_blank"
       rel="noopener noreferrer"
       aria-label={d.whatsapp.aria}

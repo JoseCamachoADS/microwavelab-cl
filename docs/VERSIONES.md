@@ -12,7 +12,22 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
-## v1.13.2: Verificación de Google Search Console (02-11-2026)
+## v1.14.0: Contador de clics en WhatsApp por dispositivo (03-11-2026)
+
+### Qué cambió
+- **Contador propio** de clics en todos los botones de WhatsApp del sitio: botón flotante, botón de urgencias (rayo), portada, urgencia de la portada, pie de página, contacto, formulario y asistente. Se separa por **móvil** (incluye tablets) y **escritorio**, y por botón.
+- **Se ve en `/uso`** (sección "Clics en WhatsApp"): hoy, este mes y mes pasado con % de móvil; ranking de botones del mes; y los últimos 14 días.
+- **Anónimo**: solo suma números en Redis (como el contador de visitas). No guarda IP, cookies, identificadores ni textos, y **funciona aunque el visitante rechace las cookies de medición** (a diferencia de Google Analytics, que sigue registrando `clic_whatsapp` solo con consentimiento). Los robots y el exceso de clics desde una misma IP se ignoran.
+- Nuevo párrafo en Privacidad (es/en/ger).
+- Para que un botón nuevo quede identificado, agregarle `data-clic="nombre"` (y el nombre en `ORIGENES` de `src/lib/clics.ts`); si no, cuenta como "Otros enlaces de WhatsApp".
+- Requiere Redis (Upstash) conectado. Sin Redis no se cuenta nada.
+
+### Importante
+El contador mide **clics en el botón**, no mensajes enviados: WhatsApp no informa al sitio si la persona terminó enviando el mensaje.
+
+---
+
+: Verificación de Google Search Console (02-11-2026)
 
 - Se agrega `public/google075c232b68fa3654.html`, el archivo de verificación de la propiedad en Search Console. **No debe borrarse**: Google lo revisa de forma periódica. Queda en `https://electronicamicrowavelab.cl/google075c232b68fa3654.html` (el middleware de idiomas no lo toca porque tiene extensión).
 

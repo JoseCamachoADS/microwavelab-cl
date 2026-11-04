@@ -67,7 +67,7 @@ export default async function Inicio({ params }: Props) {
             </p>
             <div className="anim-texto anim-texto-3 mt-9 flex flex-col gap-3 sm:flex-row">
               {whatsapp && (
-                <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="boton">
+                <a href={whatsapp} data-clic="portada" target="_blank" rel="noopener noreferrer" className="boton">
                   <IconoChat className="h-5 w-5" />
                   {h.hero.cotizar}
                 </a>
@@ -124,7 +124,7 @@ export default async function Inicio({ params }: Props) {
               <p className="mt-8 max-w-2xl font-semibold text-peri">{fmt(h.urgencias.respaldo, v)}</p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 {urgencia && (
-                  <a href={urgencia} target="_blank" rel="noopener noreferrer" className="boton">
+                  <a href={urgencia} data-clic="urgencia-portada" target="_blank" rel="noopener noreferrer" className="boton">
                     <IconoChat className="h-5 w-5" />
                     {h.urgencias.cta}
                   </a>
