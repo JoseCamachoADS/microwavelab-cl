@@ -12,6 +12,16 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.15.0: Botones flotantes configurables, urgencias en pausa y calculadora de honorarios (11-11-2026)
+
+- **Panel `/botones`** (clave `USO_API_TOKEN`, solo español, fuera de Google): enciende o apaga el botón flotante de WhatsApp y elige el modo de urgencias: **botón rojo**, **aviso amarillo de pausa** o **nada**. Se guarda en Redis (clave `botones`; `src/lib/botones.ts`) y el sitio se actualiza al instante.
+- **Urgencias en pausa:** rayo amarillo eléctrico flotante que abre un aviso (`<dialog>`, con la forma y la franja de seguridad del sitio): "no estamos atendiendo urgencias hasta el 15 de enero de 2027; puede seguir consultando por WhatsApp y teléfono". Se abre solo una vez por visita (se puede desactivar). Fecha en es/en/ger. Vuelve solo al botón rojo el día siguiente a la fecha (hora de Chile). Valor inicial: pausa hasta 2027-01-15.
+- Con la pausa activa cambian también la sección "Reparaciones de emergencia" de la portada (aviso amarillo y botón de consulta), el llamado del pie de página y las instrucciones del asistente virtual. Nuevos orígenes de clics: `pausa-urgencias` y `consulta-portada`.
+- **Herramienta interna `/honorarios`** (misma clave): calcula la retención de una boleta de honorarios desde el bruto o desde el líquido, con o sin retención, según el año de emisión. Tabla de tasas editable (Redis, clave `honorarios`): 2026 15,25 %, 2027 16 %, 2028 en adelante 17 % (Ley 21.133, según el SII). Las boletas de honorarios no llevan IVA: lo que se calcula es la retención de impuesto.
+- `/botones` y `/honorarios` quedan fuera de Google y de la analítica.
+
+---
+
 ## v1.14.0: Contador de clics en WhatsApp por dispositivo (03-11-2026)
 
 ### Qué cambió

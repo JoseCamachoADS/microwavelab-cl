@@ -185,6 +185,8 @@ Supuestos tomados a partir de lo pedido (confirmar con el dueño): el administra
 ## Aviso de pizarra electrónica y encabezado (v1.9.0)
 
 - `AvisoPizarra.tsx` (franja arriba de todo el sitio, letras de puntos que se desplazan, con pausa) se muestra desde `layout.tsx` si el aviso está encendido. El texto vive en Upstash Redis (clave `aviso`) y se edita en `/aviso` (clave `USO_API_TOKEN`, ver `src/lib/admin.ts`); sin Redis o sin nada guardado vale `avisoInicial` de `src/lib/aviso.ts`. El sitio lo relee cada 60 s y al guardar se actualiza al instante (`revalidatePath`). Al guardar, el inglés y el alemán vacíos se traducen solos (`traducirTexto`, cuenta en `/uso`).
+- Botones flotantes: `BotonWhatsApp`, `BotonUrgencia` (rojo) y `UrgenciasPausa` (amarillo, con `<dialog>`) se eligen en `layout.tsx` según `leerBotones()` (`src/lib/botones.ts`, Redis clave `botones`, editor en `/botones`). Una pausa de urgencias vence sola después de `hasta`. Todo enlace nuevo de WhatsApp lleva `data-clic` registrado en `ORIGENES` (`src/lib/clics.ts`).
+- `/honorarios` (interno, misma clave): `src/lib/honorarios.ts` (funciones puras) y tasas por año en Redis (clave `honorarios`). Las boletas de honorarios no llevan IVA; se calcula la retención (Ley 21.133: 2026 15,25 %, 2027 16 %, 2028+ 17 %).
 - Encabezado: el menú de escritorio aparece desde 1280 px (`xl`); debajo, menú móvil. Los enlaces no se parten en dos líneas (`whitespace-nowrap`) y el botón usa el texto corto `nav.portalCorto`. Al agregar un enlace nuevo al menú, revisar que quepa a 1280 px.
 - Horario: lunes a jueves 10:00 a 19:00, viernes 10:00 a 13:00 (`i18n/*.ts`, `empresa.ts` y datos estructurados de `layout.tsx`).
 

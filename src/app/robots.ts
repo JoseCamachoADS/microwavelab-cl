@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       // El portal de clientes y el panel del técnico no deben aparecer en Google.
-      disallow: ["/portal", "/panel", "/uso", "/aviso", "/asistente", "/en/portal", "/en/panel", "/ger/portal", "/ger/panel"],
+      disallow: ["/portal", "/panel", "/uso", "/aviso", "/asistente", "/botones", "/honorarios", "/en/portal", "/en/panel", "/ger/portal", "/ger/panel"],
     },
     sitemap: `${empresa.sitioUrl}/sitemap.xml`,
   };

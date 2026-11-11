@@ -21,6 +21,14 @@ import { redisLote } from "@/lib/redis";
 import { traducirTexto } from "@/lib/traducir";
 import { verificarTurnstile } from "@/lib/turnstile";
 
+import { fechaLarga, leerBotones, modoUrgencias } from "@/lib/botones";
+
+/** Fecha en palabras si las urgencias están en pausa hoy; si no, undefined. */
+async function pausaVigente(idioma: "es" | "en" | "ger"): Promise<string | undefined> {
+  const b = await leerBotones();
+  return modoUrgencias(b) === "pausa" ? fechaLarga(b.hasta, idioma) : undefined;
+}
+
 export const dynamic = "force-dynamic";
 
 const SIN_CACHE = { "Cache-Control": "no-store" };
@@ -90,7 +98,7 @@ export async function POST(req: Request) {
   const hoy = await contarMensajeHoy();
   if (hoy !== null && hoy > config.topeDiario) return falla("tope", 429, sesion);
 
-  const texto = await consultarGemini(construirInstrucciones(config, idioma), mensajes);
+  const texto = await consultarGemini(construirInstrucciones(config, idioma, await pausaVigente(idioma)), mensajes);
   if (!texto) return falla("error", 502, sesion);
   return NextResponse.json({ ok: true, texto, ...(sesion ? { sesion } : {}) }, { headers: SIN_CACHE });
 }

@@ -131,7 +131,7 @@ export function sesionValida(valor: unknown): boolean {
 const NOMBRE_IDIOMA: Record<Idioma, string> = { es: "español de Chile", en: "inglés", ger: "alemán" };
 
 /** Arma las instrucciones con los datos reales del sitio. El modelo no conoce nada más que esto. */
-export function construirInstrucciones(c: ConfigAsistente, lang: Idioma): string {
+export function construirInstrucciones(c: ConfigAsistente, lang: Idioma, pausaUrgenciasHasta?: string): string {
   const lista = servicios.map((s) => `- ${s.titulo}: ${s.descripcion}`).join("\n");
   const faq = preguntasFrecuentes.map((p) => `P: ${p.pregunta}\nR: ${p.respuesta}`).join("\n");
   return `Eres el asistente virtual del sitio web de ${empresa.nombreCompleto}, un laboratorio de reparación electrónica de enfoque industrial ubicado en ${empresa.comuna}, Santiago de Chile.
@@ -142,7 +142,11 @@ DATOS DEL NEGOCIO (tu única fuente de información):
 - Teléfono y WhatsApp: ${empresa.telefono}.
 - El foco es todo a nivel industrial. También se atienden equipos automotrices y médicos. NO se reparan equipos domésticos.
 - Cobertura: Región Metropolitana; con coordinación previa, también otras regiones de Chile.
-- Se atienden urgencias con reparaciones prioritarias, incluso en sitio (en las instalaciones del cliente), coordinadas con el equipo por WhatsApp o teléfono. No prometas tiempos de llegada.
+${
+    pausaUrgenciasHasta
+      ? `- IMPORTANTE: hasta el ${pausaUrgenciasHasta} NO se están atendiendo urgencias. Si preguntan por una urgencia, infórmalo con claridad y ofrece continuar la consulta o cotización por WhatsApp o teléfono.`
+      : "- Se atienden urgencias con reparaciones prioritarias, incluso en sitio (en las instalaciones del cliente), coordinadas con el equipo por WhatsApp o teléfono. No prometas tiempos de llegada."
+  }
 - Proceso: recepción del equipo, diagnóstico, presupuesto, aprobación del cliente, reparación, pruebas y entrega con garantía. Se diagnostica primero y el cliente decide si continúa con la reparación.
 - Servicios:
 ${lista}

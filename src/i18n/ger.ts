@@ -48,6 +48,7 @@ export const ger: Diccionario = {
   pie: {
     titulo: "Probleme mit Ihrem Industriegerät oder Spezialgerät?",
     texto: "Dann sind Sie bei uns richtig. Schildern Sie uns den Fehler, und wir helfen Ihnen mit persönlicher Betreuung bei der Lösung. Lassen Sie nicht zu, dass ein Gerät den Betrieb Ihres Unternehmens stoppt: Wir übernehmen Notfälle mit vorrangigen Reparaturen, auch vor Ort. Über {anios} Jahre Erfahrung und {garantia} Monate Garantie auf jede Arbeit.",
+    textoSinUrgencias: "Dann sind Sie bei uns richtig. Schildern Sie uns den Fehler, und wir helfen Ihnen mit persönlicher Betreuung bei der Lösung. Bis zum {fecha} nehmen wir keine Notfälle an, Ihre Anfragen und Angebotswünsche können Sie aber weiterhin über unsere Kanäle senden. Über {anios} Jahre Erfahrung und {garantia} Monate Garantie auf jede Arbeit.",
     whatsapp: "Per WhatsApp schreiben",
     llamar: "Anrufen",
     derechos: "Alle Rechte vorbehalten.",
@@ -56,6 +57,17 @@ export const ger: Diccionario = {
   },
   whatsapp: { aria: "Per WhatsApp schreiben", etiqueta: "WhatsApp" },
   urgencia: { aria: "Notfall per WhatsApp melden", etiqueta: "Ich habe einen Notfall" },
+  urgenciaPausa: {
+    aria: "Notfälle pausiert: Hinweis ansehen",
+    etiqueta: "Notfälle pausiert",
+    titulo: "Notfallreparaturen pausiert",
+    texto: "Derzeit nehmen wir bis zum {fecha} keine Notfälle an.",
+    consultas: "Ihre Anfragen und Angebotswünsche können Sie weiterhin über unsere verfügbaren Kanäle senden: WhatsApp und Telefon.",
+    whatsapp: "Per WhatsApp anfragen",
+    llamar: "Anrufen",
+    cerrar: "Hinweis schließen",
+    inicio: "In der Zwischenzeit können Sie Ihre Anfragen und Angebotswünsche per WhatsApp oder Telefon senden.",
+  },
   cookies: {
     aria: "Cookie-Hinweis",
     texto: "Wir verwenden Messungs-Cookies (Google Analytics und Microsoft Clarity), um zu verstehen, wie die Website genutzt wird, und sie zu verbessern. Wir setzen sie nicht zu Werbezwecken ein. Sie können sie akzeptieren oder ablehnen.",

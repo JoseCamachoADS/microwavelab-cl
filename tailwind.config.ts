@@ -28,6 +28,7 @@ const config: Config = {
         tinta: "#222021",
         grisazul: "#5B5D78",
         peri: "#A4AAFF", // azul de marca aclarado para fondos oscuros
+        electrico: "#FFD60A", // amarillo eléctrico de los avisos (texto siempre en noche: contraste 13:1)
       },
       fontFamily: {
         titulo: ["var(--font-titulo)", "system-ui", "sans-serif"],

@@ -18,7 +18,7 @@ import { IconoChat, IconoNavegar, IconoPin, IconoRed, IconoTelefono } from "./Ic
 import Rayo from "./Rayo";
 import SelectorDeIdioma from "./SelectorDeIdioma";
 
-export default function PieDePagina({ lang }: { lang: Idioma }) {
+export default function PieDePagina({ lang, pausaHasta }: { lang: Idioma; pausaHasta?: string }) {
   const d = obtenerDiccionario(lang);
   const v = variables(d);
   const correo = datoPublico(empresa.correo);
@@ -46,7 +46,7 @@ export default function PieDePagina({ lang }: { lang: Idioma }) {
         <div className="contenedor relative flex flex-col gap-6 py-12 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-titulo text-3xl font-bold text-white sm:text-4xl">{d.pie.titulo}</h2>
-            <p className="mt-2 max-w-xl text-lg text-white/90">{fmt(d.pie.texto, v)}</p>
+            <p className="mt-2 max-w-xl text-lg text-white/90">{pausaHasta ? fmt(d.pie.textoSinUrgencias, { ...v, fecha: pausaHasta }) : fmt(d.pie.texto, v)}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             {wa && (

@@ -27,6 +27,8 @@ import { obtenerDiccionario } from "@/i18n";
 import { metaPagina } from "@/i18n/meta";
 import { idiomaDe, variables } from "@/i18n/servidor";
 import { datoPublico, enlaceTelefono, enlaceWhatsApp } from "@/lib/utilidades";
+import { fechaLarga, leerBotones, modoUrgencias } from "@/lib/botones";
+import { IconoRayo } from "@/components/Iconos";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -47,6 +49,9 @@ export default async function Inicio({ params }: Props) {
   const telefono = datoPublico(empresa.telefono);
   const destacados = servicios.filter((s) => s.destacado);
   const h = d.inicio;
+  const botones = await leerBotones();
+  const modo = modoUrgencias(botones);
+  const consulta = enlaceWhatsApp(empresa.whatsapp, d.comun.mensajeConsulta);
 
   return (
     <>
@@ -112,7 +117,19 @@ export default async function Inicio({ params }: Props) {
             <Rayo className="pointer-events-none absolute -right-12 -top-10 h-64 w-64 text-rojo/25 md:h-80 md:w-80" />
             <div className="relative">
               <h2 className="font-titulo text-3xl font-bold leading-tight sm:text-4xl">{h.urgencias.titulo}</h2>
-              <p className="mt-4 max-w-2xl text-lg text-white/90">{h.urgencias.bajada}</p>
+              {modo === "pausa" && (
+                <div className="mt-6 flex max-w-2xl items-start gap-4 border-l-8 border-electrico bg-electrico p-5 text-noche">
+                  <IconoRayo className="mt-1 h-8 w-8 flex-shrink-0" />
+                  <div>
+                    <p className="font-titulo text-xl font-bold">
+                      {fmt(d.urgenciaPausa.texto, { fecha: fechaLarga(botones.hasta, lang) })}
+                    </p>
+                    <p className="mt-2">{d.urgenciaPausa.consultas}</p>
+                  </div>
+                </div>
+              )}
+              {modo !== "pausa" && <p className="mt-4 max-w-2xl text-lg text-white/90">{h.urgencias.bajada}</p>}
+              {modo !== "pausa" && (
               <ul className="mt-8 grid gap-6 md:grid-cols-3">
                 {h.urgencias.puntos.map((p) => (
                   <li key={p.t} className="border-l-4 border-rojo pl-4">
@@ -121,9 +138,16 @@ export default async function Inicio({ params }: Props) {
                   </li>
                 ))}
               </ul>
+              )}
               <p className="mt-8 max-w-2xl font-semibold text-peri">{fmt(h.urgencias.respaldo, v)}</p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                {urgencia && (
+                {modo === "pausa" && consulta && (
+                  <a href={consulta} data-clic="consulta-portada" target="_blank" rel="noopener noreferrer" className="boton">
+                    <IconoChat className="h-5 w-5" />
+                    {d.urgenciaPausa.whatsapp}
+                  </a>
+                )}
+                {modo === "activo" && urgencia && (
                   <a href={urgencia} data-clic="urgencia-portada" target="_blank" rel="noopener noreferrer" className="boton">
                     <IconoChat className="h-5 w-5" />
                     {h.urgencias.cta}
@@ -132,7 +156,7 @@ export default async function Inicio({ params }: Props) {
                 {llamar && (
                   <a href={llamar} className="boton-claro">
                     <IconoTelefono className="h-5 w-5" />
-                    {h.urgencias.llamar}
+                    {modo === "pausa" ? d.urgenciaPausa.llamar : h.urgencias.llamar}
                   </a>
                 )}
               </div>

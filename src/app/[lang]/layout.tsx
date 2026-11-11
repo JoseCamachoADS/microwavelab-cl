@@ -15,6 +15,9 @@ import { idiomaDe, variables } from "@/i18n/servidor";
 import { fmt } from "@/i18n/config";
 import { hayGemini, leerAsistente, saludoPersonalizado } from "@/lib/asistente";
 import { leerAviso, textoAviso } from "@/lib/aviso";
+import { fechaLarga, leerBotones, modoUrgencias } from "@/lib/botones";
+import { enlaceTelefono } from "@/lib/utilidades";
+import UrgenciasPausa from "@/components/UrgenciasPausa";
 import { empresa, servicios } from "@/lib/empresa";
 import { datoPublico, enlaceWhatsApp } from "@/lib/utilidades";
 
@@ -123,6 +126,9 @@ export default async function RootLayout({ children, params }: Props) {
   const d = obtenerDiccionario(lang);
   const aviso = textoAviso(await leerAviso(), lang);
   const asistente = hayGemini ? await leerAsistente() : null;
+  const botones = await leerBotones();
+  const urgencias = modoUrgencias(botones);
+  const fechaPausa = fechaLarga(botones.hasta, lang);
   const json = JSON.stringify(
     datosEstructurados(d.comun.descripcionEmpresa, `${empresa.sitioUrl}${ruta(lang, "/")}`)
   ).replace(/</g, "\\u003c");
@@ -141,7 +147,7 @@ export default async function RootLayout({ children, params }: Props) {
         )}
         <Encabezado lang={lang} />
         <main>{children}</main>
-        <PieDePagina lang={lang} />
+        <PieDePagina lang={lang} pausaHasta={urgencias === "pausa" ? fechaPausa : undefined} />
         {asistente?.activo && (
           <AsistenteChat
             lang={lang}
@@ -151,8 +157,16 @@ export default async function RootLayout({ children, params }: Props) {
           />
         )}
         <ClicsWhatsApp />
-        <BotonUrgencia lang={lang} />
-        <BotonWhatsApp lang={lang} />
+        {urgencias === "activo" && <BotonUrgencia lang={lang} />}
+        {urgencias === "pausa" && (
+          <UrgenciasPausa
+            textos={{ ...d.urgenciaPausa, texto: fmt(d.urgenciaPausa.texto, { fecha: fechaPausa }) }}
+            abrirSolo={botones.abrirSolo}
+            enlaceWhatsApp={enlaceWhatsApp(empresa.whatsapp, d.comun.mensajeConsulta)}
+            enlaceTelefono={enlaceTelefono(empresa.whatsapp)}
+          />
+        )}
+        {botones.whatsapp && <BotonWhatsApp lang={lang} />}
         <Analitica lang={lang} textos={d.cookies} />
       </body>
     </html>

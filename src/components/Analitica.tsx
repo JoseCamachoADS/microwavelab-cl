@@ -13,7 +13,7 @@ import type { Diccionario } from "@/i18n/es";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CLAVE = "consentimiento-analitica";
-const RUTAS_PRIVADAS = ["/portal", "/panel", "/uso", "/aviso", "/asistente"];
+const RUTAS_PRIVADAS = ["/portal", "/panel", "/uso", "/aviso", "/asistente", "/botones", "/honorarios"];
 
 type Decision = "si" | "no" | null;
 

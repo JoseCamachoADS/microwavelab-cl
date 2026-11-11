@@ -10,6 +10,8 @@ export const ORIGENES = {
   "urgencia-flotante": "Botón flotante de urgencias (rayo)",
   portada: "Portada: solicitar cotización",
   "urgencia-portada": "Portada: reportar una urgencia",
+  "pausa-urgencias": "Aviso amarillo de urgencias en pausa (consultas)",
+  "consulta-portada": "Portada: consultas con urgencias en pausa",
   pie: "Pie de página",
   contacto: "Página de contacto",
   formulario: "Formulario de cotización",

@@ -49,6 +49,7 @@ export const es = {
   pie: {
     titulo: "¿Problemas con su equipo industrial o especializado?",
     texto: "Llegó al lugar correcto. Cuéntenos la falla que presenta y le ayudaremos a solucionarla, con atención personalizada. No deje que su equipo detenga la operación de su compañía: atendemos urgencias, con reparaciones prioritarias, incluso en sitio. Más de {anios} años de experiencia y {garantia} meses de garantía en cada trabajo.",
+    textoSinUrgencias: "Llegó al lugar correcto. Cuéntenos la falla que presenta y le ayudaremos a solucionarla, con atención personalizada. Hasta el {fecha} no estamos atendiendo urgencias, pero puede realizar sus consultas y cotizaciones por nuestros canales de atención. Más de {anios} años de experiencia y {garantia} meses de garantía en cada trabajo.",
     whatsapp: "Escribir por WhatsApp",
     llamar: "Llamar",
     derechos: "Todos los derechos reservados.",
@@ -57,6 +58,17 @@ export const es = {
   },
   whatsapp: { aria: "Escribir por WhatsApp", etiqueta: "WhatsApp" },
   urgencia: { aria: "Reportar una urgencia por WhatsApp", etiqueta: "Tengo una urgencia" },
+  urgenciaPausa: {
+    aria: "Urgencias en pausa: ver aviso",
+    etiqueta: "Urgencias en pausa",
+    titulo: "Urgencias en pausa",
+    texto: "En este momento no estamos atendiendo urgencias hasta el {fecha}.",
+    consultas: "Puede seguir realizando sus consultas y solicitudes de cotización por los canales disponibles: WhatsApp y teléfono.",
+    whatsapp: "Consultar por WhatsApp",
+    llamar: "Llamar",
+    cerrar: "Cerrar aviso",
+    inicio: "Mientras tanto, puede realizar sus consultas y cotizaciones por WhatsApp o teléfono.",
+  },
   cookies: {
     aria: "Aviso de cookies",
     texto: "Utilizamos cookies de medición (Google Analytics y Microsoft Clarity) para comprender cómo se usa el sitio y mejorarlo. No las empleamos con fines publicitarios. Usted puede aceptarlas o rechazarlas.",

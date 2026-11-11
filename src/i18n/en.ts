@@ -48,6 +48,7 @@ export const en: Diccionario = {
   pie: {
     titulo: "Having trouble with your industrial or specialized equipment?",
     texto: "You have come to the right place. Tell us about the fault and we will help you solve it with personalized attention. Do not let a piece of equipment stop your company's operation: we handle emergencies with priority repairs, including on site. Over {anios} years of experience and a {garantia}-month warranty on every job.",
+    textoSinUrgencias: "You have come to the right place. Tell us about the fault and we will help you solve it with personalized attention. Until {fecha} we are not taking emergency repairs, but you can still send your enquiries and quote requests through our channels. Over {anios} years of experience and a {garantia}-month warranty on every job.",
     whatsapp: "Message us on WhatsApp",
     llamar: "Call",
     derechos: "All rights reserved.",
@@ -56,6 +57,17 @@ export const en: Diccionario = {
   },
   whatsapp: { aria: "Message us on WhatsApp", etiqueta: "WhatsApp" },
   urgencia: { aria: "Report an emergency on WhatsApp", etiqueta: "I have an emergency" },
+  urgenciaPausa: {
+    aria: "Emergencies on hold: view notice",
+    etiqueta: "Emergencies on hold",
+    titulo: "Emergency repairs on hold",
+    texto: "We are not taking emergency repairs at this time, until {fecha}.",
+    consultas: "You can still send your enquiries and quote requests through our available channels: WhatsApp and phone.",
+    whatsapp: "Enquire on WhatsApp",
+    llamar: "Call",
+    cerrar: "Close notice",
+    inicio: "In the meantime, you can send your enquiries and quote requests by WhatsApp or phone.",
+  },
   cookies: {
     aria: "Cookie notice",
     texto: "We use measurement cookies (Google Analytics and Microsoft Clarity) to understand how the site is used and to improve it. We do not use them for advertising. You may accept or decline them.",
