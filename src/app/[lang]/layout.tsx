@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, IBM_Plex_Sans } from "next/font/google";
 import "../globals.css";
 import Analitica from "@/components/Analitica";
+import BarraAccesibilidad from "@/components/BarraAccesibilidad";
 import AvisoPizarra from "@/components/AvisoPizarra";
 import AsistenteChat from "@/components/AsistenteChat";
 import ClicsWhatsApp from "@/components/ClicsWhatsApp";
@@ -33,6 +34,10 @@ const cuerpo = IBM_Plex_Sans({
   variable: "--font-cuerpo",
   display: "swap",
 });
+
+// Aplica las preferencias de accesibilidad antes de pintar la página: las guardadas por la persona o, si no hay,
+// las del sistema (más contraste, menos movimiento). Los estilos están en globals.css.
+const INICIO_ACCESIBILIDAD = `(function(){try{var h=document.documentElement,p=null;try{p=JSON.parse(localStorage.getItem("a11y")||"null")}catch(e){}var m=function(q){return window.matchMedia&&window.matchMedia(q).matches};if(!p){p={texto:0,contraste:m("(prefers-contrast: more)"),enlaces:false,fuente:false,quieto:m("(prefers-reduced-motion: reduce)")}}if(p.texto>0&&p.texto<4)h.setAttribute("data-a11y-texto",String(p.texto));["contraste","enlaces","fuente","quieto"].forEach(function(k){if(p[k])h.setAttribute("data-a11y-"+k,"1")})}catch(e){}})();`;
 
 export const dynamicParams = false;
 
@@ -134,9 +139,12 @@ export default async function RootLayout({ children, params }: Props) {
   ).replace(/</g, "\\u003c");
 
   return (
-    <html lang={d.idioma.htmlLang} className={`${titulo.variable} ${cuerpo.variable}`}>
+    <html lang={d.idioma.htmlLang} suppressHydrationWarning className={`${titulo.variable} ${cuerpo.variable}`}>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: INICIO_ACCESIBILIDAD }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />
+        {/* Primero en el orden de tabulación; se muestra fijo abajo */}
+        <Analitica lang={lang} textos={d.cookies} />
         {aviso && (
           <AvisoPizarra
             texto={aviso}
@@ -167,7 +175,7 @@ export default async function RootLayout({ children, params }: Props) {
           />
         )}
         {botones.whatsapp && <BotonWhatsApp lang={lang} />}
-        <Analitica lang={lang} textos={d.cookies} />
+        <BarraAccesibilidad textos={d.accesibilidad} />
       </body>
     </html>
   );

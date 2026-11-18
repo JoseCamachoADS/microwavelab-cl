@@ -12,6 +12,14 @@ Este documento es la base del proyecto. Cada mejora nueva se agrega como una ver
 
 ---
 
+## v1.16.0: Accesibilidad (17-11-2026)
+
+- **Barra de accesibilidad** (botón redondo abajo a la izquierda, en es/en/ger): tamaño del texto (4 niveles), alto contraste, subrayar enlaces, tipografía legible y pausar animaciones, con botón para restablecer. Se recuerda en el dispositivo (`localStorage`, clave `a11y`) y se aplica antes de pintar la página. Componente `BarraAccesibilidad.tsx`; estilos al final de `globals.css` (atributos `data-a11y-*` en `<html>`).
+- **Preferencias del sistema:** si la persona no ha elegido nada, el sitio activa solo el alto contraste con "más contraste" y pausa las animaciones con "reducir movimiento"; además respeta los colores forzados de Windows y "reducir transparencia". El tamaño del texto del navegador se respeta porque todo el sitio usa rem. El tema oscuro no está incluido.
+- **Zonas táctiles y tabulación:** en pantallas táctiles, enlaces del pie, enlaces sueltos y preguntas frecuentes miden al menos 44 px. El aviso de cookies pasa a ser lo primero en el orden de tabulación (sigue fijo abajo); los botones flotantes quedan al final.
+
+---
+
 ## v1.15.0: Botones flotantes configurables, urgencias en pausa y calculadora de honorarios (11-11-2026)
 
 - **Panel `/botones`** (clave `USO_API_TOKEN`, solo español, fuera de Google): enciende o apaga el botón flotante de WhatsApp y elige el modo de urgencias: **botón rojo**, **aviso amarillo de pausa** o **nada**. Se guarda en Redis (clave `botones`; `src/lib/botones.ts`) y el sitio se actualiza al instante.

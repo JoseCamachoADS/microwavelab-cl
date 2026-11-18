@@ -385,3 +385,105 @@
     transition: none;
   }
 }
+
+
+/* ============================================================
+   Accesibilidad: barra del sitio (atributos en <html>) y preferencias del sistema
+   ============================================================ */
+
+/* Pausar animaciones (botón de la barra; también se activa solo con "reducir movimiento").
+   Misma lógica que el bloque prefers-reduced-motion de más arriba. */
+html[data-a11y-quieto="1"] .carrusel {
+  overflow-x: auto;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+html[data-a11y-quieto="1"] .carrusel-copia,
+html[data-a11y-quieto="1"] .pizarra-copia,
+html[data-a11y-quieto="1"] .pizarra-repetido,
+html[data-a11y-quieto="1"] .pizarra-rayo,
+html[data-a11y-quieto="1"] .carrusel-boton,
+html[data-a11y-quieto="1"] .pizarra-boton {
+  display: none;
+}
+html[data-a11y-quieto="1"] .pizarra-pista { width: auto; }
+html[data-a11y-quieto="1"] .pizarra-texto { white-space: normal; }
+html[data-a11y-quieto="1"] *,
+html[data-a11y-quieto="1"] *::before,
+html[data-a11y-quieto="1"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* Tamaño del texto: todo el sitio usa rem, así que escala completo */
+html[data-a11y-texto="1"] { font-size: 112.5%; }
+html[data-a11y-texto="2"] { font-size: 125%; }
+html[data-a11y-texto="3"] { font-size: 150%; }
+
+/* Subrayar enlaces */
+html[data-a11y-enlaces="1"] a:not(.boton):not(.boton-azul):not(.boton-claro):not(.boton-suave) {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px !important;
+}
+
+/* Tipografía legible: sistema sans, más espacio entre letras, palabras y líneas */
+html[data-a11y-fuente="1"] body,
+html[data-a11y-fuente="1"] body * {
+  font-family: Verdana, "Segoe UI", Arial, system-ui, sans-serif !important;
+  letter-spacing: 0.03em !important;
+  word-spacing: 0.1em !important;
+}
+html[data-a11y-fuente="1"] p,
+html[data-a11y-fuente="1"] li {
+  line-height: 1.8 !important;
+}
+
+/* Alto contraste (botón de la barra; también se activa solo con "más contraste") */
+html[data-a11y-contraste="1"] body { background: #ffffff; color: #000000; }
+html[data-a11y-contraste="1"] .text-grisazul,
+html[data-a11y-contraste="1"] .text-tinta,
+html[data-a11y-contraste="1"] .text-azul { color: #000000 !important; }
+html[data-a11y-contraste="1"] [class*="text-white/"] { color: #ffffff !important; }
+html[data-a11y-contraste="1"] .text-peri { color: #ffffff !important; }
+html[data-a11y-contraste="1"] .bg-hielo,
+html[data-a11y-contraste="1"] .bg-azul-100 { background-color: #ffffff !important; outline: 1px solid #000000; }
+html[data-a11y-contraste="1"] a:not(.boton):not(.boton-azul):not(.boton-claro):not(.boton-suave) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+html[data-a11y-contraste="1"] .boton { background: #8f0f15; border: 2px solid #ffffff; }
+html[data-a11y-contraste="1"] .boton-azul { background: #1d1e55; border: 2px solid #ffffff; }
+html[data-a11y-contraste="1"] .boton-claro { background: #000000; border: 2px solid #ffffff; }
+html[data-a11y-contraste="1"] .boton-suave { background: #ffffff; color: #000000; border: 2px solid #000000; }
+html[data-a11y-contraste="1"] :focus-visible { outline: 4px solid #ffd60a; box-shadow: 0 0 0 7px #000000; outline-offset: 2px; }
+
+/* Colores forzados de Windows ("modo de alto contraste" del sistema) */
+@media (forced-colors: active) {
+  .boton, .boton-azul, .boton-claro, .boton-suave { border: 2px solid ButtonText; }
+  .panel { border: 2px solid CanvasText; }
+  :focus-visible { outline: 3px solid Highlight; }
+}
+
+/* "Reducir transparencia" del sistema: fondos sólidos en el encabezado */
+@media (prefers-reduced-transparency: reduce) {
+  header.sticky { background-color: #ffffff; backdrop-filter: none; }
+}
+
+/* Zonas táctiles de al menos 44 px en pantallas táctiles (los enlaces dentro de un párrafo quedan exentos) */
+@media (pointer: coarse) {
+  footer li > a,
+  footer li > button,
+  .enlace-tactil {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+  p > a.enlace {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+  .faq summary { min-height: 2.75rem; }
+}
